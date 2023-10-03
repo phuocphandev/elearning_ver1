@@ -1,5 +1,5 @@
-import React from 'react'
-import {HomeTemplates} from 'component'
+import { HomeTemplates } from "components"
+
 
 const HomePage = () => {
   return (
