@@ -9,9 +9,8 @@ function App() {
     
   // }
   return (
-  <div>
-    <div>{useRoutes(router)}</div>;
-    {/* <button onClick={handleClick}>abc</button> */}
-  </div>)
+   <div>{useRoutes(router)}</div> 
+  // <button onClick={handleClick}>abc</button>
+  )
 }
 export default App;

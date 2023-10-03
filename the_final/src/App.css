@@ -2,9 +2,10 @@
 
 #root {
   font-family: 'Roboto', sans-serif;
-  /* max-width: 1280px;
-  margin: 0 auto; */
-  /* padding: 2rem;
-  text-align: center; */
-  
+  /* color */
+  --primary: #1aa5b8; 
+  --secondary: #d9ecf2;
+  --tertiary: #94C8C4;
+  --quaternary: #042f40;
+  --background: rgb(217, 226, 235);
 }

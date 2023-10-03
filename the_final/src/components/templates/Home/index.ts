@@ -1,1 +1,2 @@
-export * from './HomeTemplates'
+export * from "./HomeTemplates";
+export * from "./Introduction";
