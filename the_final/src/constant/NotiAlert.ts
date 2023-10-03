@@ -1,41 +1,26 @@
 import Swal from "sweetalert2";
 
-export const NotiAlert = (text) => {
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: "bg-green-500 py-1 px-4 rounded m-1",
-      cancelButton: "bg-red-500 py-1 px-4 rounded m-1",
-    },
-    buttonsStyling: false,
-  });
-
-  swalWithBootstrapButtons
-    .fire({
-      title: text,
+export const NotiAlert = () => {
+  return new Promise((resolve) => {
+    Swal.fire({
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      iconHtml: '<img src="../../public/lottie/animation_angle.gif>',
-
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      customClass: {
+        confirmButton: "bg-green-500 py-2 px-10 rounded m-1 text-white",
+        cancelButton: "bg-red-500 py-2 px-10 rounded m-1 text-white",
+      },
+      buttonsStyling: false,
       reverseButtons: true,
-    })
-    .then((result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          "Deleted!",
-          "Your file has been deleted.",
-          "success"
-        );
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          "Cancelled",
-          "Your imaginary file is safe :)",
-          "error"
-        );
+        resolve(true);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        resolve(false);
       }
     });
+  });
 };
