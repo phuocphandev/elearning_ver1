@@ -8,12 +8,13 @@
     pointer-events: none;
     justify-content: start !important;
     font-family: 'Kanit', sans-serif;
-    line-height: 0px;
-    text-transform: uppercase;
+    color: var(--primary);
+    /* line-height: 0px; */
+    /* text-transform: uppercase; */
   }
   
   .number {
-    font-size: 100px;
+    font-size: 4rem;
     color: black;
   }
   

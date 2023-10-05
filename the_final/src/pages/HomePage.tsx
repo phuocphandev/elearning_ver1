@@ -1,6 +1,5 @@
 import { HomeTemplates } from "components"
 
-
 const HomePage = () => {
   return (
     <HomeTemplates/>
