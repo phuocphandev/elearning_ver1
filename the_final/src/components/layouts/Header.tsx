@@ -58,10 +58,7 @@ const Header = () => {
     <nav className="bg-[var(--quaternary)] border-gray-200 dark:bg-gray-900 Header">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
         <a href="/" className="flex items-center">
-          <img src="/public/image/logo.svg" className="h-8 mr-3" alt="Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-            Ehub
-          </span>
+          <img src="/public/image/logo.svg" className="h-[100px] mr-3 w-[100px]" alt="Logo" />
         </a>
         <div className="flex items-center md:order-2 bg-none">
           <button className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 hidden ">
