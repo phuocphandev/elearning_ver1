@@ -5,8 +5,11 @@ import cn from 'classnames'
 
 export const HomeTemplates = () => {
     return (
-      <div className={cn("overflow-hidden", styles.customScrollbar)}>
-        <Introduction/>
+      <div>
+        <div className={cn("overflow-hidden", styles.customScrollbar)}>
+          <Introduction/>
+        </div>
+        <Sponsor/>
       </div>
     )
   }

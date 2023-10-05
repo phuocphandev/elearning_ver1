@@ -3,16 +3,13 @@ export const Footer = () => {
       <footer className="bg-[var(--quaternary)]">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
-            <div className="mb-6 md:mb-0">
+            <div className="mb-6 md:mb-0 flex justify-center">
               <a href="/" className="flex items-center">
                 <img
-                  src="/public/image/logo.svg"
-                  className="h-8 mr-3"
+                  src="/public/image/logo.gif"
+                  className="w-[250px] mr-3"
                   alt="Logo"
                 />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                  Ehub
-                </span>
               </a>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
