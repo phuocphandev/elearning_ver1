@@ -238,7 +238,7 @@ const Header = () => {
                           </button>
                         </div>
                       </Transition.Child>
-                      <div className="flex h-full flex-col overflow-hidden bg-white py-6 shadow-xl">
+                      <div className="flex h-[100vh] flex-col overflow-hidden bg-white py-6 shadow-xl">
                         <div className="px-4 sm:px-6">
                           <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
                             Panel title
