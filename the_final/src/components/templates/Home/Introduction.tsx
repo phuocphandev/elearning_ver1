@@ -30,7 +30,7 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
     </ParallaxLayer>
 
     <ParallaxLayer
-      className={cn(styles.text, " relative overflow-hidden")}
+      className={cn(styles.text, " relative overflow-hidden ")}
       style={{ wordWrap: "break-word" }}
       offset={0}
       speed={0.3}
@@ -40,7 +40,7 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         style={{ wordWrap: "break-word" }}
       >
         <div className="w-full h-full lg:flex">
-          <div className="w-[100%] lg:w-[60%] h-[50%] flex justify-center lg:h-[100%]">
+          <div className="w-[100%] lg:w-[60%] h-[60%] flex items-end justify-center lg:h-[100%]">
             <Lottie animationData={Welcome1} />
           </div>
           <div className="flex justify-center lg:items-center lg:w-[50%] -lg:h-[50%] h-[50%] lg:h-[100%]">
@@ -61,7 +61,7 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         className=" flex flex-col md:flex-none justify-center items-center w-[100%] transition ease-in-out delay-75 duration-500"
         style={{ wordWrap: "break-word" }}
       >
-        <div className="w-[80%] md:w-[40%] flex justify-center ">
+        <div className="w-[80%] xl:w-[40%] flex justify-center ">
           <Lottie animationData={Welcome2} className="w-[100%] md:w-[70%]" />
         </div>
         <div className="flex w-full">
@@ -89,7 +89,7 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         className=" hidden lg:flex lg:flex-none justify-center items-center h-full lg:h-[80%] w-[100%] transition ease-in-out delay-75 duration-500"
         style={{ wordWrap: "break-word" }}
       >
-        <div className="flex w-1/2 relative">
+        <div className={cn("flex w-1/2 relative", styles.pad)}>
           <span className={cn("w-full px-4")}>
             <div className="flex flex-col w-full">
               <p className="lg:text-[3em] text-[2em]">About us:</p>
@@ -107,16 +107,12 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
               </div>
             </div>
           </span>
+          <div className={cn(styles.ribbon)}>Enroll now for Discount</div>
         </div>
 
         <div className="w-[70%] lg:w-[50%] flex justify-center ">
           <Lottie animationData={Welcome3} className="w-[60%]" />
         </div>
-      </div>
-      <div className={cn(styles.box,"md:text-[1.5em] text-[1em] bg-yellow-500 px-3 py-2 w-[12%] m-auto rounded-2xl absolute -bottom-10 -left-10 flex justify-center items-center")}>
-        <span className="text-red-500 w-1/2 ">
-          Earn Certificate now!
-        </span>
       </div>
     </ParallaxLayer>
 
@@ -124,7 +120,7 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
     <ParallaxLayer
       className={cn(
         styles.text,
-        " relative overflow-hidden p-16 "
+        " relative overflow-hidden py-16 px-2 "
       )}
       offset={2}
       speed={0.3}
@@ -133,10 +129,10 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         className=" flex flex-col lg:flex-none justify-center items-center h-full lg:h-[80%] w-[100%] transition ease-in-out delay-75 duration-500 lg:hidden"
         style={{ wordWrap: "break-word" }}
       >
-        <div className="w-full flex justify-center  h-[40%]">
+        <div className="w-full flex justify-center  h-[60%] ">
           <Lottie animationData={Welcome3} className="w-[80%]" />
         </div>
-        <div className=" w-full relative h-[60%]">
+        <div className={cn(styles.padMB, "w-full relative h-[60%]")}>
           <span className={cn(styles.text, "w-[70%]")}>
             <div className="flex flex-col w-full">
               <p className="lg:text-[4em] md:text-[3rem] text-[2em]">About us:</p>
@@ -155,14 +151,7 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
               </div>
             </div>
           </span>
-        </div>
-        <div
-          className={cn(
-            styles.box,
-            "md:text-[1.5em] text-[1em] bg-yellow-500 px-3 py-2 w-[50%] m-auto rounded-2xl absolute -top-7 -right-10 flex justify-center items-center"
-          )}
-        >
-          <span className="text-red-500 w-1/2 ">Earn Certificate now!</span>
+          <div className={cn(styles.ribbon)}>Enroll now for Discount</div>
         </div>
       </div>
     </ParallaxLayer>
