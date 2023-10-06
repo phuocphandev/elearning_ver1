@@ -7,5 +7,6 @@
   --secondary: #d9ecf2;
   --tertiary: #94C8C4;
   --quaternary: #042f40;
+  --quaternary-transparent:rgba(4, 47, 64,0.8);
   --background: rgb(217, 226, 235);
 }
