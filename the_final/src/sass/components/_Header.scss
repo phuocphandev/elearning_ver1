@@ -19,7 +19,7 @@
     }
   }
   .dropdown_menu-1{
-  @for $num from 1 through 5{
+  @for $num from 1 through 6{
      .dropdown_item-#{$num} {
        transform-origin: top center;
        animation: rotateX 300ms ($num * 60ms) ease-in-out forwards;}
@@ -84,7 +84,7 @@
     // //     //   transform-origin: top center
     // //     //   animation: scaleZ 300ms (num * 60ms) ease-in-out forwards
   
-    @for $num from 1 through 5 {
+    @for $num from 1 through 6 {
       .dropdown_item-#{$num} {
         transform-origin: top center;
         animation: translateX 500ms ($num * 40ms) ease-in-out forwards;
