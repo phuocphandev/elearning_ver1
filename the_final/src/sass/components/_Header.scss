@@ -43,26 +43,28 @@
 
 @media (min-width:768px){
 .Header {
+  z-index: 10;
     .dropdown {
      display: flex;
      justify-content: center;
      align-items: center;
      perspective: 1000px;
-     z-index: 100;
+     z-index: 10;
       &:hover .dropdown_menu li {
         display: block;
       }
     }
     .dropdown_menu {
       padding-top: 38px;
-      overflow: hidden;
+      overflow: hidden !important;
       position: absolute;
       top: 100%;
       left: -60px;
-      z-index: -1;
       perspective: 1000px;
       min-width: 200px;
-      border-radius: 10px;
+      border-radius: 10px !important;
+      clip-path: inset(0 round 10px);
+      // mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
       li {
         display: none;
         color: white;
