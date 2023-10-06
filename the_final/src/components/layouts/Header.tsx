@@ -64,7 +64,7 @@ const Header = () => {
   }, []);
   return (
     <div className="relative">
-      <nav className="bg-[var(--quaternary)] border-gray-200 dark:bg-gray-900 Header">
+      <nav className="!bg-[var(--quaternary)] border-gray-200 dark:bg-gray-900 Header">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
           <a href="/" className="flex items-center">
             <img
