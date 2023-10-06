@@ -1,4 +1,4 @@
-import styles from './styles.module.css'
+import styles from "../../../sass/components/Overral.module.scss";
 
 export const Overral = () => {
   return (

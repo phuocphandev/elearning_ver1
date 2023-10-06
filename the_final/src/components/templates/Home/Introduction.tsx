@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Parallax, ParallaxLayer, IParallax } from "@react-spring/parallax";
-import styles from "./styles.module.css";
+import styles from "../../../sass/components/Introduction.module.scss";
 import cn from "classnames";
 import Lottie from "lottie-react";
 import Welcome1 from "../../../../public/lottie/Welcome_1.json";
@@ -185,7 +185,7 @@ export const Introduction = () => {
   return (
     <div
       style={{ background: "#dfdfdf" }}
-      className={cn("h-screen w-screen relative")}
+      className={cn("h-screen w-screen relative overflow-hidden", styles.customScrollbar)}
     >
       <Parallax
         className={cn(styles.container, styles.customScrollbar, "!h-full")}

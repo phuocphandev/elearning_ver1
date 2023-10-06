@@ -1,0 +1,167 @@
+.container > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .text {
+    pointer-events: none;
+    justify-content: start !important;
+    font-family: "Kanit", sans-serif;
+    color: var(--primary);
+    /* line-height: 0px; */
+    /* text-transform: uppercase; */
+  }
+  
+  .number {
+    font-size: 4rem;
+    color: black;
+  }
+  
+  .number span {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .slopeBegin {
+    background-color: var(--background);
+    clip-path: polygon(20% 0, 70% 0, 50% 100%, 0% 100%);
+  }
+  
+  .slopeEnd {
+    clip-path: polygon(70% 0, 100% 0, 80% 100%, 50% 100%);
+  }
+  
+  .slopeBegin,
+  .slopeEnd {
+    position: absolute;
+    width: 170%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .first-slide {
+    background: linear-gradient(to right, deeppink 0%, var(--primary) 100%);
+  }
+  
+  .second-slide {
+    background: linear-gradient(to right, SlateBlue 0%, var(--secondary) 100%);
+  }
+  
+  .third-slide {
+    background: linear-gradient(to right, tomato 0%, var(--tertiary) 100%);
+  }
+  
+  .box {
+    width: 200px;
+    aspect-ratio: 1;
+    clip-path: polygon(
+      100% 50%,
+      78.98% 57.76%,
+      93.3% 75%,
+      71.21% 71.21%,
+      75% 93.3%,
+      57.76% 78.98%,
+      50% 100%,
+      42.24% 78.98%,
+      25% 93.3%,
+      28.79% 71.21%,
+      6.7% 75%,
+      21.02% 57.76%,
+      0% 50%,
+      21.02% 42.24%,
+      6.7% 25%,
+      28.79% 28.79%,
+      25% 6.7%,
+      42.24% 21.02%,
+      50% 0%,
+      57.76% 21.02%,
+      75% 6.7%,
+      71.21% 28.79%,
+      93.3% 25%,
+      78.98% 42.24%
+    );
+    transform: rotate(20deg);
+  }
+  
+  /* Hide the scrollbar for Webkit-based browsers */
+  .customScrollbar::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  
+  .customScrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  /* Hide the scrollbar for Firefox */
+  /* Ẩn thanh cuộn cho tất cả các trình duyệt */
+  .customScrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Ẩn thanh cuộn cho Chrome, Safari và Opera */
+  .customScrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .pad {
+    margin-left: 10px;
+    position: relative;
+    height: 50vh;
+    border: 10px solid black;
+    border-radius: 10px;
+    border-bottom: 50px solid black;
+  }
+  .pad::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    bottom: -9%;
+    left: 45%;
+  }
+  /* MOBILE  */
+  .padMB {
+    margin-left: 10px;
+    position: relative;
+    height: 50vh;
+    border: 10px solid black;
+    border-radius: 10px;
+    border-bottom: 50px solid black;
+  }
+  .padMB::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    bottom: -15%;
+    left: 45%;
+  }
+  
+  .ribbon {
+    --f: 30px; /* control the folded part */
+    position: absolute;
+    color: yellow;
+    top: -10px;
+    right: -10px;
+    padding: 0.1em 4em;
+    background: #bd1550; /* the main color  */
+    border-bottom: var(--f) solid #0007;
+    clip-path: polygon(
+      100% calc(100% - var(--f)),
+      100% 100%,
+      calc(100% - var(--f)) calc(100% - var(--f)),
+      var(--f) calc(100% - var(--f)),
+      0 100%,
+      0 calc(100% - var(--f)),
+      999px calc(100% - var(--f) - 999px),
+      calc(100% - 999px) calc(100% - var(--f) - 999px)
+    );
+    transform: translate(calc((1 - cos(45deg)) * 100%), -100%) rotate(45deg);
+    transform-origin: 0% 100%;
+  }
