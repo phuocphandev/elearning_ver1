@@ -14,11 +14,9 @@ interface PageProps {
   gradient: string;
   onClick: () => void;
   text: string;
-  text1?: string;
-  text2?: string;
 }
 
-const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
+const Page = ({ offset, gradient, onClick, text }: PageProps) => (
   //TypeWriter:
   <>
     <ParallaxLayer offset={offset} speed={0.2} onClick={onClick}>
@@ -66,8 +64,8 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         </div>
         <div className="flex w-full">
           <span className={cn(styles.text)}>
-            <div className="md:text-[2.5em] text-[2em]">
-              <span className="text-yellow-500">E-Hub </span>
+            <div className="md:text-[2.5em] text-[1.5em]">
+              <span className="text-yellow-500 text-[2.5rem]">E-Hub </span>
               <div className="">
                 <p>
                   is an exclusive digital platform provide a Self-studying
@@ -92,15 +90,15 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         <div className={cn("flex w-1/2 relative", styles.pad)}>
           <span className={cn("w-full px-4")}>
             <div className="flex flex-col w-full">
-              <p className="lg:text-[3em] text-[2em]">About us:</p>
+              <p className="lg:text-[3em] text-[2em] text-yellow-500 font-bold">ACHIEVEMENT:</p>
               <div className="flex lg:text-[2.5em] text-[2em]">
-                <p className="">- {text1}</p>
+                <p className="">- <span className="text-yellow-500">20000+</span> member graduated in 2022</p>
                 <div className="">
                   <Cursor />
                 </div>
               </div>
               <div className="flex lg:text-[2.5em] text-[2em]">
-                <p className="">- {text2}</p>
+                <p className="">- <span className="text-yellow-500">5867</span> member got Job immediately.</p>
                 <div className="">
                   <Cursor />
                 </div>
@@ -135,17 +133,17 @@ const Page = ({ offset, gradient, onClick, text, text1, text2 }: PageProps) => (
         <div className={cn(styles.padMB, "w-full relative h-[60%]")}>
           <span className={cn(styles.text, "w-[70%]")}>
             <div className="flex flex-col w-full">
-              <p className="lg:text-[4em] md:text-[3rem] text-[2em]">About us:</p>
+              <p className="lg:text-[4em] md:text-[3rem] text-[2em] text-yellow-500 font-bold">ACHIEVEMENT:</p>
               <div className="flex ">
                 <p className="lg:text-[4em] md:text-[3rem] text-[2em]">
-                  - {text1}
+                  -  <span className="text-yellow-500">20000+</span> member graduated in 2022.
                   <Cursor />
                 </p>
                 <div className="lg:text-[4em] md:text-[3rem] text-[2em]"></div>
               </div>
               <div className="flex ">
                 <p className="lg:text-[4em] md:text-[3rem] text-[2em]">
-                  - {text2}
+                  -  <span className="text-yellow-500">5867</span> member got Job immediately.
                   <Cursor />
                 </p>
               </div>
@@ -171,16 +169,6 @@ export const Introduction = () => {
     loop: true,
   });
 
-  const StaticNumber1 = "20000+ member graduated in 2022.";
-  const StaticNumber2 = "5867 member got Job immediately.";
-  const [num1] = useTypewriter({
-    words: [StaticNumber1],
-    loop: true,
-  });
-  const [num2] = useTypewriter({
-    words: [StaticNumber2],
-    loop: true,
-  });
 
   return (
     <div
@@ -210,8 +198,6 @@ export const Introduction = () => {
           gradient="third-slide"
           onClick={() => scroll(0)}
           text={text}
-          text1={num1}
-          text2={num2}
         />
       </Parallax>
     </div>
