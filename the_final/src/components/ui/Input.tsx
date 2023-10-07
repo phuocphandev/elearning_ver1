@@ -13,13 +13,13 @@ type InputProps={
     disabled?:boolean
 }
 
-export const Input = ({register,error,name,type,placeholder,label,className,disabled}:InputProps) => {
+export const Input = ({register,error,name,type,placeholder,label,disabled}:InputProps) => {
   return (
-    <div className="className">
+    <div className='w-full'>
       {label && <p className="-mb-5 mt-3">{label}</p> }
       <input
-      className="mt-5 outline-none block w-full p-4 text-white border border-white-300 rounded-lg bg-[#333] focus:ring-blue-500 focus:border-blue-500"
-      {...register(name)}
+      className="bg-[#eee] border-none px-[15px] py-[12px] my-[8px] w-[100%]"
+      
       type={type}
       placeholder={placeholder}
       disabled={disabled}

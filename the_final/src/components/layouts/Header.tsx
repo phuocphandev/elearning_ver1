@@ -1,16 +1,19 @@
 import { Space } from "antd";
-import { Avatar, Popover } from "components";
+import { Avatar, Input, Modal, Popover } from "components";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState, useEffect, Fragment } from "react";
 import "../../sass/main.scss";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { manageCourse } from "services";
+import * as Components from "./LoginModalComp";
 const Header = () => {
   const [Popup, setPopup] = useState(false);
   const [open, setOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [menu, setMenu] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [signIn, toggle] = useState(true);
   // content popup
   const content = (
     <div>
@@ -18,6 +21,14 @@ const Header = () => {
       <p>Content</p>
     </div>
   );
+  // Login-Regis modal handle
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,7 +85,12 @@ const Header = () => {
             />
           </a>
           <div className="flex items-center md:order-2 bg-none">
-            <button className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 hidden ">
+            <button
+              className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 hidden "
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
               <Popover
                 content={content}
                 title="Title"
@@ -93,9 +109,7 @@ const Header = () => {
             <button
               type="button"
               className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 mt-2"
-              onClick={() => {
-                setOpen(!open);
-              }}
+              onClick={showModal}
             >
               Log In
             </button>
@@ -256,6 +270,71 @@ const Header = () => {
           </Dialog>
         </Transition.Root>
       </div>
+
+      {/* Login/Regis modal */}
+      <div className="md:block hidden">
+        <Modal
+          closeIcon={false}
+          open={isModalOpen}
+          centered
+          footer={null}
+          onCancel={handleCancel}
+          width={"70vw"}
+        >
+          <Components.Container>
+            <Components.SignUpContainer signingIn={signIn}>
+              <Components.Form>
+                <Components.Title>Create Account</Components.Title>
+                <Input name="taiKhoan" type="text" placeholder="Username" />
+                <Input name="hoTen" type="text" placeholder="Full Name" />
+                <Input name="email" type="email" placeholder="Email" />
+                <Input name="matKhau" type="password" placeholder="Password" />
+                <Input name="soDT" type="phone" placeholder="Phone" />
+                <Input name="maNhom" type="text" placeholder="Group (From GP00 to GP09)" />
+                <Components.Button>Sign Up</Components.Button>
+              </Components.Form>
+            </Components.SignUpContainer>
+            <Components.SignInContainer signingIn={signIn}>
+              <Components.Form>
+                <Components.Title>Sign in</Components.Title>
+                <Input name="taiKhoan" type="text" placeholder="Username" />
+                <Input name="matKhau" type="password" placeholder="Password" />
+                <Components.Anchor href="#">
+                  Forgot your password?
+                </Components.Anchor>
+                <Components.Button>Sign In</Components.Button>
+              </Components.Form>
+            </Components.SignInContainer>
+            <Components.OverlayContainer signingIn={signIn}>
+              <Components.Overlay signingIn={signIn}>
+                <Components.LeftOverlayPanel signingIn={signIn}>
+                  <Components.Title>Welcome Back!</Components.Title>
+                  <Components.Paragraph>
+                    To keep connected with us please login with your personal
+                    info
+                  </Components.Paragraph>
+                  <Components.GhostButton onClick={() => toggle(true)}>
+                    Sign In
+                  </Components.GhostButton>
+                </Components.LeftOverlayPanel>
+                <Components.RightOverlayPanel signingIn={signIn}>
+                  <Components.Title>Hello, Friend!</Components.Title>
+                  <Components.Paragraph>
+                    Enter your personal details and start journey with us
+                  </Components.Paragraph>
+                  <Components.GhostButton onClick={() => toggle(false)}>
+                    Sign Up
+                  </Components.GhostButton>
+                </Components.RightOverlayPanel>
+              </Components.Overlay>
+            </Components.OverlayContainer>
+          </Components.Container>
+        </Modal>
+      </div>
+      {/* Login/Regis modal for mobile */}
+
+    
+
     </div>
   );
 };
