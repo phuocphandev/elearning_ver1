@@ -117,3 +117,23 @@
   }
   }
 }
+// Ẩn scroll bar
+.customScrollbar::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Hide the scrollbar for Firefox */
+/* Ẩn thanh cuộn cho tất cả các trình duyệt */
+.customScrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Ẩn thanh cuộn cho Chrome, Safari và Opera */
+.customScrollbar::-webkit-scrollbar {
+  display: none;
+}

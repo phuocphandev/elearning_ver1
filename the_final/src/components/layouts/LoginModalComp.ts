@@ -118,6 +118,7 @@ export const Form = styled.form<ComponentProps>`
     props.signingIn == true?'flex-direction:column'  
       : null}
   }
+  overflow-y: scroll;
   display: block;
   align-items: center;
   justify-content: center;

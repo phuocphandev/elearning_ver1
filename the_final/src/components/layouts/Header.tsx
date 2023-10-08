@@ -312,13 +312,13 @@ const Header = () => {
         width={windowWidth >= 768 ? "70vw" : "90vw"}
         bodyStyle={{
           height:
-            windowWidth < 768 && signIn ? "50vh" : signIn ? "50vh" : "80vh",
+            windowWidth < 768 && signIn ? "80vh" : signIn ? "80vh" : "80vh",
         }}
       >
         <Components.Container signingIn={signIn}>
           <Components.SignUpContainer signingIn={signIn} className="box">
             <Components.Form 
-              className="content"
+              className="content customScrollbar"
               onSubmit= {handleSubmitRegis(onSubmit1)}
               signingIn={signIn}
             >
@@ -401,7 +401,7 @@ const Header = () => {
             </Components.Form>
           </Components.SignUpContainer>
           <Components.SignInContainer signingIn={signIn}>
-            <Components.Form onSubmit={handleSubmitLogin(onSubmit2)} signingIn={signIn}>
+            <Components.Form className="customScrollbar" style={{display:'flex',justifyContent:'center'}} onSubmit={handleSubmitLogin(onSubmit2)} signingIn={signIn} >
               <Components.Title>Sign in</Components.Title>
               <Input name="taiKhoan" type="text" placeholder="Username" register={registerFormLogin} error={errorsLogin?.taiKhoan?.message}/>
               <Input name="matKhau" type="password" placeholder="Password" register={registerFormLogin} error={errorsLogin?.matKhau?.message}/>
