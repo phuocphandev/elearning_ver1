@@ -18,7 +18,7 @@ export const Input = ({register,error,name,type,placeholder,label,disabled}:Inpu
     <div className='w-full'>
       {label && <p className="-mb-5 mt-3">{label}</p> }
       <input
-      className="bg-[#eee] border-none px-[15px] py-[12px] my-[8px] w-[100%]"
+      className="bg-[#eee] border-none px-[15px] py-[12px] my-[8px] w-[100%] rounded-[20px]"
       
       type={type}
       placeholder={placeholder}

@@ -14,6 +14,8 @@ const Header = () => {
   const [menu, setMenu] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [signIn, toggle] = useState(true);
+  console.log(signIn);
+
   // content popup
   const content = (
     <div>
@@ -272,69 +274,129 @@ const Header = () => {
       </div>
 
       {/* Login/Regis modal */}
-      <div className="md:block hidden">
-        <Modal
-          closeIcon={false}
-          open={isModalOpen}
-          centered
-          footer={null}
-          onCancel={handleCancel}
-          width={"70vw"}
-        >
-          <Components.Container>
-            <Components.SignUpContainer signingIn={signIn}>
-              <Components.Form>
-                <Components.Title>Create Account</Components.Title>
-                <Input name="taiKhoan" type="text" placeholder="Username" />
-                <Input name="hoTen" type="text" placeholder="Full Name" />
-                <Input name="email" type="email" placeholder="Email" />
-                <Input name="matKhau" type="password" placeholder="Password" />
-                <Input name="soDT" type="phone" placeholder="Phone" />
-                <Input name="maNhom" type="text" placeholder="Group (From GP00 to GP09)" />
-                <Components.Button>Sign Up</Components.Button>
-              </Components.Form>
-            </Components.SignUpContainer>
-            <Components.SignInContainer signingIn={signIn}>
-              <Components.Form>
-                <Components.Title>Sign in</Components.Title>
-                <Input name="taiKhoan" type="text" placeholder="Username" />
-                <Input name="matKhau" type="password" placeholder="Password" />
-                <Components.Anchor href="#">
-                  Forgot your password?
-                </Components.Anchor>
-                <Components.Button>Sign In</Components.Button>
-              </Components.Form>
-            </Components.SignInContainer>
-            <Components.OverlayContainer signingIn={signIn}>
-              <Components.Overlay signingIn={signIn}>
-                <Components.LeftOverlayPanel signingIn={signIn}>
-                  <Components.Title>Welcome Back!</Components.Title>
-                  <Components.Paragraph>
-                    To keep connected with us please login with your personal
-                    info
-                  </Components.Paragraph>
-                  <Components.GhostButton onClick={() => toggle(true)}>
-                    Sign In
-                  </Components.GhostButton>
-                </Components.LeftOverlayPanel>
-                <Components.RightOverlayPanel signingIn={signIn}>
-                  <Components.Title>Hello, Friend!</Components.Title>
-                  <Components.Paragraph>
-                    Enter your personal details and start journey with us
-                  </Components.Paragraph>
-                  <Components.GhostButton onClick={() => toggle(false)}>
-                    Sign Up
-                  </Components.GhostButton>
-                </Components.RightOverlayPanel>
-              </Components.Overlay>
-            </Components.OverlayContainer>
-          </Components.Container>
-        </Modal>
-      </div>
+      <Modal
+        closeIcon={false}
+        open={isModalOpen}
+        centered
+        footer={null}
+        onCancel={handleCancel}
+        width={windowWidth >= 768 ? "70vw" : "90vw"}
+        bodyStyle={{
+          height: windowWidth < 768 && signIn ? "50vh" : signIn ? "50vh" : "80vh",
+        }}
+      >
+        <Components.Container signingIn={signIn}>
+          <Components.SignUpContainer signingIn={signIn} className="box">
+            <Components.Form className="content">
+              <Components.Title>Create Account</Components.Title>
+              <Input name="taiKhoan" type="text" placeholder="Username" />
+              <Input name="hoTen" type="text" placeholder="Full Name" />
+              <Input name="email" type="email" placeholder="Email" />
+              <Input name="matKhau" type="password" placeholder="Password" />
+              <Input name="soDT" type="phone" placeholder="Phone" />
+              <Input
+                name="maNhom"
+                type="text"
+                placeholder="Group (From GP00 to GP09)"
+              />
+              {windowWidth < 768 && signIn == false ? (
+                <div>
+                  <p
+                    style={{
+                      marginTop: "10px",
+                      marginBottom: "5px",
+                      border: "2px dashed #fff",
+                      borderRadius: "5px",
+                      padding: "5px",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span>
+                      <Components.Title style={{ fontSize: "14px" }}>
+                        Already have an account?
+                      </Components.Title>
+                    </span>
+                    <span>
+                      <Components.Anchor
+                        href="#"
+                        onClick={() => toggle(true)}
+                        style={{ marginLeft: "4px" }}
+                      >
+                        Sign in
+                      </Components.Anchor>
+                    </span>{" "}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              <Components.Button>Sign Up</Components.Button>
+            </Components.Form>
+          </Components.SignUpContainer>
+          <Components.SignInContainer signingIn={signIn}>
+            <Components.Form>
+              <Components.Title>Sign in</Components.Title>
+              <Input name="taiKhoan" type="text" placeholder="Username" />
+              <Input name="matKhau" type="password" placeholder="Password" />
+              <Components.Anchor style={{ margin: "0 0" }} href="#">
+                Forgot your password?
+              </Components.Anchor>
+              {windowWidth < 768 ? (
+                <div>
+                  <p
+                    style={{
+                      marginTop: "10px",
+                      marginBottom: "5px",
+                      border: "2px dashed #fff",
+                      borderRadius: "5px",
+                      padding: "5px",
+                    }}
+                  >
+                    <span>
+                      <Components.Title style={{ fontSize: "14px" }}>
+                        Don't have an account?
+                      </Components.Title>
+                    </span>
+                    <span>
+                      <Components.Anchor href="#" onClick={() => toggle(false)}>
+                        Sign up
+                      </Components.Anchor>
+                    </span>
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              <Components.Button>Sign In</Components.Button>
+            </Components.Form>
+          </Components.SignInContainer>
+          <Components.OverlayContainer signingIn={signIn}>
+            <Components.Overlay signingIn={signIn}>
+              <Components.LeftOverlayPanel signingIn={signIn}>
+                <Components.Title>Welcome Back!</Components.Title>
+                <Components.Paragraph>
+                  To keep connected with us please login with your personal info
+                </Components.Paragraph>
+                <Components.GhostButton onClick={() => toggle(true)}>
+                  Sign In
+                </Components.GhostButton>
+              </Components.LeftOverlayPanel>
+              <Components.RightOverlayPanel signingIn={signIn}>
+                <Components.Title>Hello, Friend!</Components.Title>
+                <Components.Paragraph>
+                  Enter your personal details and start journey with us
+                </Components.Paragraph>
+                <Components.GhostButton onClick={() => toggle(false)}>
+                  Sign Up
+                </Components.GhostButton>
+              </Components.RightOverlayPanel>
+            </Components.Overlay>
+          </Components.OverlayContainer>
+        </Components.Container>
+      </Modal>
+
       {/* Login/Regis modal for mobile */}
-
-    
-
     </div>
   );
 };
