@@ -1,16 +1,50 @@
 import { Space } from "antd";
-import { Avatar, Popover } from "components";
+import { Avatar, Input, Modal, Popover } from "components";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState, useEffect, Fragment } from "react";
 import "../../sass/main.scss";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { manageCourse } from "services";
+import * as Components from "./LoginModalComp";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterSchema, RegisterSchemaType } from "schema/RegisterSchema";
+import { manageUser } from "services/manageUser";
+import { NotiError, NotiSuccess } from "constant";
+import { LoginSchema, LoginSchemaType } from "schema/LoginSchema";
+
 const Header = () => {
   const [Popup, setPopup] = useState(false);
   const [open, setOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [menu, setMenu] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [signIn, toggle] = useState(true);
+
+  //handle register
+ const {handleSubmit:handleSubmitRegis,register:registerFormRegis,formState:{errors:errorsRegis}}=useForm<RegisterSchemaType>({mode:"onChange",resolver:zodResolver(RegisterSchema)})
+ const onSubmit1:SubmitHandler<RegisterSchemaType> = async (value)=>{
+      try {
+        console.log(value);
+        const data = await manageUser.register(value);
+        console.log(data);
+        NotiSuccess("Create account successfully!");
+        toggle(true);
+        toggle(true);
+      } catch (error) {
+        console.log(error);
+        NotiError(error?.response?.data)
+      }
+ }
+// handle sigin
+ const{handleSubmit:handleSubmitLogin,register:registerFormLogin,formState:{errors:errorsLogin}}=useForm<LoginSchemaType>({
+  mode:"onChange",resolver:zodResolver(LoginSchema)
+ })
+ const onSubmit2:SubmitHandler<LoginSchemaType> =(value)=>{
+  console.log(value);
+}
+
   // content popup
   const content = (
     <div>
@@ -18,6 +52,14 @@ const Header = () => {
       <p>Content</p>
     </div>
   );
+  // Login-Regis modal handle
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,7 +116,12 @@ const Header = () => {
             />
           </a>
           <div className="flex items-center md:order-2 bg-none">
-            <button className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 hidden ">
+            <button
+              className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 hidden "
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
               <Popover
                 content={content}
                 title="Title"
@@ -93,9 +140,7 @@ const Header = () => {
             <button
               type="button"
               className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 mt-2"
-              onClick={() => {
-                setOpen(!open);
-              }}
+              onClick={showModal}
             >
               Log In
             </button>
@@ -256,6 +301,168 @@ const Header = () => {
           </Dialog>
         </Transition.Root>
       </div>
+
+      {/* Login/Regis modal */}
+      <Modal
+        closeIcon={false}
+        open={isModalOpen}
+        centered
+        footer={null}
+        onCancel={handleCancel}
+        width={windowWidth >= 768 ? "70vw" : "90vw"}
+        bodyStyle={{
+          height:
+            windowWidth < 768 && signIn ? "50vh" : signIn ? "50vh" : "80vh",
+        }}
+      >
+        <Components.Container signingIn={signIn}>
+          <Components.SignUpContainer signingIn={signIn} className="box">
+            <Components.Form 
+              className="content"
+              onSubmit= {handleSubmitRegis(onSubmit1)}
+              signingIn={signIn}
+            >
+              <Components.Title>Create Account</Components.Title>
+              <Input
+                name="taiKhoan"
+                type="text"
+                placeholder="Username"
+                register={registerFormRegis}
+                error={errorsRegis?.taiKhoan?.message}
+              />
+              <Input
+                name="hoTen"
+                type="text"
+                placeholder="Full Name"
+                register={registerFormRegis}
+                error={errorsRegis?.hoTen?.message}
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Email"
+                register={registerFormRegis}
+                error={errorsRegis?.email?.message}
+              />
+              <Input
+                name="matKhau"
+                type="password"
+                placeholder="Password"
+                register={registerFormRegis}
+                error={errorsRegis?.matKhau?.message}
+              />
+              <Input
+                name="soDT"
+                type="phone"
+                placeholder="Phone"
+                register={registerFormRegis}
+                error={errorsRegis?.soDT?.message}
+              />
+              <Input
+                name="maNhom"
+                type="text"
+                placeholder="Group (From GP01 to GP09)"
+                register={registerFormRegis}
+                error={errorsRegis?.maNhom?.message}
+              />
+              {windowWidth < 768 && signIn == false ? (
+                <div>
+                  <p
+                    style={{
+                      marginTop: "10px",
+                      marginBottom: "5px",
+                      border: "2px dashed #fff",
+                      borderRadius: "5px",
+                      padding: "5px",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span>
+                      <Components.Title style={{ fontSize: "14px" }}>
+                        Already have an account?
+                      </Components.Title>
+                    </span>
+                    <span>
+                      <Components.Anchor
+                        href="#"
+                        onClick={() => toggle(true)}
+                        style={{ marginLeft: "4px" }}
+                      >
+                        Sign in
+                      </Components.Anchor>
+                    </span>{" "}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              <Components.Button type="submit">Sign Up</Components.Button>
+            </Components.Form>
+          </Components.SignUpContainer>
+          <Components.SignInContainer signingIn={signIn}>
+            <Components.Form onSubmit={handleSubmitLogin(onSubmit2)} signingIn={signIn}>
+              <Components.Title>Sign in</Components.Title>
+              <Input name="taiKhoan" type="text" placeholder="Username" register={registerFormLogin} error={errorsLogin?.taiKhoan?.message}/>
+              <Input name="matKhau" type="password" placeholder="Password" register={registerFormLogin} error={errorsLogin?.matKhau?.message}/>
+              <Components.Anchor style={{ margin: "0 0" }} href="#">
+                Forgot your password?
+              </Components.Anchor>
+              {windowWidth < 768 ? (
+                <div>
+                  <p
+                    style={{
+                      marginTop: "10px",
+                      marginBottom: "5px",
+                      border: "2px dashed #fff",
+                      borderRadius: "5px",
+                      padding: "5px",
+                    }}
+                  >
+                    <span>
+                      <Components.Title style={{ fontSize: "14px" }}>
+                        Don't have an account?
+                      </Components.Title>
+                    </span>
+                    <span>
+                      <Components.Anchor href="#" onClick={() => toggle(false)}>
+                        Sign up
+                      </Components.Anchor>
+                    </span>
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              <Components.Button>Sign In</Components.Button>
+            </Components.Form>
+          </Components.SignInContainer>
+          <Components.OverlayContainer signingIn={signIn}>
+            <Components.Overlay signingIn={signIn}>
+              <Components.LeftOverlayPanel signingIn={signIn}>
+                <Components.Title>Welcome Back!</Components.Title>
+                <Components.Paragraph>
+                  To keep connected with us please login with your personal info
+                </Components.Paragraph>
+                <Components.GhostButton onClick={() => toggle(true)}>
+                  Sign In
+                </Components.GhostButton>
+              </Components.LeftOverlayPanel>
+              <Components.RightOverlayPanel signingIn={signIn}>
+                <Components.Title>Hello, Friend!</Components.Title>
+                <Components.Paragraph>
+                  Enter your personal details and start journey with us
+                </Components.Paragraph>
+                <Components.GhostButton onClick={() => toggle(false)}>
+                  Sign Up
+                </Components.GhostButton>
+              </Components.RightOverlayPanel>
+            </Components.Overlay>
+          </Components.OverlayContainer>
+        </Components.Container>
+      </Modal>
+
+      {/* Login/Regis modal for mobile */}
     </div>
   );
 };

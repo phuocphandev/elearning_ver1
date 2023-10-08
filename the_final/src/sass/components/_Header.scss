@@ -40,7 +40,14 @@
   }
 }
 }
-
+.css-dev-only-do-not-override-pr0fja.ant-modal .ant-modal-content{
+  @media (min-width:768px){
+    background-color: rgba(4, 47, 64,0.8); //Cannot use root variable, because Inspect to see this class is out of root space
+    border-radius: 60px;
+  }
+  background-color: transparent;
+  box-shadow: none;
+}
 @media (min-width:768px){
 .Header {
   z-index: 10;
