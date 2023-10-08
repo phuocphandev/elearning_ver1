@@ -1,4 +1,4 @@
-import { Overral } from ".";
+import { CountUpStatic, Overral } from ".";
 import Introduction from "./Introduction";
 import Sponsor from "./Sponsor";
 
@@ -9,6 +9,7 @@ export const HomeTemplates = () => {
       <Introduction />
       <Sponsor />
       <Overral />
+      <CountUpStatic/>
     </div>
   );
 };
