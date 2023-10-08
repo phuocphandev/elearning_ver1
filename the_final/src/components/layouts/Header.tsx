@@ -7,6 +7,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { manageCourse } from "services";
 import * as Components from "./LoginModalComp";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterSchema, RegisterSchemaType } from "schema/RegisterSchema";
+import { manageUser } from "services/manageUser";
+import { NotiError, NotiSuccess } from "constant";
+import { LoginSchema, LoginSchemaType } from "schema/LoginSchema";
+
 const Header = () => {
   const [Popup, setPopup] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,7 +21,29 @@ const Header = () => {
   const [menu, setMenu] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [signIn, toggle] = useState(true);
-  console.log(signIn);
+
+  //handle register
+ const {handleSubmit:handleSubmitRegis,register:registerFormRegis,formState:{errors:errorsRegis}}=useForm<RegisterSchemaType>({mode:"onChange",resolver:zodResolver(RegisterSchema)})
+ const onSubmit1:SubmitHandler<RegisterSchemaType> = async (value)=>{
+      try {
+        console.log(value);
+        const data = await manageUser.register(value);
+        console.log(data);
+        NotiSuccess("Create account successfully!");
+        toggle(true);
+        toggle(true);
+      } catch (error) {
+        console.log(error);
+        NotiError(error?.response?.data)
+      }
+ }
+// handle sigin
+ const{handleSubmit:handleSubmitLogin,register:registerFormLogin,formState:{errors:errorsLogin}}=useForm<LoginSchemaType>({
+  mode:"onChange",resolver:zodResolver(LoginSchema)
+ })
+ const onSubmit2:SubmitHandler<LoginSchemaType> =(value)=>{
+  console.log(value);
+}
 
   // content popup
   const content = (
@@ -282,22 +311,59 @@ const Header = () => {
         onCancel={handleCancel}
         width={windowWidth >= 768 ? "70vw" : "90vw"}
         bodyStyle={{
-          height: windowWidth < 768 && signIn ? "50vh" : signIn ? "50vh" : "80vh",
+          height:
+            windowWidth < 768 && signIn ? "50vh" : signIn ? "50vh" : "80vh",
         }}
       >
         <Components.Container signingIn={signIn}>
           <Components.SignUpContainer signingIn={signIn} className="box">
-            <Components.Form className="content">
+            <Components.Form 
+              className="content"
+              onSubmit= {handleSubmitRegis(onSubmit1)}
+              signingIn={signIn}
+            >
               <Components.Title>Create Account</Components.Title>
-              <Input name="taiKhoan" type="text" placeholder="Username" />
-              <Input name="hoTen" type="text" placeholder="Full Name" />
-              <Input name="email" type="email" placeholder="Email" />
-              <Input name="matKhau" type="password" placeholder="Password" />
-              <Input name="soDT" type="phone" placeholder="Phone" />
+              <Input
+                name="taiKhoan"
+                type="text"
+                placeholder="Username"
+                register={registerFormRegis}
+                error={errorsRegis?.taiKhoan?.message}
+              />
+              <Input
+                name="hoTen"
+                type="text"
+                placeholder="Full Name"
+                register={registerFormRegis}
+                error={errorsRegis?.hoTen?.message}
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Email"
+                register={registerFormRegis}
+                error={errorsRegis?.email?.message}
+              />
+              <Input
+                name="matKhau"
+                type="password"
+                placeholder="Password"
+                register={registerFormRegis}
+                error={errorsRegis?.matKhau?.message}
+              />
+              <Input
+                name="soDT"
+                type="phone"
+                placeholder="Phone"
+                register={registerFormRegis}
+                error={errorsRegis?.soDT?.message}
+              />
               <Input
                 name="maNhom"
                 type="text"
-                placeholder="Group (From GP00 to GP09)"
+                placeholder="Group (From GP01 to GP09)"
+                register={registerFormRegis}
+                error={errorsRegis?.maNhom?.message}
               />
               {windowWidth < 768 && signIn == false ? (
                 <div>
@@ -331,14 +397,14 @@ const Header = () => {
               ) : (
                 ""
               )}
-              <Components.Button>Sign Up</Components.Button>
+              <Components.Button type="submit">Sign Up</Components.Button>
             </Components.Form>
           </Components.SignUpContainer>
           <Components.SignInContainer signingIn={signIn}>
-            <Components.Form>
+            <Components.Form onSubmit={handleSubmitLogin(onSubmit2)} signingIn={signIn}>
               <Components.Title>Sign in</Components.Title>
-              <Input name="taiKhoan" type="text" placeholder="Username" />
-              <Input name="matKhau" type="password" placeholder="Password" />
+              <Input name="taiKhoan" type="text" placeholder="Username" register={registerFormLogin} error={errorsLogin?.taiKhoan?.message}/>
+              <Input name="matKhau" type="password" placeholder="Password" register={registerFormLogin} error={errorsLogin?.matKhau?.message}/>
               <Components.Anchor style={{ margin: "0 0" }} href="#">
                 Forgot your password?
               </Components.Anchor>

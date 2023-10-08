@@ -15,7 +15,7 @@ export const Container = styled.div<ComponentProps>`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  min-height:300px;
+  min-height: 300px;
 
   @media (min-width: 768px) {
     width: 100%;
@@ -46,19 +46,19 @@ export const SignUpContainer = styled.div<ComponentProps>`
   transform: translateY(-100%);
   width: 100%;
   opacity: 0;
-  @media (min-width: 768px){
-  transform: none;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
-  ${(props) =>
-    props.signingIn !== true
-      ? `
+  @media (min-width: 768px) {
+    transform: none;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    ${(props) =>
+      props.signingIn !== true
+        ? `
   transform: translateX(100%);
   opacity:1;
 	z-index: 5;
 	`
-      : null}
+        : null}
   }
 
   ${(props) =>
@@ -70,13 +70,23 @@ export const SignUpContainer = styled.div<ComponentProps>`
 	z-index: 5;
 	`
       : null}
-
-  
 `;
 
 export const SignInContainer = styled.div<ComponentProps>`
-  background: linear-gradient(90deg, rgba(78,208,147,0) 0%, rgba(78,208,147,0.33) 33%, rgba(0,0,0,1) 100%),
-		linear-gradient(45deg, rgba(38,172,190,1) 0%, rgba(121,104,108,1) 42%, rgba(145,85,85,1) 54%, rgba(106,63,62,1) 67%, rgba(8,10,6,1) 100%);
+  background: linear-gradient(
+      90deg,
+      rgba(78, 208, 147, 0) 0%,
+      rgba(78, 208, 147, 0.33) 33%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(38, 172, 190, 1) 0%,
+      rgba(121, 104, 108, 1) 42%,
+      rgba(145, 85, 85, 1) 54%,
+      rgba(106, 63, 62, 1) 67%,
+      rgba(8, 10, 6, 1) 100%
+    );
   background-size: 600% 600%;
   animation: ${gradient} 20s ease infinite;
   border-radius: 40px;
@@ -86,22 +96,29 @@ export const SignInContainer = styled.div<ComponentProps>`
   transition: all 0.6s ease-in-out;
   left: 0;
   width: 100%;
-  @media (min-width: 768px){
-  width: 50%;
-  z-index: 3;
-  ${(props) =>
-    props.signingIn !== true ? `transform: translateX(100%); opacity:0;` : null}
+  @media (min-width: 768px) {
+    width: 50%;
+    z-index: 3;
+    ${(props) =>
+      props.signingIn !== true
+        ? `transform: translateX(100%); opacity:0;`
+        : null}
   }
   ${(props) =>
-    props.signingIn !== true ? `transform: translateY(-100%); opacity:0;` : null}
-  
+    props.signingIn !== true
+      ? `transform: translateY(-100%); opacity:0;`
+      : null}
 `;
 
-export const Form = styled.form`
-@media (min-width: 768px){
-  display: flex;
-}
- display: block;
+export const Form = styled.form<ComponentProps>`
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    ${(props) =>
+    props.signingIn == true?'flex-direction:column'  
+      : null}
+  }
+  display: block;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -117,6 +134,9 @@ export const Title = styled.h1`
 `;
 
 export const Button = styled.button`
+@media (min-width: 768px){
+margin-top:10px;
+}
   border-radius: 20px;
   border: 2px solid #042f40;
   background-image: linear-gradient(#42a1ec, #0070c9);
@@ -149,10 +169,10 @@ export const Anchor = styled.a`
 `;
 
 export const OverlayContainer = styled.div<ComponentProps>`
-display: none;
-@media (min-width: 768px){
-  display: block;
-  border-radius:40px;
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    border-radius: 40px;
     position: absolute;
     top: 0;
     left: 50%;
@@ -163,64 +183,64 @@ display: none;
     z-index: 100;
     ${(props) =>
       props.signingIn !== true ? `transform: translateX(-100%);` : null}
-}
+  }
 `;
 
 export const Overlay = styled.div<ComponentProps>`
-@media (min-width:768px){
-  background: radial-gradient(
-    circle,
-    rgba(105, 210, 237, 0.9977240896358543) 0%,
-    rgba(32, 26, 56, 1) 95%
-  );
- 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  color: #ffffff;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
-  ${(props) =>
-    props.signingIn !== true ? `transform: translateX(50%);` : null}
-}
+  @media (min-width: 768px) {
+    background: radial-gradient(
+      circle,
+      rgba(105, 210, 237, 0.9977240896358543) 0%,
+      rgba(32, 26, 56, 1) 95%
+    );
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    ${(props) =>
+      props.signingIn !== true ? `transform: translateX(50%);` : null}
+  }
 `;
 
 export const OverlayPanel = styled.div<ComponentProps>`
-@media (min-width: 768px){
-
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
-}
+  @media (min-width: 768px) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+  }
 `;
 
 export const LeftOverlayPanel = styled(OverlayPanel)`
-@media (min-width: 768px){
-  transform: translateX(-20%);
-  ${(props) => (props.signingIn !== true ? `transform: translateX(0);` : null)}
-}
+  @media (min-width: 768px) {
+    transform: translateX(-20%);
+    ${(props) =>
+      props.signingIn !== true ? `transform: translateX(0);` : null}
+  }
 `;
 
 export const RightOverlayPanel = styled(OverlayPanel)`
-@media (min-width: 768px){
-  right: 0;
-  transform: translateX(0);
-  ${(props) =>
-    props.signingIn !== true ? `transform: translateX(20%);` : null}
-}
+  @media (min-width: 768px) {
+    right: 0;
+    transform: translateX(0);
+    ${(props) =>
+      props.signingIn !== true ? `transform: translateX(20%);` : null}
+  }
 `;
 export const Paragraph = styled.p`
   font-size: 14px;
