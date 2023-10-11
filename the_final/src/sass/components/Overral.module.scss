@@ -16,12 +16,13 @@
   }
   
   .shining {
+    transition: all 1000ms ;
     position: relative;
   }
   .shining::before {
     position: absolute;
     top: 0;
-    left: -75%;
+    left: -85%;
     z-index: 2;
     display: block;
     content: '';

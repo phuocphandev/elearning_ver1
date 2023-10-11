@@ -11,8 +11,8 @@ export const router:RouteObject[] = [
         path:'/',
         children:[
             {
-               element:<UserInfomation/>,
-                // element:<HomeTemplates/>,
+            //    element:<UserInfomation/>,
+                element:<HomeTemplates/>,
                 index:true,
             }
         ]
