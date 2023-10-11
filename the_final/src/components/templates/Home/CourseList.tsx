@@ -174,10 +174,12 @@ export const CourseList = () => {
                     </div>
                   </div>
                 </div>
-                <div className="cardLayer bg-gray-800 bg-opacity-60">
-                  <div className="">
-                    <p className="text-white">From Zero To Hero</p>
-                    <p className="text-white">
+                <div className="cardLayer bg-gray-800 bg-opacity-80 flex flex-col ">
+                  <div className="flex gap-5 flex-col items-center justify-center w-[90%] m-auto mt-5">
+                    <p className="text-[var(--primary)] flex justify-center font-bold text-xl bg-black px-3 py-1 bg-opacity-40 rounded-xl  ease-in-out duration-500 transition-all  hover:-translate-y-2">
+                      From Zero To Hero
+                    </p>
+                    <p className="text-white bg-black px-3 py-1 bg-opacity-40 rounded-xl  ease-in-out duration-500 transition-all  hover:-translate-y-2">
                       Welcome to our Fullstack Bootcamp E-Learning Page! Dive
                       into a transformative learning experience designed to
                       propel you into the world of fullstack development. Our
@@ -187,7 +189,7 @@ export const CourseList = () => {
                     </p>
                   </div>
                   {/* Time road */}
-                  <div className="time flex gap-5 justify-center mt-5 border-t-2 w-[90%] m-auto mb-5">
+                  <div className="time flex gap-5 justify-center mt-5 border-t-2 w-[90%] m-auto mb-5 ">
                     <div className="flex">
                       <img
                         src="/public/image/CourseList/clock.png"
@@ -213,9 +215,9 @@ export const CourseList = () => {
                       <p className="font-bold text-[var(--tertiary)]">3.2k</p>
                     </div>
                   </div>
-                  {/* <button className="bg-[var(--primary)] py-2 px-4 rounded text-yellow-700 w-full">
+                  <button className="bg-[var(--primary)] py-2 px-4 rounded text-white  w-[90%] m-auto hover:bg-[var(--quaternary)] ease-in-out duration-500 transition-all hover:-translate-y-2">
                     Xem chi tiết
-                  </button> */}
+                  </button>
                 </div>
               </Card>
             ))}
