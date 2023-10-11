@@ -9,8 +9,8 @@ export const HomeTemplates = () => {
       <Introduction />
       <Sponsor />
       <Overral />
-      <CountUpStatic/>
       <CourseList/>
+      <CountUpStatic/>
     </div>
   );
 };
