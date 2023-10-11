@@ -1,0 +1,28 @@
+.CourseList {
+  background-image: url("/public/image/CourseList/BlueHiTech.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-size: cover;
+}
+
+
+.card:hover {
+  .cardLayer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0%);
+  }
+}
+.cardLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  // background: orange;
+  transform: translateY(100%);
+  transition: all ease-in-out 500ms;
+}
