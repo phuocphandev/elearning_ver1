@@ -1,5 +1,5 @@
 import { Space } from "antd";
-import { Avatar, Input, Modal, Popover } from "components";
+import { Avatar, Input, Modal } from "components";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState, useEffect, Fragment } from "react";
 import "../../sass/main.scss";
@@ -13,6 +13,11 @@ import { RegisterSchema, RegisterSchemaType } from "schema/RegisterSchema";
 import { manageUser } from "services/manageUser";
 import { NotiError, NotiSuccess } from "constant";
 import { LoginSchema, LoginSchemaType } from "schema/LoginSchema";
+import { useAppDispatch } from "store";
+import { loginThunk } from "store/manageUser/thunk";
+import { useAuth } from "hooks";
+import { useDispatch } from "react-redux";
+import { manageUserActions } from "store/manageUser/slice";
 
 const Header = () => {
   const [Popup, setPopup] = useState(false);
@@ -21,38 +26,49 @@ const Header = () => {
   const [menu, setMenu] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [signIn, toggle] = useState(true);
+  const dispatch = useAppDispatch();
+  const dispatchOrigin = useDispatch();
+  const { accessToken, user } = useAuth();
 
   //handle register
- const {handleSubmit:handleSubmitRegis,register:registerFormRegis,formState:{errors:errorsRegis}}=useForm<RegisterSchemaType>({mode:"onChange",resolver:zodResolver(RegisterSchema)})
- const onSubmit1:SubmitHandler<RegisterSchemaType> = async (value)=>{
-      try {
-        console.log(value);
-        const data = await manageUser.register(value);
-        console.log(data);
-        NotiSuccess("Create account successfully!");
-        toggle(true);
-        toggle(true);
-      } catch (error) {
-        console.log(error);
-        NotiError(error?.response?.data)
-      }
- }
-// handle sigin
- const{handleSubmit:handleSubmitLogin,register:registerFormLogin,formState:{errors:errorsLogin}}=useForm<LoginSchemaType>({
-  mode:"onChange",resolver:zodResolver(LoginSchema)
- })
- const onSubmit2:SubmitHandler<LoginSchemaType> =(value)=>{
-  console.log(value);
-}
-
-  // content popup
-  const content = (
-    <div>
-      <p>User Information</p>
-      <p>Content</p>
-    </div>
-  );
-  // Login-Regis modal handle
+  const {
+    handleSubmit: handleSubmitRegis,
+    register: registerFormRegis,
+    formState: { errors: errorsRegis },
+  } = useForm<RegisterSchemaType>({
+    mode: "onChange",
+    resolver: zodResolver(RegisterSchema),
+  });
+  const onSubmit1: SubmitHandler<RegisterSchemaType> = async (value) => {
+    try {
+      await manageUser.register(value);
+      NotiSuccess("Create account successfully!");
+      toggle(true);
+    } catch (error) {
+      console.log(error);
+      NotiError(error?.response?.data);
+    }
+  };
+  // handle sigin
+  const {
+    handleSubmit: handleSubmitLogin,
+    register: registerFormLogin,
+    formState: { errors: errorsLogin },
+  } = useForm<LoginSchemaType>({
+    mode: "onChange",
+    resolver: zodResolver(LoginSchema),
+  });
+  const onSubmit2: SubmitHandler<LoginSchemaType> = async (value) => {
+    dispatch(loginThunk(value))
+      .unwrap()
+      .then(() => {
+        NotiSuccess("Login Successfully!");
+        setIsModalOpen(false);
+      })
+      .catch((error) => {
+        NotiError(error?.response?.data);
+      });
+  };
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -85,15 +101,7 @@ const Header = () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  const handlePlacement = () => {
-    if (windowWidth >= 768) {
-      // Trả về giá trị khi màn hình ở mức md
-      return "bottom";
-    } else {
-      // Trả về giá trị khi màn hình không ở mức md
-      return "bottomRight";
-    }
-  };
+ 
   useEffect(() => {
     (async () => {
       try {
@@ -116,34 +124,30 @@ const Header = () => {
             />
           </a>
           <div className="flex items-center md:order-2 bg-none">
-            <button
-              className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 hidden "
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              <Popover
-                content={content}
-                title="Title"
-                trigger={"click"}
-                className=""
-                placement={handlePlacement()}
+            {accessToken && (
+              <button
+                className="w-[40px] h-[40px] rounded-full focus:outline-4 focus:outline-none focus:ring-4 focus:ring-white mr-2 "
+                onClick={() => {
+                  setOpen(!open);
+                }}
               >
-                <Space className="w-[40px] h-[40px] rounded-full flex items-center justify-center border-none ">
+                <Space className="w-[40px] h-[40px] rounded-full flex items-center justify-center border-none hover:scale-110 ">
                   <Avatar
                     size={40}
                     icon={<img src="/public/image/avatar.svg" alt="avatar" />}
                   />
                 </Space>{" "}
-              </Popover>
-            </button>
-            <button
-              type="button"
-              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 mt-2"
-              onClick={showModal}
-            >
-              Log In
-            </button>
+              </button>
+            )}
+            {!accessToken && (
+              <button
+                type="button"
+                className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-2.5 text-center mr-2 mb-2 mt-2"
+                onClick={showModal}
+              >
+                Log In
+              </button>
+            )}
             {/* <!-- Dropdown menu --> */}
             <button
               type="button"
@@ -283,14 +287,62 @@ const Header = () => {
                           </button>
                         </div>
                       </Transition.Child>
-                      <div className="flex h-[100vh] flex-col overflow-hidden bg-white py-6 shadow-xl">
-                        <div className="px-4 sm:px-6">
-                          <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                            Panel title
+                      <div className="flex h-[100vh] flex-col overflow-hidden  bg-[#94C8C4] py-6 shadow-xl">
+                        <div className="px-4 sm:px-6 flex justify-center">
+                          <Dialog.Title className="text-base font-semibold leading-6 text-gray-900  bg-[#042f40cc] w-[80%] rounded-[10px] ">
+                            <div className="ml-4 flex  items-center ">
+                              <div className="w-[60px]">
+                                <Space className="w-[60px] h-[60px] rounded-full flex items-center justify-center border-none">
+                                  <Avatar
+                                    size={60}
+                                    icon={
+                                      <img
+                                        src="/public/image/avatar.svg"
+                                        alt="avatar"
+                                      />
+                                    }
+                                  />
+                                </Space>
+                              </div>
+                              <p className="ml-5 text-white">
+                                {user?.hoTen.toUpperCase()}
+                              </p>
+                            </div>
                           </Dialog.Title>
                         </div>
-                        <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                          {/* Your content */}
+                        <div className="relative mt-6 flex-1 px-4 w-full">
+                          <div className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info">
+                            <img
+                              className="h-full cardstatic"
+                              src="/public/image/login/card_static.png"
+                              alt="info"
+                            /> <img
+                            className="h-full cardanimate"
+                            src="/public/image/login/card_animate.gif"
+                            alt="info"
+                          />
+                            <button className="ml-8 text-white font-bold">Infomation</button>
+                          </div>
+                          <div
+                            className="flex mt-5 hover:bg-[#042f40cc] h-[60px] relative exit"
+                            onClick={() => {
+                              dispatchOrigin(manageUserActions.logOut());
+                              NotiSuccess("Logged Out");
+                              setOpen(false);
+                            }}
+                          >
+                            <img
+                              className="h-full exitstatic"
+                              src="/public/image/login/launch_static.png"
+                              alt="logout"
+                            />
+                            <img
+                              className="h-full exitanimate"
+                              src="/public/image/login/launch_animate.gif"
+                              alt="logout"
+                            />
+                            <button className="ml-8 text-white font-bold">Log out</button>
+                          </div>
                         </div>
                       </div>
                     </Dialog.Panel>
@@ -313,13 +365,14 @@ const Header = () => {
         bodyStyle={{
           height:
             windowWidth < 768 && signIn ? "80vh" : signIn ? "80vh" : "80vh",
+          minHeight: windowWidth > 768 ? "500px" : "",
         }}
       >
         <Components.Container signingIn={signIn}>
           <Components.SignUpContainer signingIn={signIn} className="box">
-            <Components.Form 
+            <Components.Form
               className="content customScrollbar"
-              onSubmit= {handleSubmitRegis(onSubmit1)}
+              onSubmit={handleSubmitRegis(onSubmit1)}
               signingIn={signIn}
             >
               <Components.Title>Create Account</Components.Title>
@@ -401,10 +454,27 @@ const Header = () => {
             </Components.Form>
           </Components.SignUpContainer>
           <Components.SignInContainer signingIn={signIn}>
-            <Components.Form className="customScrollbar" style={{display:'flex',justifyContent:'center'}} onSubmit={handleSubmitLogin(onSubmit2)} signingIn={signIn} >
+            <Components.Form
+              className="customScrollbar"
+              style={{ display: "flex", justifyContent: "center" }}
+              onSubmit={handleSubmitLogin(onSubmit2)}
+              signingIn={signIn}
+            >
               <Components.Title>Sign in</Components.Title>
-              <Input name="taiKhoan" type="text" placeholder="Username" register={registerFormLogin} error={errorsLogin?.taiKhoan?.message}/>
-              <Input name="matKhau" type="password" placeholder="Password" register={registerFormLogin} error={errorsLogin?.matKhau?.message}/>
+              <Input
+                name="taiKhoan"
+                type="text"
+                placeholder="Username"
+                register={registerFormLogin}
+                error={errorsLogin?.taiKhoan?.message}
+              />
+              <Input
+                name="matKhau"
+                type="password"
+                placeholder="Password"
+                register={registerFormLogin}
+                error={errorsLogin?.matKhau?.message}
+              />
               <Components.Anchor style={{ margin: "0 0" }} href="#">
                 Forgot your password?
               </Components.Anchor>
@@ -434,7 +504,7 @@ const Header = () => {
               ) : (
                 ""
               )}
-              <Components.Button>Sign In</Components.Button>
+              <Components.Button type="submit">Sign In</Components.Button>
             </Components.Form>
           </Components.SignInContainer>
           <Components.OverlayContainer signingIn={signIn}>

@@ -40,6 +40,7 @@
   }
 }
 }
+//antd custon 
 .css-dev-only-do-not-override-pr0fja.ant-modal .ant-modal-content{
   @media (min-width:768px){
     background-color: rgba(4, 47, 64,0.8); //Cannot use root variable, because Inspect to see this class is out of root space
@@ -48,6 +49,8 @@
   background-color: transparent;
   box-shadow: none;
 }
+
+
 @media (min-width:768px){
 .Header {
   z-index: 10;
@@ -83,13 +86,7 @@
           background-color: #6ddcde;
         }
       }
-    
-    // //   .dropdown_menu-1 {
-    // //     // In css: .dropdown_menu-4
-    // //     // for num in (1..5)
-    // //     // .dropdown_item-{num}
-    // //     //   transform-origin: top center
-    // //     //   animation: scaleZ 300ms (num * 60ms) ease-in-out forwards
+
   
     @for $num from 1 through 6 {
       .dropdown_item-#{$num} {
@@ -136,4 +133,25 @@
 /* Ẩn thanh cuộn cho Chrome, Safari và Opera */
 .customScrollbar::-webkit-scrollbar {
   display: none;
+}
+.cardanimate {
+  display: none;
+}
+.exitanimate {
+  display: none;
+}
+//Slide
+.info:hover .cardstatic {
+  display: none;
+}
+
+.info:hover .cardanimate {
+  display: block;
+}
+.exit:hover .exitstatic {
+  display: none;
+}
+
+.exit:hover .exitanimate {
+  display: block;
 }
