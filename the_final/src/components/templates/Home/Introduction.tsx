@@ -37,7 +37,7 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         className="flex flex-col lg:flex-row justify-center items-center w-[100%] h-[100%] lg:h-[70%] transition ease-in-out delay-75 duration-500"
         style={{ wordWrap: "break-word" }}
       >
-        <div className="w-full h-full lg:flex md:mt-[10%]">
+        <div className="w-full h-full lg:flex">
           <div className="w-[100%] lg:w-[60%] h-[60%] flex items-end justify-center lg:h-[100%]">
             <Lottie animationData={Welcome1} />
           </div>

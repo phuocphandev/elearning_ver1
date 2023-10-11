@@ -76,7 +76,7 @@ export const CourseList = () => {
         className="bg-transparent w-[100%] m-auto py-2 px-6 rounded-xl  flex justify-start items-center pl-[3%] "
       >
         {pagingCourse?.map((coursePage) => (
-          <div className="flex flex-col gap-10  w-[270px] relative">
+          <div className="flex flex-col gap-10  w-[270px] relative items-center justify-center ml-12 md:ml-3">
             {coursePage?.map((course: CourseType) => (
               <Card
                 key={course.maKhoaHoc}
@@ -113,7 +113,7 @@ export const CourseList = () => {
                   className="relative"
                 />
                 <div
-                  className="flex justify-centers items-center bg-[var(--tertiary)] absolute top-[150px] left-0 pr-3"
+                  className="flex justify-centers items-center bg-[var(--tertiary)] absolute top-[150px] left-0 pr-3 "
                   style={{ borderRadius: "0 30px 30px 0" }}
                 >
                   <img
