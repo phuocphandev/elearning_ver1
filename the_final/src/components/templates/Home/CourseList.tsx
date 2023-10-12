@@ -6,6 +6,8 @@ import { manageCourseThunk } from "store/CourseManagement/thunk";
 import { CourseType } from "types/Course";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { generatePath, useNavigate } from "react-router";
+import { PATH } from "constant";
 
 const responsive = {
   superLargeDesktop: {
@@ -39,7 +41,7 @@ const responsive = {
 export const CourseList = () => {
   const dispatch = useAppDispatch();
   const { CourseList } = useCourse();
-
+  const navigate= useNavigate();
   //Lấy ds Course
   useEffect(() => {
     dispatch(manageCourseThunk());
@@ -73,19 +75,20 @@ export const CourseList = () => {
         responsive={responsive}
         showDots={true}
         removeArrowOnDeviceType={["tablet", "mobile"]}
-        className="bg-transparent w-[100%] m-auto py-2 px-6 rounded-xl  flex justify-start items-center pl-[3%] "
+        className="bg-transparent w-[100%] m-auto py-2 px-6 rounded-xl  flex justify-start items-center pl-[3%] mr-10"
       >
         {pagingCourse?.map((coursePage) => (
-          <div className="flex flex-col gap-10  w-[270px] relative items-center justify-center ml-12 md:ml-3">
-            {coursePage?.map((course: CourseType) => (
-              <Card
+          <div className="flex flex-col gap-10  w-[270px] relative items-center justify-center ml-12 md:ml-3 xl:ml-0 ">
+            {coursePage?.map((course: CourseType) => {
+              const detailPath= generatePath(PATH.detail,{ courseID: course.maKhoaHoc })
+              return<Card
                 key={course.maKhoaHoc}
                 cover={
                   <div className="">
                     <img
                       alt="example"
                       src={course.hinhAnh}
-                      className="h-[180px] w-[270px] border-l-2 border-r-2 border-b-2 border-[var(--tertiary)]"
+                      className="h-[180px] w-[270px] border-l-2 border-r-2 border-b-2 border-[var(--tertiary)] mr-5"
                     />
                   </div>
                 }
@@ -215,12 +218,14 @@ export const CourseList = () => {
                       <p className="font-bold text-[var(--tertiary)]">3.2k</p>
                     </div>
                   </div>
-                  <button className="bg-[var(--primary)] py-2 px-4 rounded text-white  w-[90%] m-auto hover:bg-[var(--quaternary)] ease-in-out duration-500 transition-all hover:-translate-y-2">
+                  <button className="bg-[var(--primary)] py-2 px-4 rounded text-white  w-[90%] m-auto hover:bg-[var(--quaternary)] ease-in-out duration-500 transition-all hover:-translate-y-2"
+                   onClick={()=>navigate(detailPath)}
+                  >
                     Xem chi tiết
                   </button>
                 </div>
               </Card>
-            ))}
+            })}
           </div>
         ))}
       </Carousel>

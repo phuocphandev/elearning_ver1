@@ -1,6 +1,8 @@
 import { HomeTemplates } from 'components'
 import HomeLayout from 'components/layouts/HomeLayout'
-import UserInfomation from 'pages/UserInformation/UserInfomation'
+import CourseDetail from 'components/templates/Home/CourseDetail'
+import { PATH } from 'constant'
+// import UserInfomation from 'pages/UserInformation/UserInfomation'
 
 import {RouteObject} from 'react-router-dom'
 
@@ -14,6 +16,10 @@ export const router:RouteObject[] = [
             //    element:<UserInfomation/>,
                 element:<HomeTemplates/>,
                 index:true,
+            },
+            {
+                element:<CourseDetail/>,
+                path: PATH.detail,
             }
         ]
     }
