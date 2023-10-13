@@ -20,7 +20,7 @@ export const CourseDetail = () => {
         <p>Course Detail:</p>
       </div>
       {/* //info  */}
-      <div className="grid grid-cols-5 w-[95%] m-auto">
+      <div className="grid grid-cols-5 gap-10 w-[95%] m-auto">
         <div className="col-span-3">
           <p className="font-bold text-2xl pt-3 pb-3">
             Welcome to FullStack Bootcamp:{" "}
@@ -162,7 +162,7 @@ export const CourseDetail = () => {
             <div className="mb-3">
               {/* sec1 */}
               <button
-                className="bg-[var(--background)] px-3 py-2 uppercase"
+                className="bg-[var(--background)] px-3 py-2 uppercase w-full flex justify-start hover:bg-[var(--tertiary)] transition-all ease-linear duration-500"
                 onClick={handleSec1}
               >
                 Section 1: Introduce
@@ -170,19 +170,59 @@ export const CourseDetail = () => {
               <div className={`overflow-hidden section1`}>
                 <div
                   className={`overflow-hidden section transition-all ease-in-out duration-500 ${
-                    sec1 ? "mt-[-15%] " : "mt-0"
+                    sec1 ? "mt-[-35%] " : "mt-0"
                   } `}
                 >
-                  <p className="courselist">What is React Components</p>
-                  <p className="courselist">
-                    Setting up the environment for Windows
-                  </p>
-                  <p className="courselist">
-                    Creating a React application using React-Scripts
-                  </p>
-                  <p className="courselist">
-                    Quick note on double quotes for string interpolation
-                  </p>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">What is React Components</p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">
+                      Setting up the environment for Windows
+                    </p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">
+                      Creating a React application using React-Scripts
+                    </p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="w-full courselist">
+                      Quick note on double quotes for string interpolation
+                    </p>
+                    <div className="flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -190,7 +230,7 @@ export const CourseDetail = () => {
             {/* sec2 */}
             <div className="mb-3">
               <button
-                className="bg-[var(--background)] px-3 py-2 uppercase"
+                className="bg-[var(--background)] px-3 py-2 uppercase w-full flex justify-start hover:bg-[var(--tertiary)] transition-all ease-linear duration-500"
                 onClick={handleSec2}
               >
                 Section 2: Fundamental Knowledge
@@ -198,18 +238,70 @@ export const CourseDetail = () => {
               <div className="overflow-hidden section1">
                 <div
                   className={`overflow-hidden section transition-all ease-in-out duration-500 ${
-                    sec2 ? "mt-[-15%] " : "mt-0"
+                    sec2 ? "mt-[-35%] " : "mt-0"
                   } `}
                 >
-                  <p className="courselist">Homepage and Directory Components</p>
-                  <p className="courselist">Course Guide + GitHub Link</p>
-                  <p className="courselist">
-                    E-commerce Homepage + Setting up SASS
-                  </p>
-                  <p className="courselist">CSS and SCSS Files</p>
-                  <p className="courselist">
-                    React 17: Updating Packages + Latest React Version
-                  </p>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">
+                      Homepage and Directory Components
+                    </p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">Course Guide + GitHub Link</p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">
+                      E-commerce Homepage + Setting up SASS
+                    </p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">CSS and SCSS Files</p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="courselist w-full">
+                      React 17: Updating Packages + Latest React Version
+                    </p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -217,7 +309,7 @@ export const CourseDetail = () => {
             {/* sec3 */}
             <div className="mb-3">
               <button
-                className="bg-[var(--background)] px-3 py-2 uppercase"
+                className="bg-[var(--background)] px-3 py-2 uppercase w-full flex justify-start hover:bg-[var(--tertiary)] transition-all ease-linear duration-500"
                 onClick={handleSec3}
               >
                 Section 3: Advanced Knowledge
@@ -225,18 +317,52 @@ export const CourseDetail = () => {
               <div className="overflow-hidden section1">
                 <div
                   className={`overflow-hidden section transition-all ease-in-out duration-500 ${
-                    sec3 ? "mt-[-15%] " : "mt-0"
+                    sec3 ? "mt-[-35%] " : "mt-0"
                   } `}
                 >
-                  <p className="courselist">connect() and mapStateToProps</p>
-                  <p className="courselist">Folder State in Redux</p>
-                  <p className="courselist">Overview Component of Collection</p>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="w-full courselist">connect() and mapStateToProps</p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="w-full courselist">Folder State in Redux</p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
+                  <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
+                    <p className="w-full courselist">Overview Component of Collection</p>
+                    <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
+                      <img
+                        src="/public/image/CourseDetail/icons8-timer-96.png"
+                        alt=""
+                        className="w-[30px] h-[30px] "
+                      />
+                      <p>14:35</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-span-2"></div>
+        <div className="col-span-2">
+          <div className="bg-[var(--background)] h-[100vh] mt-10">
+            <div className="">aaa</div>
+          </div>
+        </div>
       </div>
     </div>
   );
