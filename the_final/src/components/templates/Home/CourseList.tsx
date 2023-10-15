@@ -67,7 +67,6 @@ export const CourseList = () => {
     return result;
   }, [CourseList]);
 
-  console.log("pagingCourse: ", pagingCourse.length);
 
   return (
     <div className="CourseList">

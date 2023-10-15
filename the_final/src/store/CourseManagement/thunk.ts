@@ -5,12 +5,23 @@ export const manageCourseThunk = createAsyncThunk(
   "CourseManagement/manageCourseThunk",
   async (_, { rejectWithValue }) => {
     try {
-      const data = await manageCourse.getCourseList();
-      console.log("data: ", data.data.length);
-      
+      const data = await manageCourse.getCourseList();   
       return data.data;
     } catch (error) {
       rejectWithValue(error);
     }
   }
 );
+
+export const getCourseInfoThunk = createAsyncThunk(
+  "CourseManagement/getCourseInfoThunk",
+  async (payload:string, {rejectWithValue}) => {
+    try {
+      const data = await manageCourse.getCourseInfoThunk(payload);
+      console.log("data: ", data);
+      
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+)

@@ -10,4 +10,5 @@ export const manageCourse = {
     api.get<CourseType[]>(
       `LayDanhSachKhoaHoc?MaNhom=GP09`
     ),
+  getInfoCourse: (payload:string) => api.get(`/LayThongTinKhoaHoc?maKhoaHoc=${payload}`)
 };

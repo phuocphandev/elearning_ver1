@@ -21,7 +21,6 @@ export const getUserInfoThunk = createAsyncThunk(
       const accessToken = localStorage.getItem("USER");
       if (accessToken) {
         const data = await manageUser.getUserInfo();
-        console.log("data ne", data);
         return data.data;
       }
       return undefined;

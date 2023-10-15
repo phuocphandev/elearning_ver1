@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useAppDispatch } from "store";
+import { getCourseInfoThunk } from "store/CourseManagement/thunk";
 
 export const CourseDetail = () => {
   const [sec1, setSec1] = useState(false);
@@ -13,6 +16,15 @@ export const CourseDetail = () => {
   const handleSec3 = () => {
     setSec3(!sec3);
   };
+
+  const param = useParams();
+  console.log("param: ", param.courseID);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+      dispatch(getCourseInfoThunk(param.courseID));
+  }, [param.courseID]);
 
   return (
     <div className="mt-[10vh] md:mt-[7vh] xl:mt-[12vh] 2xl:mt-[5vh] coursedetail">
@@ -174,7 +186,9 @@ export const CourseDetail = () => {
                   } `}
                 >
                   <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
-                    <p className="courselist w-full">What is React Components</p>
+                    <p className="courselist w-full">
+                      What is React Components
+                    </p>
                     <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                       <img
                         src="/public/image/CourseDetail/icons8-timer-96.png"
@@ -255,7 +269,9 @@ export const CourseDetail = () => {
                     </div>
                   </div>
                   <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
-                    <p className="courselist w-full">Course Guide + GitHub Link</p>
+                    <p className="courselist w-full">
+                      Course Guide + GitHub Link
+                    </p>
                     <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                       <img
                         src="/public/image/CourseDetail/icons8-timer-96.png"
@@ -321,7 +337,9 @@ export const CourseDetail = () => {
                   } `}
                 >
                   <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
-                    <p className="w-full courselist">connect() and mapStateToProps</p>
+                    <p className="w-full courselist">
+                      connect() and mapStateToProps
+                    </p>
                     <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                       <img
                         src="/public/image/CourseDetail/icons8-timer-96.png"
@@ -343,7 +361,9 @@ export const CourseDetail = () => {
                     </div>
                   </div>
                   <div className="flex w-full pl-[10px] pr-[10px] courselistWrapper">
-                    <p className="w-full courselist">Overview Component of Collection</p>
+                    <p className="w-full courselist">
+                      Overview Component of Collection
+                    </p>
                     <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                       <img
                         src="/public/image/CourseDetail/icons8-timer-96.png"

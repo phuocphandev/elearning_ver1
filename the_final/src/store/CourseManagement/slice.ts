@@ -19,6 +19,8 @@ export const manageCourse = createSlice({
             state.CourseList=payload;
             
         } )
+        
+        builder.addCase()
     }
 })
 
