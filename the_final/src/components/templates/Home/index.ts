@@ -3,4 +3,4 @@ export * from "./Introduction";
 export * from "./Overral"
 export * from "./CountUpStatic"
 export * from "./CourseList"
-export * from "./CourseDetail"
+export * from "./courseDetail/CourseDetail"

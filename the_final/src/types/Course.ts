@@ -29,3 +29,4 @@ export interface DanhMucKhoaHocType {
   maDanhMucKhoahoc ?: string;
   tenDanhMucKhoaHoc ?: string;
 }
+

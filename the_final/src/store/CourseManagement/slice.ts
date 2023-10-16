@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { manageCourseThunk } from "./thunk";
+import { getCourseInfoThunk, manageCourseThunk } from "./thunk";
 import { CourseType } from "types/Course";
 
 type manageCourseInitialState={
     CourseList?:CourseType[],
+    CourseInfo?:CourseType,
 }
 
 const initialState:manageCourseInitialState={
@@ -20,7 +21,9 @@ export const manageCourse = createSlice({
             
         } )
         
-        builder.addCase()
+        builder.addCase(getCourseInfoThunk.fulfilled, (state, {payload}) =>{
+            state.CourseInfo= payload;
+        } )
     }
 })
 

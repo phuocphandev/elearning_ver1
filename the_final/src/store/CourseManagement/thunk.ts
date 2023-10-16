@@ -5,7 +5,7 @@ export const manageCourseThunk = createAsyncThunk(
   "CourseManagement/manageCourseThunk",
   async (_, { rejectWithValue }) => {
     try {
-      const data = await manageCourse.getCourseList();   
+      const data = await manageCourse.getCourseList();
       return data.data;
     } catch (error) {
       rejectWithValue(error);
@@ -15,13 +15,12 @@ export const manageCourseThunk = createAsyncThunk(
 
 export const getCourseInfoThunk = createAsyncThunk(
   "CourseManagement/getCourseInfoThunk",
-  async (payload:string, {rejectWithValue}) => {
+  async (payload: string, { rejectWithValue }) => {
     try {
-      const data = await manageCourse.getCourseInfoThunk(payload);
-      console.log("data: ", data);
-      
+      const data = await manageCourse.getInfoCourse(payload);
+      return data.data;
     } catch (error) {
       rejectWithValue(error);
     }
   }
-)
+);
