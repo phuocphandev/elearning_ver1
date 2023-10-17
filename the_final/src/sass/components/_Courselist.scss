@@ -4,25 +4,63 @@
   background-repeat: no-repeat;
   background-clip: border-box;
   background-size: cover;
-}
 
-
-.card:hover {
+  .card:hover {
+    .cardLayer {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateY(0%);
+    }
+  }
   .cardLayer {
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
-    transform: translateY(0%);
+    width: 100%;
+    // background: orange;
+    transform: translateY(100%);
+    transition: all ease-in-out 500ms;
   }
-}
-.cardLayer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  // background: orange;
-  transform: translateY(100%);
-  transition: all ease-in-out 500ms;
+
+  /* HTML: <div class="ribbon">Your content</div> */
+  .ribbon {
+    --f: 0px; /* control the folded part */
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.1em 2.2em;
+    background: red; /* the main color  */
+    border-bottom: var(--f) solid #0007;
+    color: white;
+    font: bolder;
+    clip-path: polygon(
+      100% calc(100% - var(--f)),
+      100% 100%,
+      calc(100% - var(--f)) calc(100% - var(--f)),
+      var(--f) calc(100% - var(--f)),
+      0 100%,
+      0 calc(100% - var(--f)),
+      999px calc(100% - var(--f) - 999px),
+      calc(100% - 999px) calc(100% - var(--f) - 999px)
+    );
+    transform: translate(calc((1 - cos(45deg)) * 100%), -100%) rotate(45deg);
+    transform-origin: 0% 100%;
+  }
+  .ribbonText::before {
+    content: "";
+    transform: translateY(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("/public/image/CourseList/icons8-fire-48.png") no-repeat center;
+    background-size: contain;
+    margin-right: 5px;
+  }
 }

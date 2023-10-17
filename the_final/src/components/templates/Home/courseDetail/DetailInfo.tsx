@@ -13,10 +13,22 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         className="rounded-xl  border-2 border-[var(--primary)]"
       />
       <div className="text-xl font-bold">{CourseInfo?.tenKhoaHoc}</div>
-      <div className="flex justify-between w-[95%] text-xl font-bold mt-2 mb-2">
+      <div className="flex justify-between w-[95%] text-xl font-bold mt-[-15px] mb-2">
         <div className=""></div>
-        <p>Price: 400.000</p>
+        {/* //price  */}
+        <div className="relative">
+          <p className="text-gray-400 line-through pl-4">1.100.000</p>
+          <div className="text-[var(--primary)] text-2xl font-extrabold">
+            400.000<span className="text-[9px]">vnđ</span>
+            <img
+              src="/public/image/CourseList/sale.png"
+              alt="sale"
+              className="absolute w-[30px] top-0 right-0 rotate-[20deg]"
+            />
+          </div>
+        </div>
       </div>
+
       <button className="border border-[var(--primary)] w-full rounded-xl text-xl py-1 transition-all ease-in-out duration-500 bg-transparent hover:bg-[#eee]">
         Enroll
       </button>

@@ -96,6 +96,7 @@ export const CourseList = () => {
                 }}
                 className="relative border-4 border-[var(--tertiary)] card overflow-hidden"
               >
+                <div className={`ribbon ribbonText ${ (course?.luotXem > 3000) ? "" : "hidden" } `}>HOT</div>
                 <Card.Meta
                   title={
                     <p
@@ -171,7 +172,7 @@ export const CourseList = () => {
                       <img
                         src="/public/image/CourseList/sale.png"
                         alt="sale"
-                        className="absolute w-[30px] top-0 right-0"
+                        className="absolute w-[30px] top-0 right-0 rotate-[20deg]"
                       />
                     </div>
                   </div>
