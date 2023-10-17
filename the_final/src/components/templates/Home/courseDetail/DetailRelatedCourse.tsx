@@ -30,9 +30,8 @@ export const DetailRelatedCourse = () => {
                 courseID: course?.maKhoaHoc,
               });
               return (
-                <div className="col-span-4 md:col-span-2 xl:col-span-1">
+                <div className="col-span-4 md:col-span-2 xl:col-span-1" key={course?.maKhoaHoc}>
                     <Card
-                      key={course?.maKhoaHoc}
                       cover={
                         <div className="">
                           <img
