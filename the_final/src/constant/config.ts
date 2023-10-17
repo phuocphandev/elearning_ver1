@@ -3,8 +3,8 @@ export const PATH = {
   admin:"/admin",
   detail: "/detail/:courseID",
   course: "/courselist/:courseId",
-  allcourse: "/course"
-
+  allcourse: "/course",
+  adminCourse: "/admin/course",
 
 };
 

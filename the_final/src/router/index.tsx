@@ -1,5 +1,6 @@
 import { HomeTemplates } from "components";
 import HomeLayout from "components/layouts/HomeLayout";
+import { CourseAdmin, UserAdmin } from "components/templates/Admin";
 import { PATH } from "constant";
 import { AllCourse, CourseDetailPage, CourseFollowMenu } from "pages";
 import AdminPage from "pages/AdminPage";
@@ -40,5 +41,15 @@ export const router: RouteObject[] = [
   {
     element: <AdminPage />,
     path: PATH.admin,
+    children:[
+      {
+        element: <UserAdmin/>,
+        index: true,
+      },
+      {
+        element: <CourseAdmin/>,
+        path: PATH.adminCourse
+      }
+    ]
   },
 ];
