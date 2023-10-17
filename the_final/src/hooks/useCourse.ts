@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "store";
 
 export const useCourse = () => {
-  const { CourseList, CourseInfo } = useSelector(
+  const { CourseList, CourseInfo,CourseListPagi } = useSelector(
     (state: RootState) => state.manageCourse
   );
-  return { CourseList, CourseInfo };
+  return { CourseList, CourseInfo,CourseListPagi };
 };

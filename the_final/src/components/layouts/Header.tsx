@@ -11,13 +11,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterSchema, RegisterSchemaType } from "schema/RegisterSchema";
 import { manageUser } from "services/manageUser";
-import { NotiError, NotiSuccess } from "constant";
+import { NotiError, NotiSuccess, PATH } from "constant";
 import { LoginSchema, LoginSchemaType } from "schema/LoginSchema";
 import { useAppDispatch } from "store";
 import { loginThunk } from "store/manageUser/thunk";
 import { useAuth } from "hooks";
 import { useDispatch } from "react-redux";
 import { manageUserActions } from "store/manageUser/slice";
+import { generatePath, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [Popup, setPopup] = useState(false);
@@ -29,6 +30,7 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const dispatchOrigin = useDispatch();
   const { accessToken, user } = useAuth();
+  const navigate = useNavigate();
 
   //handle register
   const {
@@ -190,19 +192,23 @@ const Header = () => {
                   <span> MENU</span>
                 </a>
                 <ul className="dropdown_menu dropdown_menu-1">
-                  {menu?.map((e, index) => (
-                    <li
+                  {menu?.map((e, index) =>{
+                    const path = generatePath(PATH.course,{courseId: e.maDanhMuc});
+                     return (
+                    <li onClick={()=>{navigate(path)}}
                       key={e.maDanhMuc}
                       className={`dropdown_item-${index + 1} ${
-                        index == 0 ? "rounded-t-[10px]" : ""
-                      }`}
+                        index == 0 ? "rounded-t-[10px]" : "" 
+                      } cursor-pointer`}
                     >
                       {e.tenDanhMuc}
                     </li>
-                  ))}
+                  )})}
                 </ul>
               </li>
-              <li className="text-center">
+              <li className="text-center" onClick={()=>{
+                navigate(PATH.allcourse)
+              }}>
                 <a
                   href="#"
                   className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
@@ -311,7 +317,7 @@ const Header = () => {
                           </Dialog.Title>
                         </div>
                         <div className="relative mt-6 flex-1 px-4 w-full">
-                          <div className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info">
+                          <div className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info cursor-pointer">
                             <img
                               className="h-full cardstatic"
                               src="/public/image/login/card_static.png"
@@ -324,7 +330,7 @@ const Header = () => {
                             <button className="ml-8 text-white font-bold">Infomation</button>
                           </div>
                           <div
-                            className="flex mt-5 hover:bg-[#042f40cc] h-[60px] relative exit"
+                            className="flex mt-5 hover:bg-[#042f40cc] h-[60px] relative exit cursor-pointer"
                             onClick={() => {
                               dispatchOrigin(manageUserActions.logOut());
                               NotiSuccess("Logged Out");

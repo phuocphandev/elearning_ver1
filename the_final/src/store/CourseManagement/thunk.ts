@@ -24,3 +24,21 @@ export const getCourseInfoThunk = createAsyncThunk(
     }
   }
 );
+export const getCourseFollowMenu = createAsyncThunk("CourseManagement/getCourseFollowMenu", async (payload:string,{rejectWithValue})=>{
+  try {
+    const data = await manageCourse.getCourseFollowMenu(payload);
+    return data.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+export const getCoursePagiThunk = createAsyncThunk("CourseManagement/getCoursePagi",async(payload:number,{rejectWithValue})=>{
+  try {
+    const data = await manageCourse.getCoursePagination(payload);
+    return data.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+  
+
+})

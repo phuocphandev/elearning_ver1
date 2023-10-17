@@ -29,4 +29,9 @@ export interface DanhMucKhoaHocType {
   maDanhMucKhoahoc ?: string;
   tenDanhMucKhoaHoc ?: string;
 }
-
+export interface CoursePagi {
+  currentPage:number;
+  count:number;
+  totalPages:number;
+  items:CourseType[];
+}

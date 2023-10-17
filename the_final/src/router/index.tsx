@@ -1,7 +1,8 @@
 import { HomeTemplates } from 'components'
 import HomeLayout from 'components/layouts/HomeLayout'
-import CourseDetail from 'components/templates/Home/courseDetail/CourseDetail'
 import { PATH } from 'constant'
+import { AllCourse, CourseDetailPage, CourseFollowMenu } from 'pages'
+
 // import UserInfomation from 'pages/UserInformation/UserInfomation'
 
 import {RouteObject} from 'react-router-dom'
@@ -18,9 +19,20 @@ export const router:RouteObject[] = [
                 index:true,
             },
             {
-                element:<CourseDetail/>,
+                element:<CourseDetailPage/>,
                 path: PATH.detail,
-            }
+            },
+            {
+                element:<CourseFollowMenu/>,
+                path: PATH.course,
+            },
+            {
+                element:<AllCourse/>,
+                path:PATH.allcourse,
+            },
+
+            
+
         ]
     }
     
