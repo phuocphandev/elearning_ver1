@@ -24,9 +24,9 @@ import { useCourse } from "hooks/useCourse";
 export const UserInfomationTemplate = () => {
   let { user } = useAuth();
   user = user as UserInfo;
-  const {isDelete} = useCourse();
+  const { isDelete } = useCourse();
   const dispatch = useAppDispatch();
-  console.log ("user ",user)
+  const [searchData, setSearchData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     handleSubmit,
@@ -37,6 +37,13 @@ export const UserInfomationTemplate = () => {
     mode: "onChange",
     resolver: zodResolver(RegisterSchema),
   });
+  const handleInput = (event) => {
+    setSearchData(event.target.value);
+  };
+  if(searchData){
+    user={...user,chiTietKhoaHocGhiDanh:user.chiTietKhoaHocGhiDanh.filter((e)=>e.tenKhoaHoc.toLocaleLowerCase().includes(searchData))}
+  }
+  
 
   const onSubmit: SubmitHandler<RegisterSchemaType> = (value) => {
     dispatch(
@@ -323,8 +330,41 @@ export const UserInfomationTemplate = () => {
                 </TabPanel>
                 <TabPanel value={"dashboard"}>
                   <div className="w-full">
-                    <section className=" bg-gray-100  bg-opacity-50 h-full rounded-[10px] overflow-hidden">
-                      <div className=" md:mx-0 mx-auto container max-w-2xl md:max-w-full md:w-full shadow-md ">
+                    {/*  */}
+                    <form className="mb-2">
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <svg
+                            className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                            />
+                          </svg>
+                        </div>
+                        <input
+                          type="search"
+                          id="search"
+                          className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-[50px]"
+                          placeholder="Input to filter"
+                          onChange={handleInput}
+
+                          // khi nào có return thì mới cần handleInput()
+                        />
+                    
+                      </div>
+                    </form>
+                    {/*  */}
+                    <section className=" bg-gray-100  bg-opacity-50 h-[70vh] rounded-[10px]  overflow-y-auto customScrollbar">
+                      <div className=" md:mx-0 mx-auto container max-w-2xl md:max-w-full md:w-full shadow-md  ">
                         {user?.chiTietKhoaHocGhiDanh.map((e) => (
                           <div>
                             <div
@@ -333,17 +373,20 @@ export const UserInfomationTemplate = () => {
                             >
                               <div className="col-span-1">
                                 <img
-                                  className="w-[300px]"
+                                  className="md:w-[300px] w-[100px]"
                                   src={e.hinhAnh}
                                   alt={e.tenKhoaHoc}
                                 />
                               </div>
                               <div className="col-span-3 ml-2">
-                                <h3 className="font-bold text-xl">
+                                <h3 className="font-bold md:text-xl">
                                   {e.tenKhoaHoc}
                                 </h3>
-                                <p className="text-[#6a6666] h-[30%]">
-                                  {e.moTa.substring(0,100)}...
+                                <p className="text-[#6a6666] h-[30%] md:block hidden">
+                                  {e.moTa.substring(0, 100)}...
+                                </p>
+                                <p className="md:hidden block text-[#6a6666] h-[20%]">
+                                  {e.moTa.substring(0, 20)}...
                                 </p>
                                 <span>
                                   <FieldTimeOutlined /> 8 hr &nbsp;&nbsp;{" "}
@@ -359,15 +402,31 @@ export const UserInfomationTemplate = () => {
                                         alt="avatar"
                                       />
                                     </div>
-                                    <span className="text-xl">Kevin Khanh</span>
+                                    <span className="md:text-xl text">
+                                      Kevin Khanh
+                                    </span>
                                   </p>
-                                  <Button loading={isDelete} type="primary" danger className="mr-4 hover:scale-105" onClick={()=>{
-                                    dispatch(cancelEnrollThunk({taiKhoan:user.taiKhoan,maKhoaHoc:e.maKhoaHoc})).unwrap().then(()=>{
-                                      NotiSuccess("Delete Successfully!");
-                                    }).catch((err)=>{
-                                      console.log(err)
-                                    })
-                                  }}>
+                                  <Button
+                                    loading={isDelete}
+                                    type="primary"
+                                    danger
+                                    className="mr-4 hover:scale-105"
+                                    onClick={() => {
+                                      dispatch(
+                                        cancelEnrollThunk({
+                                          taiKhoan: user.taiKhoan,
+                                          maKhoaHoc: e.maKhoaHoc,
+                                        })
+                                      )
+                                        .unwrap()
+                                        .then(() => {
+                                          NotiSuccess("Delete Successfully!");
+                                        })
+                                        .catch((err) => {
+                                          console.log(err);
+                                        });
+                                    }}
+                                  >
                                     Delete
                                   </Button>
                                 </p>

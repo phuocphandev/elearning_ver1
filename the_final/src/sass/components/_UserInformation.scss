@@ -4,3 +4,15 @@
         background-color: none;
         box-shadow: none;
       }
+      /* Hide the scrollbar for Firefox */
+  /* Ẩn thanh cuộn cho tất cả các trình duyệt */
+  .customScrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Ẩn thanh cuộn cho Chrome, Safari và Opera */
+  .customScrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
