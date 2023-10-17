@@ -49,12 +49,12 @@ export const AdminNavbar = () => {
             }}
           >
             <img
-              src="/image/navbar/navbar_logo.png"
+              src="/image/home.png"
               className="h-6 mr-3 sm:h-7"
               alt="Logo"
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Movids
+              E-Hubs
             </span>
           </a>
           <ul className="space-y-2 font-medium">
@@ -82,7 +82,7 @@ export const AdminNavbar = () => {
               <button
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
                 onClick={() => {
-                  // navigate(PATH.adminFilm);
+                  navigate(PATH.adminCourse);
                 }}
               >
                 <svg
