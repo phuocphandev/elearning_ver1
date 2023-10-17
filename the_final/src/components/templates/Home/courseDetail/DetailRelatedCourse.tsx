@@ -18,7 +18,6 @@ export const DetailRelatedCourse = () => {
   const sortCourse = CourseList?.filter(
     (course) => course?.luotXem >= 3000
   ).slice(0, 4);
-  console.log("CourseListRELATED: ", sortCourse);
 
   return (
     <div className="mb-10">

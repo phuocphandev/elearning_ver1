@@ -2,6 +2,8 @@ import { HomeTemplates } from 'components'
 import HomeLayout from 'components/layouts/HomeLayout'
 import { PATH } from 'constant'
 import { AllCourse, CourseDetailPage, CourseFollowMenu } from 'pages'
+import AdminPage from 'pages/AdminPage'
+import UserInfomation from 'pages/UserInformation/UserInfomation'
 
 // import UserInfomation from 'pages/UserInformation/UserInfomation'
 
@@ -14,10 +16,14 @@ export const router:RouteObject[] = [
         path:'/',
         children:[
             {
-            //    element:<UserInfomation/>,
                 element:<HomeTemplates/>,
                 index:true,
             },
+            {
+                element: <UserInfomation/>,
+                path: PATH.user,
+            },
+
             {
                 element:<CourseDetailPage/>,
                 path: PATH.detail,
@@ -30,6 +36,10 @@ export const router:RouteObject[] = [
                 element:<AllCourse/>,
                 path:PATH.allcourse,
             },
+            {
+                element:<AdminPage/>,
+                path:PATH.admin,
+            }
 
             
 

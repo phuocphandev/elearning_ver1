@@ -21,7 +21,7 @@ export const CourseFollowMenuTemplate = () => {
         <p className="text-white text-xl ml-4">{CourseList?.[0]?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</p>
       </div>
       <div className="md:my-4 md:px-16">
-        <div className="grid md:grid-cols-4 gap-[100px]">
+        <div className="grid md:grid-cols-4 gap-[100px] CourseList">
             {CourseList?.map((course)=>{
                 const detailPath = generatePath("/" + PATH.detail,{courseID:course?.maKhoaHoc})
                 return (

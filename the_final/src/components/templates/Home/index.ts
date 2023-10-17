@@ -6,3 +6,4 @@ export * from "./CourseList"
 export * from "./courseDetail/CourseDetail"
 export * from "./CourseFollowMenuTemplate"
 export * from './AllCourseTemplate'
+export * from './AdminPageTemplate'

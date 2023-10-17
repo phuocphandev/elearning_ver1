@@ -140,6 +140,9 @@
 .exitanimate {
   display: none;
 }
+.adminanimate{
+  display: none;
+}
 //Slide
 .info:hover .cardstatic {
   display: none;
@@ -153,5 +156,13 @@
 }
 
 .exit:hover .exitanimate {
+  display: block;
+}
+
+.admin:hover .adminstatic {
+  display: none;
+}
+
+.admin:hover .adminanimate {
   display: block;
 }

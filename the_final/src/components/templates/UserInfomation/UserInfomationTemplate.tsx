@@ -8,7 +8,7 @@ import {
 import { Square3Stack3DIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { useAuth } from "hooks";
-import { Input, Modal } from "components";
+import { Button, Input, Modal } from "components";
 import "../../../sass/main.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,11 +16,17 @@ import { RegisterSchema, RegisterSchemaType } from "schema";
 import { NotiAlert, NotiSuccess } from "constant";
 import { useAppDispatch } from "store";
 import { updateUserThunk } from "store/manageUser/thunk";
-
+import { UserInfo } from "types";
+import { CalendarOutlined, FieldTimeOutlined } from "@ant-design/icons";
+import { cancelEnrollThunk } from "store/CourseManagement/thunk";
+import { useCourse } from "hooks/useCourse";
 
 export const UserInfomationTemplate = () => {
-  const { user } = useAuth();
+  let { user } = useAuth();
+  user = user as UserInfo;
+  const {isDelete} = useCourse();
   const dispatch = useAppDispatch();
+  console.log ("user ",user)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     handleSubmit,
@@ -31,9 +37,11 @@ export const UserInfomationTemplate = () => {
     mode: "onChange",
     resolver: zodResolver(RegisterSchema),
   });
-  
+
   const onSubmit: SubmitHandler<RegisterSchemaType> = (value) => {
-    dispatch(updateUserThunk({...value,maLoaiNguoiDung: user?.maLoaiNguoiDung}))
+    dispatch(
+      updateUserThunk({ ...value, maLoaiNguoiDung: user?.maLoaiNguoiDung })
+    )
       .unwrap()
       .then(() => {
         NotiSuccess("Account Updated!");
@@ -69,7 +77,7 @@ export const UserInfomationTemplate = () => {
   ];
 
   return (
-    <div>
+    <div className="mt-[90px]">
       <div className="h-[80px] bg-blue-500 flex items-center">
         <p className="text-white text-xl ml-4">USER INFORMATION</p>
       </div>
@@ -91,7 +99,7 @@ export const UserInfomationTemplate = () => {
         <div className="col-span-3 h-full bg-green-400">
           <div>
             <Tabs value="profile">
-              <TabsHeader className="h-[50px] w-[50%] ml-[12px]">
+              <TabsHeader className="h-[50px] w-[50%] ml-[12px] sticky z-[5] ">
                 <Tab value={"profile"} className="">
                   <div className="flex items-center gap-2">
                     {React.createElement(data[0].icon, {
@@ -100,7 +108,7 @@ export const UserInfomationTemplate = () => {
                     {data[0].label}
                   </div>
                 </Tab>
-                <Tab value={"dasboard"}>
+                <Tab value={"dashboard"}>
                   <div className="flex items-center gap-2">
                     {React.createElement(data[1].icon, {
                       className: "w-5 h-5",
@@ -290,7 +298,6 @@ export const UserInfomationTemplate = () => {
                               onClick={() => {
                                 reset(user);
                                 showModal();
-                                
                               }}
                             >
                               <svg
@@ -315,7 +322,63 @@ export const UserInfomationTemplate = () => {
                   </div>
                 </TabPanel>
                 <TabPanel value={"dashboard"}>
-                  <div>bbb</div>
+                  <div className="w-full">
+                    <section className=" bg-gray-100  bg-opacity-50 h-full rounded-[10px] overflow-hidden">
+                      <div className=" md:mx-0 mx-auto container max-w-2xl md:max-w-full md:w-full shadow-md ">
+                        {user?.chiTietKhoaHocGhiDanh.map((e) => (
+                          <div>
+                            <div
+                              key={e.maKhoaHoc}
+                              className="grid grid-cols-4 gap-1 mb-5"
+                            >
+                              <div className="col-span-1">
+                                <img
+                                  className="w-[300px]"
+                                  src={e.hinhAnh}
+                                  alt={e.tenKhoaHoc}
+                                />
+                              </div>
+                              <div className="col-span-3 ml-2">
+                                <h3 className="font-bold text-xl">
+                                  {e.tenKhoaHoc}
+                                </h3>
+                                <p className="text-[#6a6666] h-[30%]">
+                                  {e.moTa.substring(0,100)}...
+                                </p>
+                                <span>
+                                  <FieldTimeOutlined /> 8 hr &nbsp;&nbsp;{" "}
+                                  <CalendarOutlined /> 8 days{" "}
+                                </span>
+                                <p>Rating: {e.danhGia}/10</p>
+                                <p className="flex justify-between items-center">
+                                  <p className="flex gap-2 items-center">
+                                    <div className="w-[40px]">
+                                      <img
+                                        className="w-[40px]"
+                                        src="/public/image/avatar.svg"
+                                        alt="avatar"
+                                      />
+                                    </div>
+                                    <span className="text-xl">Kevin Khanh</span>
+                                  </p>
+                                  <Button loading={isDelete} type="primary" danger className="mr-4 hover:scale-105" onClick={()=>{
+                                    dispatch(cancelEnrollThunk({taiKhoan:user.taiKhoan,maKhoaHoc:e.maKhoaHoc})).unwrap().then(()=>{
+                                      NotiSuccess("Delete Successfully!");
+                                    }).catch((err)=>{
+                                      console.log(err)
+                                    })
+                                  }}>
+                                    Delete
+                                  </Button>
+                                </p>
+                              </div>
+                            </div>
+                            <hr className="w-full my-2 h-[5px] bg-red-500" />
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  </div>
                 </TabPanel>
               </TabsBody>
             </Tabs>
@@ -325,13 +388,17 @@ export const UserInfomationTemplate = () => {
       <div>
         <Modal
           className="UserInfomation"
-          title={<div><p className="pt-5">EDIT INFORMATION </p><hr/></div> }
+          title={
+            <div>
+              <p className="pt-5">EDIT INFORMATION </p>
+              <hr />
+            </div>
+          }
           closeIcon={false}
           open={isModalOpen}
           centered
           onCancel={handleCancel}
           onOk={handleOk}
-          
         >
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input

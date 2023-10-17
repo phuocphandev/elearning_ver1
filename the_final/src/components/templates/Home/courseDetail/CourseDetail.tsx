@@ -10,7 +10,6 @@ export const CourseDetail = () => {
   console.log("CourseInfo: ", CourseInfo);
 
   const param = useParams<{ courseID: string }>();
-  console.log("param: ", param.courseID);
 
   const dispatch = useAppDispatch();
 

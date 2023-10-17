@@ -25,13 +25,13 @@ export const AllCourseTemplate = () => {
       </div>
       <div>
         <div className="md:my-4 md:px-16">
-          <div className="grid md:grid-cols-4 gap-[100px]">
+          <div className="grid md:grid-cols-4 gap-[100px] CourseList">
             {CourseList?.map((course) => {
               const detailPath = generatePath("/" + PATH.detail, {
                 courseID: course?.maKhoaHoc,
               });
               return (
-                <div className="col-span-1" key={course?.maKhoaHoc}>
+                <div className="col-span-1 " key={course?.maKhoaHoc}>
                   <Card
                     cover={
                       <div className="">

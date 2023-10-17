@@ -35,3 +35,8 @@ export interface CoursePagi {
   totalPages:number;
   items:CourseType[];
 }
+
+export interface EnrollCourseType{
+  maKhoaHoc:string,
+  taiKhoan:string,
+}

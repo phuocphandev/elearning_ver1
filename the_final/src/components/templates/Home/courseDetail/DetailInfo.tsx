@@ -1,10 +1,32 @@
 import { CourseType } from "types/Course";
+import {enrollCourseThunk} from "store/CourseManagement/thunk"
+import { useAppDispatch } from "store";
+import { NotiError, NotiSuccess } from "constant";
+import { useAuth } from "hooks";
 
 type DetailInfoProps = {
   CourseInfo: CourseType;
 };
 
 export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
+  const { user } = useAuth();
+  const dispatch = useAppDispatch();
+
+  const enrollCourse = () => {
+    dispatch(
+      enrollCourseThunk({ maKhoaHoc: CourseInfo?.maKhoaHoc, taiKhoan: user?.taiKhoan })
+    )
+      .unwrap()
+      .then(() => {
+        NotiSuccess("Enroll Success!");
+        console.log("Success");
+      })
+      .catch((err) => {
+        NotiError("You've already Enrolled!")
+        console.log(err);
+      });
+  };
+
   return (
     <div className="bg-[var(--background)] mt-10 p-2 rounded flex flex-col gap-2 ">
       <img
@@ -29,7 +51,10 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         </div>
       </div>
 
-      <button className="border border-[var(--primary)] w-full rounded-xl text-xl py-1 transition-all ease-in-out duration-500 bg-transparent hover:bg-[#eee]">
+      <button
+        className="border border-[var(--primary)] w-full rounded-xl text-xl py-1 transition-all ease-in-out duration-500 bg-transparent hover:bg-[#eee]"
+        onClick={()=>enrollCourse()}
+      >
         Enroll
       </button>
       <div className="">

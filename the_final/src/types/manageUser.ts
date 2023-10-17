@@ -9,8 +9,18 @@ export type LoginUser ={
     soDT:string
     taiKhoan:string
 }
+export interface chiTietKhoaHocGhiDanh {
+    maKhoaHoc: string
+    tenKhoaHoc: string
+    biDanh: string
+    moTa: string
+    luotXem: number
+    hinhAnh: string
+    ngayTao: string
+    danhGia: number
+  }
 export interface UserInfo {
-    chiTietKhoaHocGhiDanh: any[]
+    chiTietKhoaHocGhiDanh: chiTietKhoaHocGhiDanh[]
     taiKhoan: string
     matKhau: string
     hoTen: string
@@ -22,3 +32,4 @@ export interface UserInfo {
 export type UpdateUser = RegisterSchemaType &{
     maLoaiNguoiDung:string
 }
+

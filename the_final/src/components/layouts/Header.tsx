@@ -317,7 +317,7 @@ const Header = () => {
                           </Dialog.Title>
                         </div>
                         <div className="relative mt-6 flex-1 px-4 w-full">
-                          <div className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info cursor-pointer">
+                          <div className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info cursor-pointer" onClick={()=>{navigate(PATH.user);setOpen(false);}}>
                             <img
                               className="h-full cardstatic"
                               src="/public/image/login/card_static.png"
@@ -329,6 +329,20 @@ const Header = () => {
                           />
                             <button className="ml-8 text-white font-bold">Infomation</button>
                           </div>
+                          {/*  */}
+                          {user?.maLoaiNguoiDung=="GV"?<div className="flex mt-5 hover:bg-[#042f40cc] w-full h-[60px] relative admin cursor-pointer" onClick={()=>{navigate(PATH.admin);setOpen(false);}}>
+                            <img
+                              className="h-full adminstatic"
+                              src="/public/image/login/managestatic.png"
+                              alt="info"
+                            /> <img
+                            className="h-full adminanimate"
+                            src="/public/image/login/managegif.gif"
+                            alt="info"
+                          />
+                            <button className="ml-8 text-white font-bold">Admin Page</button>
+                          </div>:""}
+                          {/*  */}
                           <div
                             className="flex mt-5 hover:bg-[#042f40cc] h-[60px] relative exit cursor-pointer"
                             onClick={() => {
