@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginSchemaType, RegisterSchemaType } from "schema";
+import { LoginSchemaType} from "schema";
 import { manageUser } from "services/manageUser";
 import { UpdateUser } from "types";
 
@@ -40,3 +40,11 @@ export const updateUserThunk = createAsyncThunk(
     }
   }
 );
+export const getAccountThunk = createAsyncThunk("manageUser/getAccountThunk",async (payload:number,{rejectWithValue})=>{
+  try {
+    const data = await manageUser.getAccount(payload);
+    return data.data;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+})

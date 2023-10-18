@@ -6,13 +6,16 @@ import { StyleProvider } from '@ant-design/cssinjs'
 import { store } from "store";
 import { Provider } from "react-redux";
 import { ScrollToTop } from "components";
+import {NextUIProvider} from "@nextui-org/react"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
   <Provider store = {store}>
    <StyleProvider hashPriority="high">
     <ScrollToTop/>
+    <NextUIProvider>
     <App />
+    </NextUIProvider>
    </StyleProvider>
    </Provider>
   </BrowserRouter>

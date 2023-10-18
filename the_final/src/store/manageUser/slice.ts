@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { LoginUser, UserInfo } from "types";
-import { getUserInfoThunk, loginThunk } from "./thunk";
+import { LoginUser, UserInfo, getAccount } from "types";
+import { getAccountThunk, getUserInfoThunk, loginThunk } from "./thunk";
 
 type manageUser = {
   user?: LoginUser | UserInfo;
   accessToken?: string;
+  AllAccount?: getAccount;
+  
 };
 const initialState: manageUser = {
   user: undefined,
@@ -29,7 +31,10 @@ export const manageUserSlice = createSlice({
       })
       .addCase(getUserInfoThunk.fulfilled, (state, { payload }) => {
         state.user = payload;
-      });
+      })
+      .addCase(getAccountThunk.fulfilled, (state, {payload}) => {
+        state.AllAccount = payload;
+      })
   },
 });
 export const { reducer: manageUserReducer, actions: manageUserActions } =
