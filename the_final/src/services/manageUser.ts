@@ -22,4 +22,7 @@ export const manageUser = {
     getCourseNotEnroll:(payload:string)=>api.post(`/LayDanhSachKhoaHocChuaGhiDanh?TaiKhoan=${payload}`),
     getCourseUnAuthor:(payload:{taiKhoan:string})=>api.post('/LayDanhSachKhoaHocChoXetDuyet',payload),
     getCourseAuthor:(payload:{taiKhoan:string})=>api.post('/LayDanhSachKhoaHocDaXetDuyet',payload),
+    getUserNotEnroll:(payload:{maKhoaHoc:string})=>api.post('/LayDanhSachNguoiDungChuaGhiDanh',payload),
+    getUserUnAuthor:(payload:{maKhoaHoc:string})=>api.post('/LayDanhSachHocVienChoXetDuyet', payload),
+    getUserAuthor:(payload:{maKhoaHoc:string})=>api.post('/LayDanhSachHocVienKhoaHoc',payload),
 };

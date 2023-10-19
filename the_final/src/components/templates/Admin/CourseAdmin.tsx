@@ -11,6 +11,7 @@ import { Button, Input, Modal } from "components";
 import { NotiError, NotiSuccess } from "constant";
 import { Pagination } from "flowbite-react";
 import { useAuth } from "hooks";
+import { useCourse } from "hooks/useCourse";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { RegisterSchema, RegisterSchemaType } from "schema";
@@ -19,30 +20,25 @@ import { useAppDispatch } from "store";
 import {
   authorCourseThunk,
   cancelEnrollThunk,
+  deleteCourseThunk,
+  getCourseFilterThunk,
+  getCoursePagiThunk,
 } from "store/CourseManagement/thunk";
 import {
-  deleteAccountThunk,
-  getAccountFilterThunk,
-  getAccountThunk,
-  getCourseNotEnrollThunk,
-  getCourseUnAuthorThunk,
-  getCourseAuthorThunk,
+  getUserNotEnrollThunk,
+  getUserUnAuthorThunk,
+  getUserAuthorThunk,
 } from "store/manageUser/thunk";
 
 export const CourseAdmin = () => {
   const [search, setSearch] = useState(null);
-  const {
-    AllAccount,
-    isDelete,
-    CourseNotEnroll,
-    CourseNotAuthor,
-    CourseAuthor,
-  } = useAuth();
+  const { CourseListPagi, isDelete } = useCourse();
+  const { UserNotEnroll, UserNotAuthor, UserAuthor } = useAuth();
   const [currentPage1, setCurrentPage1] = useState(1);
   const [currentPage2, setCurrentPage2] = useState(1);
   const [currentPage3, setCurrentPage3] = useState(1);
-  const [account, setAccount] = useState("");
-  const [option, setOption] = useState({ tenKH: "...", maKH: "" });
+  const [ID, setID] = useState("");
+  const [option, setOption] = useState({ tenND: "...", taiKhoan: "" });
   const dispatch = useAppDispatch();
   const [isModal1Open, setIsModal1Open] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);
@@ -63,34 +59,36 @@ export const CourseAdmin = () => {
 
   // Phan Trang - Cho Xac Thuc:
 
-  const newCourseNotAuthor = [];
+  const newUserNotAuthor = [];
   let indexArr = [];
-  for (let i = 0; i < CourseNotAuthor?.length; i++) {
-    indexArr.push(CourseNotAuthor[i]);
+  for (let i = 0; i < UserNotAuthor?.length; i++) {
+    indexArr.push(UserNotAuthor[i]);
     if (indexArr?.length == 2) {
-      newCourseNotAuthor.push(indexArr);
+      newUserNotAuthor.push(indexArr);
       indexArr = [];
     }
   }
   if (indexArr.length !== 0) {
-    newCourseNotAuthor.push(indexArr);
+    newUserNotAuthor.push(indexArr);
   }
-  console.log("newCourseNotAuthor: ", CourseNotAuthor);
+
+  // console.log("UserNotAuthor: ", UserNotAuthor);
 
   // Phan trang - xac thuc
-  const newCourseAuthor = [];
+  const newUserAuthor = [];
   let indexArr2 = [];
-  for (let i = 0; i < CourseAuthor?.length; i++) {
-    indexArr2.push(CourseAuthor[i]);
+  for (let i = 0; i < UserAuthor?.length; i++) {
+    indexArr2.push(UserAuthor[i]);
     if (indexArr2?.length == 2) {
-      newCourseAuthor.push(indexArr2);
+      newUserAuthor.push(indexArr2);
       indexArr2 = [];
     }
   }
   if (indexArr2.length !== 0) {
-    newCourseAuthor.push(indexArr2);
+    newUserAuthor.push(indexArr2);
   }
-  console.log("newCourseAuthor: ", newCourseAuthor);
+  // console.log("CourseAuthor: ", CourseAuthor);
+
   //===================================
   const {
     handleSubmit,
@@ -122,11 +120,9 @@ export const CourseAdmin = () => {
 
   useEffect(() => {
     if (search) {
-      dispatch(
-        getAccountFilterThunk({ tuKhoa: search, soTrang: currentPage1 })
-      );
+      dispatch(getCourseFilterThunk({ tuKhoa: search, soTrang: currentPage1 }));
     } else {
-      dispatch(getAccountThunk(currentPage1));
+      dispatch(getCoursePagiThunk(currentPage1));
     }
   }, [currentPage1, search]);
   return (
@@ -166,7 +162,6 @@ export const CourseAdmin = () => {
               <span>Add User</span> <PlusOutlined />
             </div>
           </Button>
-
         </div>
       </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg text-center">
@@ -181,54 +176,129 @@ export const CourseAdmin = () => {
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[20%] "
+                className=" py-5 align-middle break-words whitespace-normal w-[15%] "
               >
-                Username
+                Course ID
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[7%] "
+                className=" py-5 align-middle break-words whitespace-normal w-[13%] "
               >
-                Category
+                Course Name
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[21%] "
+                className=" py-5 align-middle break-words whitespace-normal w-[30%] "
               >
-                Full Name
-              </th>
-              <th
-                scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[20%] "
-              >
-                Email
+                Picture
               </th>
               <th
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal w-[10%] "
               >
-                Phone Number
+                Views
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[20%] "
+                className=" py-5 align-middle break-words whitespace-normal w-[15%] "
+              >
+                Creator
+              </th>
+              <th
+                scope="col"
+                className=" py-5 align-middle break-words whitespace-normal w-[15%] "
               >
                 <SettingOutlined />
               </th>
             </tr>
           </thead>
           <tbody>
-            
+            {CourseListPagi?.items.map((e, index) => {
+              return (
+                <tr
+                  className={`${
+                    index % 2 == 0
+                      ? "bg-gray-50 text-center h-[100px]"
+                      : "bg-white h-[100px]"
+                  } hover:bg-gray-700 text-center `}
+                  key={index}
+                >
+                  <td className=" py-4 w-[2%] whitespace-normal break-words ">
+                    {index}
+                  </td>
+                  <td className=" py-4 w-[15%] whitespace-normal break-words ">
+                    {e?.maKhoaHoc}
+                  </td>
+                  <td className=" py-4 w-[13%] whitespace-normal break-words ">
+                    {e?.tenKhoaHoc}
+                  </td>
+                  <td
+                    className="py-4 w-[18%]"
+                    style={{
+                      backgroundImage: `URL(${e?.hinhAnh})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundClip: "content-box",
+                    }}
+                  ></td>
+                  <td className=" py-4 w-[10%] whitespace-normal break-words ">
+                    {e?.luotXem}
+                  </td>
+                  <td className=" py-4 w-[15%] whitespace-normal break-words ">
+                    {e?.nguoiTao.hoTen}
+                  </td>
+                  <td className="flex justify-center py-8 gap-3 w-[100%] h-[100%] whitespace-normal break-words ">
+                    <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer ">
+                      <InfoCircleFilled
+                        style={{ color: "var(--primary)", fontSize: "25px" }}
+                        onClick={() => {
+                          showModal2();
+                          setID(e.maKhoaHoc);
+                          dispatch(
+                            getUserNotEnrollThunk({ maKhoaHoc: e?.maKhoaHoc })
+                          );
+                          dispatch(getUserAuthorThunk({ maKhoaHoc: e?.maKhoaHoc }));
+                          dispatch(getUserUnAuthorThunk({ maKhoaHoc: e?.maKhoaHoc }));
+                          if (!isModal2Open) {
+                            setDropdown(false);
+                          }
+                        }}
+                      />
+                    </div>
+                    <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer ">
+                      <ToolFilled
+                        style={{ color: "orange", fontSize: "25px" }}
+                      />
+                    </div>
+                    <div
+                      className={`hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer ${
+                        isDelete ? "pointer-events-none" : ""
+                      }  `}
+                    >
+                      <DeleteFilled
+                        style={{ color: "red", fontSize: "25px" }}
+                        onClick={() => {
+                          if (CourseListPagi?.items.length == 1) {
+                            setCurrentPage1(currentPage1 - 1);
+                          }
+                          dispatch(deleteCourseThunk(e?.maKhoaHoc));
+                        }}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <div className="flex justify-center">
-        {AllAccount && (
+        {CourseListPagi && (
           <Pagination
             currentPage={currentPage1}
             onPageChange={onPageChange1}
             showIcons
-            totalPages={AllAccount?.totalPages}
+            totalPages={CourseListPagi?.totalPages}
           />
         )}
       </div>
@@ -287,13 +357,13 @@ export const CourseAdmin = () => {
             {" "}
             ADD USER
           </Button>
-          <Button htmlType={"button"} type="primary" className="w-full" >
+          <Button htmlType={"button"} type="primary" className="w-full">
             {" "}
             CLOSE
           </Button>
         </form>
       </Modal>
-      {/* Modal Regis Course */}
+      {/* Modal User */}
       <Modal
         closeIcon={false}
         open={isModal2Open}
@@ -304,7 +374,7 @@ export const CourseAdmin = () => {
       >
         <div>
           <div className="flex justify-evenly">
-            <label>Select Course:</label>
+            <label>Select User:</label>
             {/* Dropdown */}
             <div className="flex flex-col relative w-[40%]">
               <button
@@ -315,8 +385,8 @@ export const CourseAdmin = () => {
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 type="button"
               >
-                {option?.tenKH.substring(0, 30)}
-                {option?.tenKH.length > 30 ? "..." : ""}{" "}
+                {option?.tenND.substring(0, 30)}
+                {option?.tenND.length > 30 ? "..." : ""}{" "}
                 <svg
                   className="w-2.5 h-2.5 ml-2.5"
                   aria-hidden="true"
@@ -341,17 +411,17 @@ export const CourseAdmin = () => {
                 }  `}
               >
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 h-[200px] overflow-y-auto text-center adminScrollbar">
-                  {CourseNotEnroll?.map((e) => (
+                  {UserNotEnroll?.map((e, index) => (
                     <li
-                      key={e?.maKhoaHoc}
+                      key={index}
                       onClick={() => {
-                        setOption({ tenKH: e?.tenKhoaHoc, maKH: e?.maKhoaHoc });
+                        setOption({ tenND: e?.hoTen, taiKhoan: e?.taiKhoan });
                         setDropdown(false);
                       }}
                       // className="border-b border-black mb-2 p-2"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
                     >
-                      {e?.tenKhoaHoc}
+                      {e?.hoTen}
                     </li>
                   ))}
                 </ul>
@@ -359,22 +429,22 @@ export const CourseAdmin = () => {
             </div>
             <Button
               onClick={() => {
-                if (option.maKH == "...") {
-                  NotiError("Please choose course!");
+                if (option.taiKhoan == "") {
+                  NotiError("Please choose user!");
                 } else {
                   dispatch(
                     authorCourseThunk({
-                      maKhoaHoc: option.maKH,
-                      taiKhoan: account,
+                      maKhoaHoc: ID,
+                      taiKhoan: option.taiKhoan,
                     })
                   )
                     .unwrap()
                     .then(() => {
                       NotiSuccess("Add Course Successfully!");
-                      setOption({...option,tenKH:"..."});
-                      dispatch(getCourseNotEnrollThunk(account));
-                      dispatch(getCourseUnAuthorThunk({ taiKhoan: account }));
-                      dispatch(getCourseAuthorThunk({taiKhoan:account}));
+                      setOption({ ...option, tenND: "..." });
+                      dispatch(getUserNotEnrollThunk({maKhoaHoc:ID}));
+                      dispatch(getUserUnAuthorThunk({ maKhoaHoc:ID }));
+                      dispatch(getUserAuthorThunk({ maKhoaHoc:ID}));
                     })
                     .catch((err) => {
                       console.log(err);
@@ -388,7 +458,7 @@ export const CourseAdmin = () => {
           <hr className="h-[5px] bg-red-600" />
           {/* Cho Xac Thuc  */}
           <div className="">
-            <p className="text-xl font-bold text-white">Unauthorized Course</p>
+            <p className="text-xl font-bold text-white">Unauthorized User</p>
           </div>
           <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
@@ -401,22 +471,29 @@ export const CourseAdmin = () => {
                 </th>
                 <th
                   scope="col"
-                  className=" py-5 align-middle break-words whitespace-normal w-[45%] "
+                  className=" py-5 align-middle break-words whitespace-normal w-[35%] "
                 >
-                  Course Name
+                  Username
                 </th>
                 <th
                   scope="col"
-                  className=" py-5 align-middle break-words whitespace-normal w-[45%] "
+                  className=" py-5 align-middle break-words whitespace-normal w-[35%] "
+                >
+                  Full Name
+                </th>
+                <th
+                  scope="col"
+                  className=" py-5 align-middle break-words whitespace-normal w-[20%] "
                 >
                   {/* <SettingOutlined /> */}
-                  Course Status
+                  User Status
                 </th>
               </tr>
             </thead>
             <tbody>
               {/* Co maKhoaHoc && tenKhoaHoc */}
-              {newCourseNotAuthor?.[currentPage2 - 1]?.map((e, index) => {
+
+              {newUserNotAuthor?.[currentPage2 - 1]?.map((e, index) => {
                 index += 1;
                 return (
                   <tr
@@ -428,8 +505,11 @@ export const CourseAdmin = () => {
                     <td className=" py-4 w-[10%] whitespace-normal break-words ">
                       {index}
                     </td>
-                    <td className=" py-4 w-[45%] whitespace-normal break-words ">
-                      {e?.tenKhoaHoc}
+                    <td className=" py-4 w-[35%] whitespace-normal break-words ">
+                      {e?.taiKhoan}
+                    </td>
+                    <td className=" py-4 w-[35%] whitespace-normal break-words ">
+                      {e?.hoTen}
                     </td>
                     <td className="flex justify-center items-center m-auto py-4 gap-3 w-[45%] whitespace-normal break-words  ">
                       <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer">
@@ -437,16 +517,12 @@ export const CourseAdmin = () => {
                           onClick={() => {
                             dispatch(
                               authorCourseThunk({
-                                maKhoaHoc: e.maKhoaHoc,
-                                taiKhoan: account,
+                                maKhoaHoc: ID,
+                                taiKhoan: option?.taiKhoan,
                               })
                             );
-                            dispatch(
-                              getCourseUnAuthorThunk({ taiKhoan: account })
-                            );
-                            dispatch(
-                              getCourseAuthorThunk({ taiKhoan: account })
-                            );
+                            dispatch(getUserUnAuthorThunk({ maKhoaHoc: ID }));
+                            dispatch(getUserAuthorThunk({ maKhoaHoc: ID }));
                           }}
                           style={{ color: "green", fontSize: "25px" }}
                         />
@@ -455,21 +531,23 @@ export const CourseAdmin = () => {
                         <DeleteFilled
                           onClick={() => {
                             if (
-                              newCourseNotAuthor[currentPage2 - 1].length == 1
+                              newUserNotAuthor[currentPage2 - 1].length == 1
                             ) {
                               setCurrentPage2(currentPage2 - 1);
                             }
                             dispatch(
                               cancelEnrollThunk({
-                                taiKhoan: account,
-                                maKhoaHoc: e.maKhoaHoc,
+                                taiKhoan: option.taiKhoan,
+                                maKhoaHoc: ID,
                               })
                             )
                               .unwrap()
                               .then(() => {
-                                dispatch(getCourseNotEnrollThunk(account));
                                 dispatch(
-                                  getCourseUnAuthorThunk({ taiKhoan: account })
+                                  getUserNotEnrollThunk({ maKhoaHoc: ID })
+                                );
+                                dispatch(
+                                  getUserUnAuthorThunk({ maKhoaHoc: ID })
                                 );
                               })
                               .catch((err) => {
@@ -483,38 +561,22 @@ export const CourseAdmin = () => {
                   </tr>
                 );
               })}
-              {/* <tr
-                // className={`${
-                //   index % 2 == 0 ? "bg-gray-50 " : "bg-white"
-                // } hover:bg-gray-700`}
-                className="text-center bg-gray-700"
-              >
-                <td className=" py-4 w-[10%] whitespace-normal break-words ">
-                  a
-                </td>
-                <td className=" py-4 w-[45%] whitespace-normal break-words ">
-                  b
-                </td>
-                <td className="flex justify-center items-center m-auto py-4 gap-3 w-[45%] whitespace-normal break-words  ">
-                  c
-                </td>
-              </tr> */}
             </tbody>
           </table>
           <div className="flex justify-center">
-            {CourseNotAuthor && (
+            {UserNotAuthor && (
               <Pagination
                 currentPage={currentPage2}
                 onPageChange={onPageChange2}
                 showIcons
-                totalPages={newCourseNotAuthor?.length}
+                totalPages={newUserNotAuthor?.length}
               />
             )}
           </div>
           <hr className="h-[5px] bg-red-600" />
           {/* Da Ghi Danh  */}
           <div className="">
-            <p className="text-xl font-bold text-white">Authorized Course</p>
+            <p className="text-xl font-bold text-white">Authorized User</p>
           </div>
           <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
@@ -527,21 +589,27 @@ export const CourseAdmin = () => {
                 </th>
                 <th
                   scope="col"
-                  className=" py-5 align-middle break-words whitespace-normal w-[45%] "
+                  className=" py-5 align-middle break-words whitespace-normal w-[35%] "
                 >
-                  Course Name
+                  Username
                 </th>
                 <th
                   scope="col"
-                  className=" py-5 align-middle break-words whitespace-normal w-[45%] "
+                  className=" py-5 align-middle break-words whitespace-normal w-[35%] "
+                >
+                  Full Name
+                </th>
+                <th
+                  scope="col"
+                  className=" py-5 align-middle break-words whitespace-normal w-[20%] "
                 >
                   {/* <SettingOutlined /> */}
-                  Course Status
+                  User Status
                 </th>
               </tr>
             </thead>
             <tbody>
-              { newCourseAuthor?.[currentPage3 - 1]?.map((e, index) => {
+              {newUserAuthor?.[currentPage3 - 1]?.map((e, index) => {
                 index += 1;
                 return (
                   <tr
@@ -553,31 +621,39 @@ export const CourseAdmin = () => {
                     <td className=" py-4 w-[10%] whitespace-normal break-words ">
                       {index}
                     </td>
-                    <td className=" py-4 w-[45%] whitespace-normal break-words ">
-                      {e?.tenKhoaHoc}
+                    <td className=" py-4 w-[35%] whitespace-normal break-words ">
+                      {e?.taiKhoan}
                     </td>
-                    <td className="flex justify-center items-center m-auto py-4 gap-3 w-[45%] whitespace-normal break-words  ">
+                    <td className=" py-4 w-[35%] whitespace-normal break-words ">
+                      {e?.hoTen}
+                    </td>
+                    <td className="flex justify-center items-center m-auto py-4 gap-3 w-[25%] whitespace-normal break-words  ">
                       <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer">
                         <DeleteFilled
                           onClick={() => {
-                            if (newCourseAuthor[currentPage3 - 1].length == 1 && currentPage3 >= 2) {
+                            if (
+                              newUserAuthor[currentPage3 - 1].length == 1 &&
+                              currentPage3 >= 2
+                            ) {
                               setCurrentPage3(currentPage3 - 1);
                             }
                             dispatch(
                               cancelEnrollThunk({
-                                taiKhoan: account,
-                                maKhoaHoc: e.maKhoaHoc,
+                                taiKhoan: (
+                                  <option value="" className=""></option>
+                                ),
+                                maKhoaHoc: ID,
                               })
                             )
                               .unwrap()
                               .then(() => {
-                                dispatch(getCourseNotEnrollThunk(account));
                                 dispatch(
-                                  getCourseUnAuthorThunk({ taiKhoan: account })
+                                  getUserNotEnrollThunk({ maKhoaHoc: ID })
                                 );
                                 dispatch(
-                                  getCourseAuthorThunk({ taiKhoan: account })
+                                  getUserUnAuthorThunk({ maKhoaHoc: ID })
                                 );
+                                dispatch(getUserAuthorThunk({ maKhoaHoc: ID }));
                               })
                               .catch((err) => {
                                 console.log(err);
@@ -597,7 +673,7 @@ export const CourseAdmin = () => {
               currentPage={currentPage3}
               onPageChange={onPageChange3}
               showIcons
-              totalPages={newCourseAuthor?.length}
+              totalPages={newUserAuthor?.length}
             />
           </div>
         </div>

@@ -107,3 +107,39 @@ export const getCourseAuthorThunk = createAsyncThunk(
     }
   }
 );
+
+export const getUserNotEnrollThunk = createAsyncThunk(
+  "manageUser/getUserNotEnrollThunk",
+  async (payload: { maKhoaHoc: string }, { rejectWithValue }) => {
+    try {
+      const data = await manageUser.getUserNotEnroll(payload);
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+export const getUserUnAuthorThunk = createAsyncThunk(
+  "manageUser/getUserUnAuthorThunk",
+  async (payload: { maKhoaHoc: string }, { rejectWithValue }) => {
+    try {
+      const data = await manageUser.getUserUnAuthor(payload);
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getUserAuthorThunk = createAsyncThunk(
+  "manageUser/getUserAuthorThunk",
+  async (payload: { maKhoaHoc: string }, { rejectWithValue }) => {
+    try {
+      const data = await manageUser.getUserAuthor(payload);
+      console.log("getUserAuthorThunk ne: ", data.data)
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

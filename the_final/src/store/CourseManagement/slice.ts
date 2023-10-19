@@ -5,6 +5,8 @@ import {
   getCoursePagiThunk,
   manageCourseThunk,
   cancelEnrollThunk,
+  getCourseFilterThunk,
+  deleteCourseThunk,
 } from "./thunk";
 import { CoursePagi, CourseType } from "types/Course";
 
@@ -12,12 +14,11 @@ type manageCourseInitialState = {
   CourseList?: CourseType[];
   CourseInfo?: CourseType;
   CourseListPagi?: CoursePagi;
-  isDelete ?: boolean;
-
+  isDelete?: boolean;
 };
 
 const initialState: manageCourseInitialState = {
-  isDelete : false,
+  isDelete: false,
 };
 
 export const manageCourse = createSlice({
@@ -25,27 +26,40 @@ export const manageCourse = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(manageCourseThunk.fulfilled, (state, { payload }) => {
-      state.CourseList = payload;
-    });
-    builder.addCase(getCourseInfoThunk.fulfilled, (state, { payload }) => {
-      state.CourseInfo = payload;
-    });
-    builder.addCase(getCourseFollowMenu.fulfilled, (state, { payload }) => {
-      state.CourseList = payload;
-    });
-    builder.addCase(getCoursePagiThunk.fulfilled, (state, { payload }) => {
-      state.CourseListPagi = payload;
-    });
-    builder.addCase(cancelEnrollThunk.pending,(state)=>{
-      state.isDelete = true;
-    });
-    builder.addCase(cancelEnrollThunk.fulfilled,(state)=>{
-      state.isDelete = false;
-    });
-    builder.addCase(cancelEnrollThunk.rejected,(state)=>{
-      state.isDelete = false;
-    })
+    builder
+      .addCase(manageCourseThunk.fulfilled, (state, { payload }) => {
+        state.CourseList = payload;
+      })
+      .addCase(getCourseInfoThunk.fulfilled, (state, { payload }) => {
+        state.CourseInfo = payload;
+      })
+      .addCase(getCourseFollowMenu.fulfilled, (state, { payload }) => {
+        state.CourseList = payload;
+      })
+      .addCase(getCoursePagiThunk.fulfilled, (state, { payload }) => {
+        state.CourseListPagi = payload;
+      })
+      .addCase(cancelEnrollThunk.pending, (state) => {
+        state.isDelete = true;
+      })
+      .addCase(cancelEnrollThunk.fulfilled, (state) => {
+        state.isDelete = false;
+      })
+      .addCase(cancelEnrollThunk.rejected, (state) => {
+        state.isDelete = false;
+      })
+      .addCase(getCourseFilterThunk.fulfilled, (state, { payload }) => {
+        state.CourseListPagi = payload;
+      })
+      .addCase(deleteCourseThunk.pending, (state) => {
+        state.isDelete = true;
+      })
+      .addCase(deleteCourseThunk.fulfilled, (state) => {
+        state.isDelete = false;
+      })
+      .addCase(deleteCourseThunk.rejected, (state) => {
+        state.isDelete = false;
+      });
   },
 });
 

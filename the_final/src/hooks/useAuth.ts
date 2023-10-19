@@ -10,6 +10,9 @@ export const useAuth = () => {
     CourseNotEnroll,
     CourseNotAuthor,
     CourseAuthor,
+    UserNotEnroll,
+    UserNotAuthor,
+    UserAuthor,
   } = useSelector((state: RootState) => state.manageUser);
   return {
     accessToken,
@@ -19,5 +22,8 @@ export const useAuth = () => {
     CourseNotEnroll,
     CourseNotAuthor,
     CourseAuthor,
+    UserNotEnroll,
+    UserNotAuthor,
+    UserAuthor,
   };
 };

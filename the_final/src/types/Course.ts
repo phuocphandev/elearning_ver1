@@ -45,3 +45,9 @@ export interface CourseNotEnroll {
   biDanh: string
   tenKhoaHoc: string
 }
+
+export interface UserNotEnroll{
+  taiKhoan: string
+  hoTen: string
+  biDanh: string
+}

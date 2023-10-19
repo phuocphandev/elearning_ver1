@@ -54,3 +54,4 @@ export interface getAccountItem {
   maLoaiNguoiDung: string;
   tenLoaiNguoiDung: string;
 }
+

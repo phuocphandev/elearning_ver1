@@ -9,8 +9,11 @@ import {
   getCourseUnAuthorThunk,
   getUserInfoThunk,
   loginThunk,
+  getUserNotEnrollThunk,
+  getUserUnAuthorThunk,
+  getUserAuthorThunk,
 } from "./thunk";
-import { CourseNotEnroll } from "types/Course";
+import { CourseNotEnroll, UserNotEnroll } from "types/Course";
 
 type manageUser = {
   user?: LoginUser | UserInfo;
@@ -20,6 +23,9 @@ type manageUser = {
   CourseNotEnroll?: CourseNotEnroll[];
   CourseNotAuthor?: CourseNotEnroll[];
   CourseAuthor?: CourseNotEnroll[];
+  UserNotEnroll?: UserNotEnroll[];
+  UserNotAuthor?: UserNotEnroll[];
+  UserAuthor?: UserNotEnroll[];
 };
 const initialState: manageUser = {
   user: undefined,
@@ -28,6 +34,7 @@ const initialState: manageUser = {
   CourseNotEnroll: [],
   CourseNotAuthor: [],
   CourseAuthor: [],
+  UserAuthor:[],
 };
 export const manageUserSlice = createSlice({
   name: "manageUser",
@@ -72,6 +79,15 @@ export const manageUserSlice = createSlice({
       })
       .addCase(getCourseAuthorThunk.fulfilled, (state, { payload }) => {
         state.CourseAuthor = payload;
+      })
+      .addCase(getUserNotEnrollThunk.fulfilled, (state, { payload }) => {
+        state.UserNotEnroll = payload;
+      })
+      .addCase(getUserUnAuthorThunk.fulfilled, (state, { payload }) => {
+        state.UserNotAuthor = payload;
+      })
+      .addCase(getUserAuthorThunk.fulfilled, (state, { payload }) => {
+        state.UserAuthor = payload;
       });
   },
 });

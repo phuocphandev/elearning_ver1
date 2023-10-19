@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { manageCourse } from "services";
 import { getUserInfoThunk } from "store/manageUser/thunk";
+import { payloadFilter } from "types";
 import { EnrollCourseType } from "types/Course";
 
 export const manageCourseThunk = createAsyncThunk(
@@ -76,6 +77,28 @@ export const authorCourseThunk = createAsyncThunk(
   async (payload: EnrollCourseType, { rejectWithValue }) => {
     try {
       await manageCourse.authorCourse(payload);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+export const getCourseFilterThunk = createAsyncThunk(
+  "CourseManagement/getCourseFilterThunk",
+  async (payload: payloadFilter, { rejectWithValue }) => {
+    try {
+      const data = await manageCourse.filterCourse(payload);
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+export const deleteCourseThunk = createAsyncThunk(
+  "CourseManagement/deleteCourseThunk",
+  async (payload: string, { rejectWithValue }) => {
+    try {
+      await manageCourse.deleteCourse(payload);
+
     } catch (error) {
       return rejectWithValue(error);
     }
