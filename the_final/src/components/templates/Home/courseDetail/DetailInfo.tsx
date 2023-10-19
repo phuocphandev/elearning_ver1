@@ -11,6 +11,9 @@ type DetailInfoProps = {
 export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
   const { user } = useAuth();
   const dispatch = useAppDispatch();
+  console.log("CourseInfo" ,CourseInfo )
+  console.log("xem data",{ maKhoaHoc: CourseInfo?.maKhoaHoc, taiKhoan: user?.taiKhoan });
+
 
   const enrollCourse = () => {
     dispatch(
@@ -19,7 +22,6 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
       .unwrap()
       .then(() => {
         NotiSuccess("Enroll Success!");
-        console.log("Success");
       })
       .catch((err) => {
         NotiError("You've already Enrolled!")

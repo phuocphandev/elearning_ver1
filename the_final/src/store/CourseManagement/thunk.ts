@@ -71,3 +71,14 @@ export const cancelEnrollThunk = createAsyncThunk(
     }
   }
 );
+export const authorCourseThunk = createAsyncThunk(
+  "CourseManagement/authorCourseThunk",
+  async (payload: EnrollCourseType, { rejectWithValue }) => {
+    try {
+      await manageCourse.authorCourse(payload);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+

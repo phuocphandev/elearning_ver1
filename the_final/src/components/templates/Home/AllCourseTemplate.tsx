@@ -57,7 +57,7 @@ export const AllCourseTemplate = () => {
                         </p>
                       }
                       description={
-                        <p className="flex justify-center">
+                        <p className="flex justify-center h-[70px]">
                           {course?.moTa.length > 100
                             ? `${course?.moTa.substring(0, 70)}...`
                             : course?.moTa}

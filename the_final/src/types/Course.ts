@@ -40,3 +40,8 @@ export interface EnrollCourseType{
   maKhoaHoc:string,
   taiKhoan:string,
 }
+export interface CourseNotEnroll {
+  maKhoaHoc: string
+  biDanh: string
+  tenKhoaHoc: string
+}

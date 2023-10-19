@@ -17,7 +17,9 @@ export const manageCourse = {
     api.get<CoursePagi>(
       `/LayDanhSachKhoaHoc_PhanTrang?page=${payload}&pageSize=10&MaNhom=GP09`
     ),
-  enrollCourse: (payload: EnrollCourseType) =>
-    api.post("/DangKyKhoaHoc", payload),
+  enrollCourse: (payload: EnrollCourseType) =>api.post("/DangKyKhoaHoc", payload),
   cancelEnroll:(payload:any)=>api.post('/HuyGhiDanh',payload),
+  authorCourse:(payload:EnrollCourseType)=>api.post('/GhiDanhKhoaHoc',payload),
+  
+
 };

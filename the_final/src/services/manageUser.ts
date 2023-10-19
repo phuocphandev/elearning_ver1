@@ -18,4 +18,8 @@ export const manageUser = {
     api.get(
       `/LayDanhSachNguoiDung_PhanTrang?tuKhoa=${payload.tuKhoa}&page=${payload.soTrang}&pageSize=5`
     ),
+    deleteAccount:(payload:string)=>api.delete(`/XoaNguoiDung?TaiKhoan=${payload}`),
+    getCourseNotEnroll:(payload:string)=>api.post(`/LayDanhSachKhoaHocChuaGhiDanh?TaiKhoan=${payload}`),
+    getCourseUnAuthor:(payload:{taiKhoan:string})=>api.post('/LayDanhSachKhoaHocChoXetDuyet',payload),
+    getCourseAuthor:(payload:{taiKhoan:string})=>api.post('/LayDanhSachKhoaHocDaXetDuyet',payload),
 };
