@@ -1,0 +1,11 @@
+.AllCourseTemplate{
+    .Pagi{
+        li{
+            button{
+                @media (max-width:'768px') {
+                    padding: 3px;   
+                }
+            }
+        }
+    }
+}

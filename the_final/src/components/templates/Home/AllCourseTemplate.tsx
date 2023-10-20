@@ -2,10 +2,11 @@ import { Card } from "components";
 import { PATH } from "constant";
 import { Pagination } from "flowbite-react";
 import { useCourse } from "hooks/useCourse";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { generatePath, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "store";
 import { getCoursePagiThunk } from "store/CourseManagement/thunk";
+import '../../../sass/main.scss'
 
 export const AllCourseTemplate = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +20,7 @@ export const AllCourseTemplate = () => {
   }, [currentPage]);
 
   return (
-    <div className="mt-[80px]">
+    <div className="mt-[80px] AllCourseTemplate">
       <div className="h-[100px] bg-blue-500 flex items-center">
         <p className="text-white text-xl ml-4">All Course Available</p>
       </div>
@@ -189,15 +190,14 @@ export const AllCourseTemplate = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center text-center mb-4 w-full">
-        <div className="w-[400px]"> 
+      <div className="md:flex md:justify-center md:text-center mb-4 Pagi ">
+        <div className="md:w-[400px]"> 
           {CourseListPagi && (
             <Pagination
               currentPage={currentPage}
               onPageChange={onPageChange}
               showIcons
               totalPages={CourseListPagi?.totalPages}
-              className="w-[100px]"
             />
           )}
         </div>

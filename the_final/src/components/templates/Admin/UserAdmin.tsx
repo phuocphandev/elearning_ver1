@@ -16,6 +16,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { RegisterSchema, RegisterSchemaType } from "schema";
 import { manageUser } from "services/manageUser";
 import { useAppDispatch } from "store";
+import "../../../sass/main.scss";
 import {
   authorCourseThunk,
   cancelEnrollThunk,
@@ -129,6 +130,33 @@ export const UserAdmin = () => {
       dispatch(getAccountThunk(currentPage1));
     }
   }, [currentPage1, search]);
+
+  //Responsive th:
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const category = "Category";
+  const truncatedCategory =
+  windowWidth < 768 ? category.substring(0, 4)+".." : category;
+  const username =" UserName";
+  const truncatedUserName=
+  windowWidth < 768 ? username.substring(0, 4)+".." : username;
+  const FullName =" FullName";
+  const truncatedFullName=
+  windowWidth < 768 ? FullName.substring(5, 8)+".." : FullName;
+  const PhoneNumber =" Phone Number";
+  const truncatedPhoneNumber=
+  windowWidth < 768 ? PhoneNumber.substring(0, 5)+".." : PhoneNumber;
+
   return (
     <div>
       <div className="flex items-center justify-between p-5">
@@ -182,19 +210,19 @@ export const UserAdmin = () => {
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal  w-[20%] "
               >
-                Username
+                {truncatedUserName}
               </th>
               <th
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal  w-[7%] "
               >
-                Category
+                {truncatedCategory}
               </th>
               <th
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal  w-[21%] "
               >
-                Full Name
+                {truncatedFullName}
               </th>
               <th
                 scope="col"
@@ -206,7 +234,7 @@ export const UserAdmin = () => {
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal  w-[10%] "
               >
-                Phone Number
+                {truncatedPhoneNumber}
               </th>
               <th
                 scope="col"
@@ -226,25 +254,25 @@ export const UserAdmin = () => {
                     index % 2 == 0 ? "bg-gray-50 " : "bg-white"
                   } hover:bg-gray-700`}
                 >
-                  <td className=" py-4 w-[2%] whitespace-normal break-words  ">
+                  <td className=" py-4 w-[2%] whitespace-normal break-words break-all  ">
                     {index}
                   </td>
-                  <td className=" py-4 w-[20%] whitespace-normal break-words  ">
+                  <td className=" py-4 w-[20%] whitespace-normal break-words break-all  ">
                     {e?.taiKhoan}
                   </td>
-                  <td className=" py-4 w-[7%] whitespace-normal break-words  ">
+                  <td className=" py-4 w-[7%] whitespace-normal break-words break-all  ">
                     {e?.tenLoaiNguoiDung}
                   </td>
-                  <td className=" py-4 w-[21%] whitespace-normal break-words  ">
+                  <td className=" py-4 w-[21%] whitespace-normal break-words break-all  ">
                     {e?.hoTen}
                   </td>
-                  <td className=" py-4 w-[20%] whitespace-normal break-words  ">
+                  <td className=" py-4 w-[20%] whitespace-normal break-words break-all  ">
                     {e?.email}
                   </td>
-                  <td className=" py-4 w-[10%] whitespace-normal break-words  ">
+                  <td className=" py-4 w-[10%] whitespace-normal break-words break-all  ">
                     {e?.soDT}
                   </td>
-                  <td className="flex justify-center items-center m-auto py-4 gap-3 w-[20%] whitespace-normal break-words  ">
+                  <td className="md:flex justify-center items-center m-auto py-4 gap-3 w-[20%] whitespace-normal break-words break-all  ">
                     <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer">
                       <InfoCircleFilled
                         style={{ color: "var(--primary)", fontSize: "25px" }}
@@ -352,21 +380,23 @@ export const UserAdmin = () => {
             register={register}
             error={errors?.maNhom?.message}
           />
-          <Button htmlType={"submit"} type="primary" className="w-full">
-            {" "}
-            ADD USER
-          </Button>
-          <Button
-            htmlType={"button"}
-            type="primary"
-            className="w-full mt-2"
-            onClick={() => {
-              setIsModal1Open(false);
-            }}
-          >
-            {" "}
-            CLOSE
-          </Button>
+          <div className="flex justify-center gap-4 items-center mt-4">
+            <Button htmlType={"submit"} type="primary" className="w-25%">
+              {" "}
+              ADD USER
+            </Button>
+            <Button
+              htmlType={"button"}
+              type="primary"
+              className="w-25%"
+              onClick={() => {
+                setIsModal1Open(false);
+              }}
+            >
+              {" "}
+              CLOSE
+            </Button>
+          </div>
         </form>
       </Modal>
       {/* Modal Regis Course */}

@@ -17,6 +17,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { AddCourseSchema, AddCourseSchemaType } from "schema/AddCourse";
 import { manageCourse } from "services";
 import { useAppDispatch } from "store";
+import "../../../sass/main.scss";
 import {
   addCourseUploadImageThunk,
   authorCourseThunk,
@@ -120,16 +121,16 @@ export const CourseAdmin = () => {
         hinhAnh: {},
         taiKhoanNguoiTao: user.hoTen,
         ngayTao: formattedDate,
-        danhGia:danhGia,
-        luotXem:luotXem,
+        danhGia: danhGia,
+        luotXem: luotXem,
       };
       const formData = new FormData();
       for (let key in data) {
         console.log(data[key]);
-        if(key!=='hinhAnh'){
-        formData.append(key, data[key]);}
-        else{
-        formData.append('file',IMG.hinhAnh,IMG.name);
+        if (key !== "hinhAnh") {
+          formData.append(key, data[key]);
+        } else {
+          formData.append("file", IMG.hinhAnh, IMG.name);
         }
       }
       dispatch(addCourseUploadImageThunk(FormData))
@@ -183,9 +184,35 @@ export const CourseAdmin = () => {
     };
   };
 
+  //Responsive th:
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const CourseID = "Course ID";
+  const truncatedCourseID =
+    windowWidth < 768 ? "C."+CourseID.substring(7, 9) + ".." : CourseID;
+  const CourseName = "CourseName";
+  const truncatedCourseName =
+    windowWidth < 768 ? CourseName.substring(6, 10) + ".." : CourseName;
+  const Picture = " Picture";
+  const truncatedPicture =
+    windowWidth < 768 ? Picture.substring(0, 4) + ".." : Picture;
+  const Creator = " Creator";
+  const truncatedCreator =
+    windowWidth < 768 ? Creator.substring(0, 5) + ".." : Creator;
+
   return (
     <div>
-      <div className="flex items-center justify-between p-5">
+      <div className="flex items-center justify-between p-5  ">
         <form className=" w-[40%]">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -222,7 +249,7 @@ export const CourseAdmin = () => {
           </Button>
         </div>
       </div>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg text-center">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg text-center ">
         <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
             <tr>
@@ -236,19 +263,19 @@ export const CourseAdmin = () => {
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal w-[15%] "
               >
-                Course ID
+                {truncatedCourseID}
               </th>
               <th
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal w-[13%] "
               >
-                Course Name
+                {truncatedCourseName}
               </th>
               <th
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal w-[30%] "
               >
-                Picture
+                {truncatedPicture}
               </th>
               <th
                 scope="col"
@@ -260,7 +287,7 @@ export const CourseAdmin = () => {
                 scope="col"
                 className=" py-5 align-middle break-words whitespace-normal w-[15%] "
               >
-                Creator
+                {truncatedCreator}
               </th>
               <th
                 scope="col"
@@ -270,24 +297,24 @@ export const CourseAdmin = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="md:text-[14px] text-[10px]">
             {CourseListPagi?.items.map((e, index) => {
               return (
                 <tr
                   className={`${
                     index % 2 == 0
-                      ? "bg-gray-50 text-center h-[100px]"
-                      : "bg-white h-[100px]"
-                  } hover:bg-gray-700 text-center `}
+                      ? "bg-gray-50 text-center"
+                      : "bg-white "
+                  } hover:bg-gray-700 text-center h-[100px]`}
                   key={index}
                 >
-                  <td className=" py-4 w-[2%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[2%] whitespace-normal break-words break-all">
                     {index}
                   </td>
-                  <td className=" py-4 w-[15%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[15%] whitespace-normal break-words break-all">
                     {e?.maKhoaHoc}
                   </td>
-                  <td className=" py-4 w-[13%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[13%] whitespace-normal break-words break-all">
                     {e?.tenKhoaHoc}
                   </td>
                   <td
@@ -299,16 +326,17 @@ export const CourseAdmin = () => {
                       backgroundClip: "content-box",
                     }}
                   ></td>
-                  <td className=" py-4 w-[10%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[10%] whitespace-normal break-words break-all">
                     {e?.luotXem}
                   </td>
-                  <td className=" py-4 w-[15%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[15%] whitespace-normal break-words break-all">
                     {e?.nguoiTao.hoTen}
                   </td>
-                  <td className="flex justify-center py-8 gap-3 w-[100%] h-[100%] whitespace-normal break-words ">
+                  <td className="md:flex justify-center py-8 gap-3 w-[100%] h-[100%] whitespace-normal break-words break-all">
                     <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer ">
                       <InfoCircleFilled
-                        style={{ color: "var(--primary)", fontSize: "25px" }}
+                        style={{ color: "var(--primary)"}}
+                        className="md:text-[25px] text-[15px]"
                         onClick={async () => {
                           showModal2();
                           setID(e.maKhoaHoc);
@@ -329,7 +357,8 @@ export const CourseAdmin = () => {
                     </div>
                     <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer ">
                       <ToolFilled
-                        style={{ color: "orange", fontSize: "25px" }}
+                        style={{ color: "orange"}}
+                        className="md:text-[25px] text-[15px]"
                       />
                     </div>
                     <div
@@ -338,7 +367,8 @@ export const CourseAdmin = () => {
                       }  `}
                     >
                       <DeleteFilled
-                        style={{ color: "red", fontSize: "25px" }}
+                        style={{ color: "red" }}
+                        className="md:text-[25px] text-[15px]"
                         onClick={() => {
                           if (CourseListPagi?.items.length == 1) {
                             setCurrentPage1(currentPage1 - 1);
