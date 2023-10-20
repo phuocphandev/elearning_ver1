@@ -136,7 +136,6 @@ export const getUserAuthorThunk = createAsyncThunk(
   async (payload: { maKhoaHoc: string }, { rejectWithValue }) => {
     try {
       const data = await manageUser.getUserAuthor(payload);
-      console.log("getUserAuthorThunk ne: ", data.data)
       return data.data;
     } catch (error) {
       return rejectWithValue(error);

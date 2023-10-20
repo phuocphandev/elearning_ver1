@@ -1,6 +1,10 @@
 import { apiInstance } from "constant";
 import { payloadFilter } from "types";
-import { CoursePagi, CourseType, EnrollCourseType } from "types/Course";
+import {
+  CoursePagi,
+  CourseType,
+  EnrollCourseType,
+} from "types/Course";
 
 const api = apiInstance({
   baseURL: import.meta.env.VITE_MANAGE_COURSE,
@@ -27,7 +31,9 @@ export const manageCourse = {
     api.get(
       `/LayDanhSachKhoaHoc_PhanTrang?tenKhoaHoc=${payload.tuKhoa}&page=${payload.soTrang}&pageSize=5`
     ),
+
   deleteCourse: (payload: string) =>
     api.delete(`/XoaKhoaHoc?MaKhoaHoc=${payload}`),
-  
+  addCourseUploadImage: (payload:any) =>
+    api.post("/ThemKhoaHocUploadHinh", payload),
 };

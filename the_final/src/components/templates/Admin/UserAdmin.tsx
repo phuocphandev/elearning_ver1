@@ -168,49 +168,49 @@ export const UserAdmin = () => {
           </Button>
         </div>
       </div>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg text-center">
-        <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg text-center ">
+        <table className="md:w-full text-sm text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 w-full ">
             <tr>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[2%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[2%] "
               >
                 #
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[20%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[20%] "
               >
                 Username
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[7%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[7%] "
               >
                 Category
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[21%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[21%] "
               >
                 Full Name
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[20%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[20%] "
               >
                 Email
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[10%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[10%] "
               >
                 Phone Number
               </th>
               <th
                 scope="col"
-                className=" py-5 align-middle break-words whitespace-normal w-[20%] "
+                className=" py-5 align-middle break-words whitespace-normal  w-[20%] "
               >
                 <SettingOutlined />
               </th>
@@ -226,22 +226,22 @@ export const UserAdmin = () => {
                     index % 2 == 0 ? "bg-gray-50 " : "bg-white"
                   } hover:bg-gray-700`}
                 >
-                  <td className=" py-4 w-[2%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[2%] whitespace-normal break-words  ">
                     {index}
                   </td>
-                  <td className=" py-4 w-[20%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[20%] whitespace-normal break-words  ">
                     {e?.taiKhoan}
                   </td>
-                  <td className=" py-4 w-[7%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[7%] whitespace-normal break-words  ">
                     {e?.tenLoaiNguoiDung}
                   </td>
-                  <td className=" py-4 w-[21%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[21%] whitespace-normal break-words  ">
                     {e?.hoTen}
                   </td>
-                  <td className=" py-4 w-[20%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[20%] whitespace-normal break-words  ">
                     {e?.email}
                   </td>
-                  <td className=" py-4 w-[10%] whitespace-normal break-words ">
+                  <td className=" py-4 w-[10%] whitespace-normal break-words  ">
                     {e?.soDT}
                   </td>
                   <td className="flex justify-center items-center m-auto py-4 gap-3 w-[20%] whitespace-normal break-words  ">
@@ -466,7 +466,7 @@ export const UserAdmin = () => {
           <div className="">
             <p className="text-xl font-bold text-white">Unauthorized Course</p>
           </div>
-          <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
+          <table className=" text-sm text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
               <tr>
                 <th

@@ -1,53 +1,68 @@
-export interface CourseData{
-    count?: number;
-    currentPage?: number;
-    totalCount ?: number;
-    totalPages ?: number;
-    items?: CourseType
+export interface CourseData {
+  count?: number;
+  currentPage?: number;
+  totalCount?: number;
+  totalPages?: number;
+  items?: CourseType;
 }
 
 export interface CourseType {
-  maKhoaHoc ?: string;
-  biDanh ?: string;
-  tenKhoaHoc ?: string;
-  moTa ?: string;
-  luotXem ?: number;
-  hinhAnh ?: string;
-  maNhom ?: string;
-  ngayTao ?: string;
-  soLuongHocVien ?: number;
-  nguoiTao ?: NguoiTaoType;
-  danhMucKhoaHoc ?: DanhMucKhoaHocType;
-}[];
+  maKhoaHoc?: string;
+  biDanh?: string;
+  tenKhoaHoc?: string;
+  moTa?: string;
+  luotXem?: number;
+  hinhAnh?: string;
+  maNhom?: string;
+  ngayTao?: string;
+  soLuongHocVien?: number;
+  nguoiTao?: NguoiTaoType;
+  danhMucKhoaHoc?: DanhMucKhoaHocType;
+}
+[];
 export interface NguoiTaoType {
-  taiKhoan ?: string;
-  hoTen ?: string;
-  maLoaiNguoiDung ?: string;
-  tenLoaiNguoiDung ?: string;
+  taiKhoan?: string;
+  hoTen?: string;
+  maLoaiNguoiDung?: string;
+  tenLoaiNguoiDung?: string;
 }
 export interface DanhMucKhoaHocType {
-  maDanhMucKhoahoc ?: string;
-  tenDanhMucKhoaHoc ?: string;
+  maDanhMucKhoahoc?: string;
+  tenDanhMucKhoaHoc?: string;
 }
 export interface CoursePagi {
-  currentPage:number;
-  count:number;
-  totalPages:number;
-  items:CourseType[];
+  currentPage: number;
+  count: number;
+  totalPages: number;
+  items: CourseType[];
 }
 
-export interface EnrollCourseType{
-  maKhoaHoc:string,
-  taiKhoan:string,
+export interface EnrollCourseType {
+  maKhoaHoc: string;
+  taiKhoan: string;
 }
 export interface CourseNotEnroll {
-  maKhoaHoc: string
-  biDanh: string
-  tenKhoaHoc: string
+  maKhoaHoc: string;
+  biDanh: string;
+  tenKhoaHoc: string;
 }
 
-export interface UserNotEnroll{
-  taiKhoan: string
-  hoTen: string
-  biDanh: string
+export interface UserNotEnroll {
+  taiKhoan: string;
+  hoTen: string;
+  biDanh: string;
+}
+
+export interface getCourseUploadImage {
+  maKhoaHoc: string;
+  biDanh?: string;
+  tenKhoaHoc: string;
+  moTa: string;
+  luotXem: number;
+  danhGia: number;
+  hinhAnh: any;
+  maNhom: string;
+  ngayTao: string;
+  maDanhMucKhoaHoc: string;
+  taiKhoanNguoiTao: string;
 }

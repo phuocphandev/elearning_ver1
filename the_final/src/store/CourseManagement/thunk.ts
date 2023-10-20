@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { manageCourse } from "services";
 import { getUserInfoThunk } from "store/manageUser/thunk";
 import { payloadFilter } from "types";
-import { EnrollCourseType } from "types/Course";
+import { EnrollCourseType, getCourseUploadImage } from "types/Course";
 
 export const manageCourseThunk = createAsyncThunk(
   "CourseManagement/manageCourseThunk",
@@ -98,10 +98,20 @@ export const deleteCourseThunk = createAsyncThunk(
   async (payload: string, { rejectWithValue }) => {
     try {
       await manageCourse.deleteCourse(payload);
-
     } catch (error) {
       return rejectWithValue(error);
     }
   }
 );
 
+export const addCourseUploadImageThunk = createAsyncThunk(
+  "CourseManagement/addCourseUploadImageThunk",
+  async (payload:any, { rejectWithValue, dispatch }) => {
+    try {
+      await manageCourse.addCourseUploadImage(payload);
+      dispatch(getCoursePagiThunk(1));
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
