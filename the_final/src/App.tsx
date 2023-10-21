@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { Loading } from "pages";
 
 function App() {
-  const withDelay = (Component, delay)=>{
-    return function DelayedComponent(props) {
+  const withDelay = (Component:React.ComponentType<any>, delay:number)=>{
+    return function DelayedComponent(props:any) {
       const [isLoading, setIsLoading] = useState(true);
   
       useEffect(() => {
@@ -21,10 +21,7 @@ function App() {
   
   return (
   <div>
-        
           { useRoutes(router)}
-      
-
   </div>)
   // <div>{useRoutes(router)}</div>;
 }
