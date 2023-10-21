@@ -217,21 +217,21 @@ const Header = () => {
               </li>
               <li className="text-center">
                 <a onClick={()=>{navigate('*')}}
-                  className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0"
+                  className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0"
                 >
                   BLOG
                 </a>
               </li>
               <li className="text-center">
                 <a onClick={()=>{navigate('*')}}
-                  className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
+                  className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
                 >
                   EVENT
                 </a>
               </li>
               <li onClick={()=>{navigate('*')}} className="text-center">
                 <a
-                  className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
+                  className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
                 >
                   ABOUT US
                 </a>
