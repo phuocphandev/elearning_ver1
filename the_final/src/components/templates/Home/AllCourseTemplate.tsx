@@ -21,11 +21,11 @@ export const AllCourseTemplate = () => {
 
   return (
     <div className="mt-[80px] AllCourseTemplate">
-      <div className="h-[100px] bg-blue-500 flex items-center">
-        <p className="text-white text-xl ml-4">All Course Available</p>
+      <div className="h-[20vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold">
+        <p className="text-white text-2xl ml-4">All Course Available</p>
       </div>
       <div>
-        <div className="md:my-4 md:px-16">
+        <div className="md:my-14 md:px-16 ">
           <div className="grid md:grid-cols-4 gap-[100px] CourseList">
             {CourseList?.map((course) => {
               const detailPath = generatePath("/" + PATH.detail, {

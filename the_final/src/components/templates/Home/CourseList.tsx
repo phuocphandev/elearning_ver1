@@ -73,11 +73,12 @@ export const CourseList = () => {
       <Carousel
         responsive={responsive}
         showDots={true}
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+        draggable={true}
         className="bg-transparent w-[100%] m-auto py-2 px-6 rounded-xl  flex justify-start items-center pl-[3%] mr-10"
       >
-        {pagingCourse?.map((coursePage) => (
-          <div className="flex flex-col gap-10  w-[270px] relative items-center justify-center ml-12 md:ml-3 xl:ml-0 ">
+        {pagingCourse?.map((coursePage,index) => (
+          <div key={index} className="flex flex-col gap-10  w-[270px] relative items-center justify-center ml-12 md:ml-3 xl:ml-0 ">
             {coursePage?.map((course: CourseType) => {
               const detailPath= generatePath(PATH.detail,{ courseID: course.maKhoaHoc })
               return<Card

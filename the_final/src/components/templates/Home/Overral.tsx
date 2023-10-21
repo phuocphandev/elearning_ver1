@@ -4,7 +4,7 @@ import cn from 'classnames'
 export const Overral = () => {
   return (
     <div className="grid grid-cols-3 grid-rows-2 w-[90%] text-white my-10 m-auto gap-5">
-      <div className={cn(styles.shining, "px-5 py-2 row-span-2 col-span-3 md:col-span-1 bg-[var(--quaternary)] overflow-hidden")}>
+      <div className={cn(styles.shining, "px-5 py-2 row-span-2 col-span-3 md:col-span-1 bg-[var(--tertiary)] overflow-hidden")}>
         <p className="font-bold uppercase text-2xl ">Courses</p>
         <ul className="">
           <span className="font-bold">Learning through practical projects</span>
@@ -35,7 +35,7 @@ export const Overral = () => {
           <li className={styles.list}>Coaching to develop capabilities and passion for programming</li>
         </ul>
       </div>
-      <div className={cn(styles.shining, "px-5 py-2 row-span-1 col-span-3 md:col-span-1 bg-[#3a5dc5] overflow-hidden")}>
+      <div className={cn(styles.shining, "px-5 py-2 row-span-1 col-span-3 md:col-span-1 bg-[var(--tertiary)] overflow-hidden")}>
         <ul>
           <span className="font-bold uppercase text-2xl">Learning System</span>
           <li className={styles.list}>
@@ -62,7 +62,7 @@ export const Overral = () => {
           <li className={styles.list}>Grade discussions and interactions between students</li>
         </ul>
       </div>
-      <div className={cn(styles.shining, "px-5 py-2 row-span-1 col-span-3 md:col-span-1 bg-[var(--quaternary)] overflow-hidden")}>
+      <div className={cn(styles.shining, "px-5 py-2 row-span-1 col-span-3 md:col-span-1 bg-[var(--tertiary)] overflow-hidden")}>
         <ul>
           <span className="font-bold uppercase text-2xl">Certificate</span>
           <li className={styles.list}>Grade assignments and offer online consultations for reviews</li>

@@ -22,7 +22,7 @@ export const CountUpStatic = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[var(--background)]" ref={counterRef}>
+    <div className="w-full bg-[var(--background)] mt-20 mb-20" ref={counterRef}>
       <div className="w-[90%] grid grid-cols-4 gap-10 md:gap-2 m-auto">
         <div className="col-span-4 md:col-span-1 flex flex-col items-center">
           <img

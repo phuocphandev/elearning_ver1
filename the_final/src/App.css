@@ -5,9 +5,9 @@
   /* color */
   --primary: #1aa5b8; 
   --secondary: #d9ecf2;
-  --tertiary: #94C8C4;
+  --tertiary: #739ed6;
   --quaternary: #042f40;
   --quaternary-transparent:rgba(4, 47, 64,0.8);
-  --background: rgb(217, 226, 235);
+  --background: #D9E2EB;
   --abc:#bebcbc;
 }
