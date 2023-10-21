@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 export const Overral = () => {
   return (
-    <div className="grid grid-cols-3 grid-rows-2 w-[90%] text-white my-10 m-auto gap-5">
+    <div className="grid grid-cols-3 grid-rows-2 w-[90%] text-white my-16 m-auto gap-5">
       <div className={cn(styles.shining, "px-5 py-2 row-span-2 col-span-3 md:col-span-1 bg-[var(--tertiary)] overflow-hidden")}>
         <p className="font-bold uppercase text-2xl ">Courses</p>
         <ul className="">

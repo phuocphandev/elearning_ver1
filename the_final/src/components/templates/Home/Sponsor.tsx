@@ -28,7 +28,7 @@ const responsive = {
 
 export const Sponsor = () => {
   return (
-    <div className="mt-10 ">
+    <div className="mt-14">
       <Carousel
         responsive={responsive}
         className="bg-[var(--background)] w-[100%] m-auto py-2 px-6 rounded-xl"
