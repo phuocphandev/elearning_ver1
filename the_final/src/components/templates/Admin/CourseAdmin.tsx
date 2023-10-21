@@ -109,6 +109,7 @@ export const CourseAdmin = () => {
   };
   //=========
   const onSubmit: SubmitHandler<AddCourseSchemaType> = async (value) => {
+
     if (IMG.name) {
       const today = new Date();
       const formattedDate = formatDate(today);
@@ -119,20 +120,20 @@ export const CourseAdmin = () => {
         ...value,
         biDanh: value.tenKhoaHoc,
         hinhAnh: {},
-        taiKhoanNguoiTao: user.hoTen,
+        taiKhoanNguoiTao: user.taiKhoan,
         ngayTao: formattedDate,
         danhGia: danhGia,
         luotXem: luotXem,
       };
       const formData = new FormData();
       for (let key in data) {
-        console.log(data[key]);
         if (key !== "hinhAnh") {
           formData.append(key, data[key]);
         } else {
-          formData.append("file", IMG.hinhAnh, IMG.name);
+          formData.append("File", IMG.hinhAnh, IMG.name);
         }
       }
+
       dispatch(addCourseUploadImageThunk(FormData))
         .unwrap()
         .then(() => {
@@ -211,7 +212,7 @@ export const CourseAdmin = () => {
     windowWidth < 768 ? Creator.substring(0, 5) + ".." : Creator;
 
   return (
-    <div>
+    <div className="h-full">
       <div className="flex items-center justify-between p-5  ">
         <form className=" w-[40%]">
           <div className="relative">

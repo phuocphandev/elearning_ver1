@@ -48,8 +48,8 @@ export const AdminNavbar = () => {
           >
             <img
               src="/image/home.png"
-              className="h-6 mr-3 xl:h-7"
-              alt="Logo cursor-pointer"
+              className="h-6 mr-3 xl:h-7 cursor-pointer"
+              alt="Logo"
               onClick={() => {
                 navigate("/");
               }}

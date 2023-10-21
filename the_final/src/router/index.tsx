@@ -1,14 +1,11 @@
-import { HomeTemplates } from "components";
 import HomeLayout from "components/layouts/HomeLayout";
 import { CourseAdmin, UserAdmin } from "components/templates/Admin";
 import { PATH } from "constant";
-import { AllCourse, CourseDetailPage, CourseFollowMenu } from "pages";
+import { AllCourse, CourseDetailPage, CourseFollowMenu, HomePage, NotFound } from "pages";
 import AdminPage from "pages/AdminPage";
 import UserInfomation from "pages/UserInformation/UserInfomation";
-
-// import UserInfomation from 'pages/UserInformation/UserInfomation'
-
 import { RouteObject } from "react-router-dom";
+
 
 export const router: RouteObject[] = [
   {
@@ -16,7 +13,7 @@ export const router: RouteObject[] = [
     path: "/",
     children: [
       {
-        element: <HomeTemplates />,
+        element: <HomePage />,
         index: true,
       },
       {
@@ -37,6 +34,10 @@ export const router: RouteObject[] = [
         path: PATH.allcourse,
       },
     ],
+  },
+  {
+    element:<NotFound/>,
+    path: '*',
   },
   {
     element: <AdminPage />,

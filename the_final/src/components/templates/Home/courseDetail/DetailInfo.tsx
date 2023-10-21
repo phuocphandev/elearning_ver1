@@ -16,6 +16,10 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
 
 
   const enrollCourse = () => {
+    if(!user){
+      NotiError("Please log in to enroll!");
+      return;
+    }
     dispatch(
       enrollCourseThunk({ maKhoaHoc: CourseInfo?.maKhoaHoc, taiKhoan: user?.taiKhoan })
     )

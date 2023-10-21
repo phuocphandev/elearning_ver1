@@ -1,6 +1,6 @@
 import AdminPageTemplate from "components/templates/Home/AdminPageTemplate"
 
-const AdminPage = () => {
+export const AdminPage = () => {
   return (
     <AdminPageTemplate/>
   )

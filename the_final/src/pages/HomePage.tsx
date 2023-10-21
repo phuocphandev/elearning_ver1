@@ -1,6 +1,6 @@
 import { HomeTemplates } from "components"
 
-const HomePage = () => {
+export const HomePage = () => {
   return (
     <HomeTemplates/>
   )

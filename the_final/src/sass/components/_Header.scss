@@ -40,7 +40,7 @@
   }
 }
 }
-//antd custon 
+//antd custom
 .css-dev-only-do-not-override-pr0fja.ant-modal .ant-modal-content{
   @media (min-width:768px){
     background-color: rgba(4, 47, 64,0.8); //Cannot use root variable, because Inspect to see this class is out of root space
@@ -49,7 +49,6 @@
   background-color: transparent;
   box-shadow: none;
 }
-
 
 @media (min-width:768px){
 .Header {
@@ -60,9 +59,9 @@
      align-items: center;
      perspective: 1000px;
      z-index: 10;
-      &:hover .dropdown_menu li {
-        display: block;
-      }
+        &:hover .dropdown_menu li {
+            display: block;
+          }
     }
     .dropdown_menu {
       padding-top: 38px;
@@ -74,7 +73,6 @@
       min-width: 200px;
       border-radius: 10px !important;
       clip-path: inset(0 round 10px);
-      // mask-image: linear-gradient(to bottom, white 0%, transparent 100%);
       li {
         display: none;
         color: white;
@@ -86,8 +84,6 @@
           background-color: #6ddcde;
         }
       }
-
-  
     @for $num from 1 through 6 {
       .dropdown_item-#{$num} {
         transform-origin: top center;
@@ -95,7 +91,6 @@
       }
     }
   }
-  
   
   @keyframes translateX {
     0% {

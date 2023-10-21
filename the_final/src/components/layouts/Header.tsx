@@ -185,7 +185,6 @@ const Header = () => {
             <ul className="md:flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-[var(--quaternary)] bg-[var(--tertiary)]">
               <li className="text-center relative dropdown">
                 <a
-                  href="#"
                   className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0"
                 >
                   <MenuOutlined />
@@ -217,24 +216,21 @@ const Header = () => {
                 </a>
               </li>
               <li className="text-center">
-                <a
-                  href="#"
+                <a onClick={()=>{navigate('*')}}
                   className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0"
                 >
                   BLOG
                 </a>
               </li>
               <li className="text-center">
-                <a
-                  href="#"
+                <a onClick={()=>{navigate('*')}}
                   className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
                 >
                   EVENT
                 </a>
               </li>
-              <li className="text-center">
+              <li onClick={()=>{navigate('*')}} className="text-center">
                 <a
-                  href="#"
                   className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
                 >
                   ABOUT US

@@ -7,6 +7,7 @@ import { store } from "store";
 import { Provider } from "react-redux";
 import { ScrollToTop } from "components";
 import {NextUIProvider} from "@nextui-org/react"
+import BackToTop from "components/BackToTop.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -14,7 +15,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
    <StyleProvider hashPriority="high">
     <ScrollToTop/>
     <NextUIProvider>
-    <App />
+      <BackToTop/>
+     <App />
     </NextUIProvider>
    </StyleProvider>
    </Provider>
