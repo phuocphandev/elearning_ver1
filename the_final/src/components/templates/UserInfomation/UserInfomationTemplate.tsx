@@ -84,12 +84,12 @@ export const UserInfomationTemplate = () => {
   ];
 
   return (
-    <div className="mt-[90px]">
-      <div className="h-[80px] bg-blue-500 flex items-center">
+    <div className="my-[100px]">
+      <div className="h-[20vh] bg-[--tertiary] flex items-center pl-[8%]">
         <p className="text-white text-xl ml-4">USER INFORMATION</p>
       </div>
       <div className="grid grid-cols-4">
-        <div className="col-span-1 h-full bg-yellow-300">
+        <div className="col-span-1 h-full bg-gray-100 rounded border-2 border-[var(--tertiary)] m-10 ">
           <div className="flex flex-col items-center mt-16">
             <img
               className="w-[50px] md:w-[100px]"
@@ -103,10 +103,10 @@ export const UserInfomationTemplate = () => {
             </p>
           </div>
         </div>
-        <div className="col-span-3 h-full bg-green-400">
+        <div className="col-span-3 h-full bg-[var(--tertiary)] mt-10 mr-10 p-5 rounded-xl">
           <div>
             <Tabs value="profile">
-              <TabsHeader className="h-[50px] w-[50%] ml-[12px] sticky z-[5] ">
+              <TabsHeader className="h-[50px] w-[50%] ml-[12px] sticky z-[5] bg-gray-100">
                 <Tab value={"profile"} className="">
                   <div className="flex items-center gap-2">
                     {React.createElement(data[0].icon, {
@@ -127,7 +127,7 @@ export const UserInfomationTemplate = () => {
               <TabsBody>
                 <TabPanel value={"profile"}>
                   <div className="w-full">
-                    <section className=" bg-gray-100  bg-opacity-50 h-full rounded-[10px] overflow-hidden">
+                    <section className=" bg-gray-200  bg-opacity-50 h-full rounded-[10px] overflow-hidden">
                       <div className=" md:mx-0 mx-auto container max-w-2xl md:max-w-full md:w-full shadow-md ">
                         <div className="bg-white space-y-6">
                           <div className="md:inline-flex space-y-4 md:space-y-0 w-full p-4 text-gray-500 items-center">

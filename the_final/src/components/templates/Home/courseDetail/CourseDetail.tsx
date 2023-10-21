@@ -19,7 +19,7 @@ export const CourseDetail = () => {
 
   return (
     <div className="mt-[10vh] md:mt-[7vh] xl:mt-[12vh] 2xl:mt-[5vh] coursedetail">
-      <div className="bg-[var(--primary)] w-[100vw] h-[25vh] flex items-center text-3xl text-white font-bold pl-[10%]">
+      <div className="bg-[var(--tertiary)] w-[100vw] h-[25vh] flex items-center text-3xl text-white font-bold pl-[10%] pt-10">
         <p>Course Detail:</p>
       </div>
       <div className="hidden md:block">

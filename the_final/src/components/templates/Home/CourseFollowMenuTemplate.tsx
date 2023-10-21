@@ -17,10 +17,10 @@ export const CourseFollowMenuTemplate = () => {
     },[courseId])
   return (
     <div className="mt-[80px]">
-      <div className="h-[100px] bg-blue-500 flex items-center">
-        <p className="text-white text-xl ml-4">{CourseList?.[0]?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</p>
+      <div className="h-[20vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold">
+        <p className="text-white text-2xl ml-4">{CourseList?.[0]?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</p>
       </div>
-      <div className="md:my-4 md:px-16">
+      <div className="my-14 md:px-16">
         <div className="grid md:grid-cols-4 gap-[100px] CourseList">
             {CourseList?.map((course)=>{
                 const detailPath = generatePath("/" + PATH.detail,{courseID:course?.maKhoaHoc})

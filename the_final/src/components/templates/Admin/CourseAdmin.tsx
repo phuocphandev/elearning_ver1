@@ -212,10 +212,10 @@ export const CourseAdmin = () => {
     windowWidth < 768 ? Creator.substring(0, 5) + ".." : Creator;
 
   return (
-    <div className="h-full">
+    <div className="">
       <div className="flex items-center justify-between p-5  ">
         <form className=" w-[40%]">
-          <div className="relative">
+          <div className="relative ">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -251,7 +251,7 @@ export const CourseAdmin = () => {
         </div>
       </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg text-center ">
-        <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
+        <table className=" w-full text-sm text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
             <tr>
               <th
@@ -306,20 +306,20 @@ export const CourseAdmin = () => {
                     index % 2 == 0
                       ? "bg-gray-50 text-center"
                       : "bg-white "
-                  } hover:bg-gray-700 text-center h-[100px]`}
+                  } hover:bg-gray-700 text-center h-[70px]`}
                   key={index}
                 >
-                  <td className=" py-4 w-[2%] whitespace-normal break-words break-all">
+                  <td className=" py-2 md:py-4 w-[2%] whitespace-normal break-words break-all">
                     {index}
                   </td>
-                  <td className=" py-4 w-[15%] whitespace-normal break-words break-all">
+                  <td className=" py-2 md:py-4 w-[15%] whitespace-normal break-words break-all">
                     {e?.maKhoaHoc}
                   </td>
-                  <td className=" py-4 w-[13%] whitespace-normal break-words break-all">
+                  <td className=" py-2 md:py-4 w-[13%] whitespace-normal break-words break-all">
                     {e?.tenKhoaHoc}
                   </td>
                   <td
-                    className="py-4 w-[18%]"
+                    className="py-2 md:py-4 w-[18%]"
                     style={{
                       backgroundImage: `URL(${e?.hinhAnh})`,
                       backgroundSize: "cover",
@@ -327,13 +327,13 @@ export const CourseAdmin = () => {
                       backgroundClip: "content-box",
                     }}
                   ></td>
-                  <td className=" py-4 w-[10%] whitespace-normal break-words break-all">
+                  <td className=" py-2 md:py-4 w-[10%] whitespace-normal break-words break-all">
                     {e?.luotXem}
                   </td>
-                  <td className=" py-4 w-[15%] whitespace-normal break-words break-all">
+                  <td className=" py-2 md:py-4 w-[15%] whitespace-normal break-words break-all">
                     {e?.nguoiTao.hoTen}
                   </td>
-                  <td className="md:flex justify-center py-8 gap-3 w-[100%] h-[100%] whitespace-normal break-words break-all">
+                  <td className="md:flex justify-center py-4 md:py-8 gap-3 w-[100%] h-[100%] whitespace-normal break-words break-all">
                     <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer ">
                       <InfoCircleFilled
                         style={{ color: "var(--primary)"}}
