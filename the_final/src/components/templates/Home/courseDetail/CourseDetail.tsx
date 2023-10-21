@@ -19,7 +19,7 @@ export const CourseDetail = () => {
 
   return (
     <div className="mt-[10vh] md:mt-[7vh] xl:mt-[12vh] 2xl:mt-[5vh] coursedetail">
-      <div className="bg-[var(--tertiary)] w-[100vw] h-[25vh] flex items-center text-3xl text-white font-bold pl-[10%] pt-10">
+      <div className="bg-[var(--tertiary)] w-[100vw] h-[25vh] flex items-center text-3xl text-white font-bold pl-[10%] pt-10 mb-10" style={{boxShadow:"rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"}}>
         <p>Course Detail:</p>
       </div>
       <div className="hidden md:block">

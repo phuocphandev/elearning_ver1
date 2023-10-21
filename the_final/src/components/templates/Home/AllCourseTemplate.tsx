@@ -20,9 +20,9 @@ export const AllCourseTemplate = () => {
   }, [currentPage]);
 
   return (
-    <div className="mt-[80px] AllCourseTemplate">
-      <div className="h-[20vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold">
-        <p className="text-white text-2xl ml-4">All Course Available</p>
+    <div className="mt-[80px] AllCourseTemplate" >
+      <div className="h-[18vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold " style={{boxShadow:"rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"}}>
+        <p className="text-white text-2xl ml-4" >All Course Available</p>
       </div>
       <div>
         <div className="md:my-14 md:px-16 ">
@@ -45,6 +45,7 @@ export const AllCourseTemplate = () => {
                     }
                     style={{
                       border: "3px solid var(--tertiary)",
+                      boxShadow: "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px"
                     }}
                     className="relative border-4 border-[var(--tertiary)] card overflow-hidden"
                   >

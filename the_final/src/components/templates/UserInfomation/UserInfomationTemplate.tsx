@@ -84,12 +84,13 @@ export const UserInfomationTemplate = () => {
   ];
 
   return (
-    <div className="my-[100px]">
-      <div className="h-[20vh] bg-[--tertiary] flex items-center pl-[8%]">
+    <div className="my-[90px]">
+      <div className="h-[15vh] bg-[--tertiary] flex items-center pl-[8%] "
+      style={{boxShadow:"rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px"}}>
         <p className="text-white text-xl ml-4">USER INFORMATION</p>
       </div>
-      <div className="grid grid-cols-4">
-        <div className="col-span-1 h-full bg-gray-100 rounded border-2 border-[var(--tertiary)] m-10 ">
+      <div className="grid grid-cols-4 xl:gap-0 gap-5">
+        <div className="col-span-4 xl:col-span-1 h-full bg-gray-100 rounded border-2 border-[var(--tertiary)] m-10 xl:w-[90%]">
           <div className="flex flex-col items-center mt-16">
             <img
               className="w-[50px] md:w-[100px]"
@@ -103,10 +104,10 @@ export const UserInfomationTemplate = () => {
             </p>
           </div>
         </div>
-        <div className="col-span-3 h-full bg-[var(--tertiary)] mt-10 mr-10 p-5 rounded-xl">
+        <div className="col-span-4 xl:col-span-3 h-full bg-[var(--tertiary)] mt-10 m-auto xl:mr-10 p-5 rounded-xl w-[85%]">
           <div>
             <Tabs value="profile">
-              <TabsHeader className="h-[50px] w-[50%] ml-[12px] sticky z-[5] bg-gray-100">
+              <TabsHeader className="h-[50px] xl:w-[50%] ml-[12px] sticky z-[5] bg-gray-100 m-auto">
                 <Tab value={"profile"} className="">
                   <div className="flex items-center gap-2">
                     {React.createElement(data[0].icon, {

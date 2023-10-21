@@ -17,7 +17,7 @@ export const CourseFollowMenuTemplate = () => {
     },[courseId])
   return (
     <div className="mt-[80px]">
-      <div className="h-[20vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold">
+      <div className="h-[20vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold" style={{boxShadow:"rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"}}>
         <p className="text-white text-2xl ml-4">{CourseList?.[0]?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</p>
       </div>
       <div className="my-14 md:px-16">
@@ -38,6 +38,7 @@ export const CourseFollowMenuTemplate = () => {
                 }
                 style={{
                   border: "3px solid var(--tertiary)",
+                  boxShadow: "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px"
                 }}
                 className="relative border-4 border-[var(--tertiary)] card overflow-hidden"
               >
