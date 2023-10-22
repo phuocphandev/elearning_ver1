@@ -37,13 +37,12 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         style={{ wordWrap: "break-word" }}
       >
         <div className="w-full h-full lg:flex">
-          <div className="w-[100%] lg:w-[60%] h-[60%] flex items-end justify-center lg:h-[100%]">
-        <DotLottiePlayer
-          src="/lottie/Working1_Lite.lottie"
-          autoplay
-          loop
-        >
-        </DotLottiePlayer>
+          <div className="w-[100%] lg:w-[60%] h-[60%] flex items-end justify-center lg:h-[100%] rounded-[55%] bg-[var(--background)]">
+            <DotLottiePlayer
+              src="/lottie/Working1_Lite.lottie"
+              autoplay
+              loop
+            ></DotLottiePlayer>
           </div>
           <div className="flex justify-center lg:items-center lg:w-[50%] -lg:h-[50%] h-[50%] lg:h-[100%]">
             <span
@@ -68,8 +67,8 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         className=" flex flex-col md:flex-none justify-center items-center w-[100%] transition ease-in-out delay-75 duration-500"
         style={{ wordWrap: "break-word" }}
       >
-        <div className="w-[80%] xl:w-[40%] flex justify-center ">
-           <DotLottiePlayer
+        <div className="w-[80%] xl:w-[40%] flex justify-center bg-[var(--background)]">
+          <DotLottiePlayer
             src="/lottie/Working2_Lite.lottie"
             autoplay
             loop
@@ -158,7 +157,6 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
             loop
             className="w-[80%]"
           ></DotLottiePlayer>
-          
         </div>
         <div className={cn(styles.padMB, "w-full relative h-[60%] ")}>
           <span className={cn(styles.text, "w-[70%]")}>
