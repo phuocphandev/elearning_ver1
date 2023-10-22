@@ -2,12 +2,11 @@ import { useRef } from "react";
 import { Parallax, ParallaxLayer, IParallax } from "@react-spring/parallax";
 import styles from "../../../sass/components/Introduction.module.scss";
 import cn from "classnames";
-import Lottie from "lottie-react";
-import Welcome1 from "../../../../public/lottie/Welcome_1.json";
-import Welcome2 from "../../../../public/lottie/Welcome_2.json";
-import Welcome3 from "../../../../public/lottie/Welcome_3.json";
 //type Writer
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+//dot lotie
+import { DotLottiePlayer } from "@dotlottie/react-player";
+import "@dotlottie/react-player/dist/index.css";
 
 interface PageProps {
   offset: number;
@@ -39,10 +38,20 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
       >
         <div className="w-full h-full lg:flex">
           <div className="w-[100%] lg:w-[60%] h-[60%] flex items-end justify-center lg:h-[100%]">
-            <Lottie animationData={Welcome1} />
+        <DotLottiePlayer
+          src="../../../../public/lottie/Working1_Lite.lottie"
+          autoplay
+          loop
+        >
+        </DotLottiePlayer>
           </div>
           <div className="flex justify-center lg:items-center lg:w-[50%] -lg:h-[50%] h-[50%] lg:h-[100%]">
-            <span className={cn(styles.text, "lg:text-[4em] md:text-[3rem] text-[2em]")}>
+            <span
+              className={cn(
+                styles.text,
+                "lg:text-[4em] md:text-[3rem] text-[2em]"
+              )}
+            >
               {text}
               <Cursor />
             </span>
@@ -60,7 +69,12 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         style={{ wordWrap: "break-word" }}
       >
         <div className="w-[80%] xl:w-[40%] flex justify-center ">
-          <Lottie animationData={Welcome2} className="w-[100%] md:w-[70%]" />
+           <DotLottiePlayer
+            src="/public/lottie/Working2_Lite.lottie"
+            autoplay
+            loop
+            className="w-[100%] md:w-[70%]"
+          ></DotLottiePlayer>
         </div>
         <div className="flex w-full">
           <span className={cn(styles.text)}>
@@ -90,15 +104,23 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         <div className={cn("flex w-1/2 relative", styles.pad)}>
           <span className={cn("w-full px-4")}>
             <div className="flex flex-col w-full py-5">
-              <p className="lg:text-[3em] text-[2em] text-yellow-500 font-bold my-10">ACHIEVEMENT:</p>
+              <p className="lg:text-[3em] text-[2em] text-yellow-500 font-bold my-10">
+                ACHIEVEMENT:
+              </p>
               <div className="flex lg:text-[2.5em] text-[2em]">
-                <p className="">- <span className="text-yellow-500">20000+</span> member graduated in 2022</p>
+                <p className="">
+                  - <span className="text-yellow-500">20000+</span> member
+                  graduated in 2022
+                </p>
                 <div className="">
                   <Cursor />
                 </div>
               </div>
               <div className="flex lg:text-[2.5em] text-[2em]">
-                <p className="">- <span className="text-yellow-500">5867</span> member got Job immediately.</p>
+                <p className="">
+                  - <span className="text-yellow-500">5867</span> member got Job
+                  immediately.
+                </p>
                 <div className="">
                   <Cursor />
                 </div>
@@ -108,18 +130,20 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
           <div className={cn(styles.ribbon)}>Enroll now for Discount</div>
         </div>
 
-        <div className="w-[70%] lg:w-[50%] flex justify-center ">
-          <Lottie animationData={Welcome3} className="w-[60%]" />
+        <div className="w-[70%] lg:w-[50%] flex justify-center z-10">
+          <DotLottiePlayer
+            src="/public/lottie/Working3_Lite.lottie"
+            autoplay
+            loop
+            className="w-[60%]"
+          ></DotLottiePlayer>
         </div>
       </div>
     </ParallaxLayer>
 
     {/* offset2-mobile */}
     <ParallaxLayer
-      className={cn(
-        styles.text,
-        " relative overflow-hidden py-16 px-2 "
-      )}
+      className={cn(styles.text, " relative overflow-hidden py-16 px-2 ")}
       offset={2}
       speed={0.3}
     >
@@ -128,22 +152,32 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         style={{ wordWrap: "break-word" }}
       >
         <div className="w-full flex justify-center  h-[60%] ">
-          <Lottie animationData={Welcome3} className="w-[80%]" />
+          <DotLottiePlayer
+            src="/public/lottie/Working3_Lite.lottie"
+            autoplay
+            loop
+            className="w-[80%]"
+          ></DotLottiePlayer>
+          
         </div>
         <div className={cn(styles.padMB, "w-full relative h-[60%] ")}>
           <span className={cn(styles.text, "w-[70%]")}>
             <div className="flex flex-col w-full ">
-              <p className="lg:text-[4em] md:text-[3rem] text-[2em] text-yellow-500 font-bold">ACHIEVEMENT:</p>
+              <p className="lg:text-[4em] md:text-[3rem] text-[2em] text-yellow-500 font-bold">
+                ACHIEVEMENT:
+              </p>
               <div className="flex ">
                 <p className="lg:text-[4em] md:text-[3rem] text-[2em]">
-                  -  <span className="text-yellow-500">20000+</span> member graduated in 2022.
+                  - <span className="text-yellow-500">20000+</span> member
+                  graduated in 2022.
                   <Cursor />
                 </p>
                 <div className="lg:text-[4em] md:text-[3rem] text-[2em]"></div>
               </div>
               <div className="flex ">
                 <p className="lg:text-[4em] md:text-[3rem] text-[2em]">
-                  -  <span className="text-yellow-500">5867</span> member got Job immediately.
+                  - <span className="text-yellow-500">5867</span> member got Job
+                  immediately.
                   <Cursor />
                 </p>
               </div>
@@ -169,11 +203,13 @@ export const Introduction = () => {
     loop: true,
   });
 
-
   return (
     <div
       style={{ background: "#dfdfdf" }}
-      className={cn("h-screen w-screen relative overflow-hidden", styles.customScrollbar)}
+      className={cn(
+        "h-screen w-screen relative overflow-hidden",
+        styles.customScrollbar
+      )}
     >
       <Parallax
         className={cn(styles.container, styles.customScrollbar, "!h-full")}

@@ -1139,6 +1139,11 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz#b6c75a56a1947cc916ea058772d666a2c8932f31"
   integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
 
+"@dotlottie/react-player@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@dotlottie/react-player/-/react-player-1.6.3.tgz#0e66e092dcc417875be348de2b82d6bdbd17fc5c"
+  integrity sha512-wktLksV1LzV2qAAMocdBxn2e0J7XUraztLH2DnrlBYUgdy5Cz4FyV8+BPLftcyVD7r/4+0X448hEvK7tFQiLng==
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz#c2d872b6a7767a9d176d007f5b31f7d504bb5d6c"
