@@ -44,28 +44,28 @@ export const Sponsor = () => {
         <div className="flex w-[200px] h-[50px] justify-center items-center py-2 m-auto">
           <img
             className="pr-8 md:pr-0"
-            src="/public/image/sponsor/duolingo.jpg"
+            src="/image/sponsor/duolingo.jpg"
             alt="duolingo"
           />
         </div>
         <div className="flex w-[200px] h-[50px] justify-center items-center py-2  m-auto">
           <img
             className="pr-8 md:pr-0"
-            src="/public/image/sponsor/codecovlogo.png"
+            src="/image/sponsor/codecovlogo.png"
             alt="codecov"
           />
         </div>
         <div className="flex w-[200px] h-[50px] justify-center items-center py-2  m-auto">
           <img
             className="pr-8 md:pr-0"
-            src="/public/image/sponsor/userTesting.png"
+            src="/image/sponsor/userTesting.png"
             alt="userTesting"
           />
         </div>
         <div className="flex w-[200px] h-[50px] justify-center items-center py-2  m-auto">
           <img
             className="pr-8 md:pr-0"
-            src="/public/image/sponsor/magicleapLogo.png"
+            src="/image/sponsor/magicleapLogo.png"
             alt="magicLeap"
           />
         </div>

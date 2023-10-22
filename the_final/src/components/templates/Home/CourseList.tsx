@@ -123,18 +123,18 @@ export const CourseList = () => {
                   style={{ borderRadius: "0 30px 30px 0" }}
                 >
                   <img
-                    src="/public/image/CourseList/author.gif"
+                    src="/image/CourseList/author.gif"
                     alt="author"
                     className="w-[40px] block"
                   />
-                  {/* <img src='/public/image/CourseList/authorStatic.png' alt="author" className="w-[40px] " /> */}
+                  {/* <img src='/image/CourseList/authorStatic.png' alt="author" className="w-[40px] " /> */}
                   <p className="">{course.nguoiTao.hoTen}</p>
                 </div>
                 {/* Time road */}
                 <div className="time flex gap-5 justify-center mt-5">
                   <div className="flex">
                     <img
-                      src="/public/image/CourseList/clock.png"
+                      src="/image/CourseList/clock.png"
                       alt="clock"
                       className="w-[20px] block"
                     />
@@ -142,7 +142,7 @@ export const CourseList = () => {
                   </div>
                   <div className="flex">
                     <img
-                      src="/public/image/CourseList/calendar.png"
+                      src="/image/CourseList/calendar.png"
                       alt="calendar"
                       className="w-[20px] block"
                     />
@@ -150,7 +150,7 @@ export const CourseList = () => {
                   </div>
                   <div className="flex">
                     <img
-                      src="/public/image/CourseList/enroll.png"
+                      src="/image/CourseList/enroll.png"
                       alt="enroll"
                       className="w-[20px] block"
                     />
@@ -161,7 +161,7 @@ export const CourseList = () => {
                 <div className="mt-2 border-t-2 w-full flex justify-between">
                   <div className="mt-2 flex items-center gap-1">
                     <img
-                      src="/public/image/avatar.svg"
+                      src="/image/avatar.svg"
                       alt="avatar"
                       className="w-[30px]"
                     />
@@ -173,7 +173,7 @@ export const CourseList = () => {
                     <div className="text-[var(--primary)] text-xl">
                       400.000<span className="text-[9px]">vnđ</span>
                       <img
-                        src="/public/image/CourseList/sale.png"
+                        src="/image/CourseList/sale.png"
                         alt="sale"
                         className="absolute w-[30px] top-0 right-0 rotate-[20deg]"
                       />
@@ -198,7 +198,7 @@ export const CourseList = () => {
                   <div className="time flex gap-5 justify-center mt-5 border-t-2 w-[90%] m-auto mb-5 ">
                     <div className="flex">
                       <img
-                        src="/public/image/CourseList/clock.png"
+                        src="/image/CourseList/clock.png"
                         alt="clock"
                         className="w-[20px] block"
                       />
@@ -206,7 +206,7 @@ export const CourseList = () => {
                     </div>
                     <div className="flex">
                       <img
-                        src="/public/image/CourseList/calendar.png"
+                        src="/image/CourseList/calendar.png"
                         alt="calendar"
                         className="w-[20px] block"
                       />
@@ -214,7 +214,7 @@ export const CourseList = () => {
                     </div>
                     <div className="flex">
                       <img
-                        src="/public/image/CourseList/enroll.png"
+                        src="/image/CourseList/enroll.png"
                         alt="enroll"
                         className="w-[20px] block"
                       />
