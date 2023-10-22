@@ -306,7 +306,11 @@ const Header = () => {
                           </button>
                         </div>
                       </Transition.Child>
-                      <div className="flex h-[100vh] flex-col overflow-hidden  bg-[#739ed6] py-6 shadow-xl">
+                      <div className="flex h-[100vh] flex-col overflow-hidden  py-6 shadow-xl"
+                      style={{
+                        background: 'rgb(46, 175, 227)',
+                        backgroundImage: 'linear-gradient(180deg, rgba(46, 175, 227, 1) 0%, rgba(145, 164, 223, 1) 37%, rgba(120, 184, 219, 1) 73%, rgba(70, 198, 236, 1) 97%)',
+                      }}>
                         <div className="px-4 sm:px-6 flex justify-center">
                           <Dialog.Title className="text-base font-semibold leading-6 text-gray-900  bg-[#042f40cc] w-[80%] rounded-[10px] ">
                             <div className="ml-4 flex  items-center ">
