@@ -4,7 +4,7 @@ export const NotiError = (text) => {
   Swal.fire({
     title: text,
     showConfirmButton: false,
-    timer: 1500,
+    timer: 2000,
     icon:'error',
   });
 };
