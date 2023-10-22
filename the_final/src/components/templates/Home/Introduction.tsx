@@ -39,7 +39,7 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         <div className="w-full h-full lg:flex">
           <div className="w-[100%] lg:w-[60%] h-[60%] flex items-end justify-center lg:h-[100%]">
         <DotLottiePlayer
-          src="../../../../public/lottie/Working1_Lite.lottie"
+          src="/lottie/Working1_Lite.lottie"
           autoplay
           loop
         >
@@ -70,7 +70,7 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
       >
         <div className="w-[80%] xl:w-[40%] flex justify-center ">
            <DotLottiePlayer
-            src="/public/lottie/Working2_Lite.lottie"
+            src="/lottie/Working2_Lite.lottie"
             autoplay
             loop
             className="w-[100%] md:w-[70%]"
@@ -132,7 +132,7 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
 
         <div className="w-[70%] lg:w-[50%] flex justify-center z-10">
           <DotLottiePlayer
-            src="/public/lottie/Working3_Lite.lottie"
+            src="/lottie/Working3_Lite.lottie"
             autoplay
             loop
             className="w-[60%]"
@@ -153,7 +153,7 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
       >
         <div className="w-full flex justify-center  h-[60%] ">
           <DotLottiePlayer
-            src="/public/lottie/Working3_Lite.lottie"
+            src="/lottie/Working3_Lite.lottie"
             autoplay
             loop
             className="w-[80%]"

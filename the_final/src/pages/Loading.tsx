@@ -6,7 +6,7 @@ export const Loading = () => {
   return (
     <div className="h-screen flex flex-col justify-center bg-black absolute top-0 left-0 z-[9999] w-screen overflow-hidden">
       <DotLottiePlayer
-        src="/public/lottie/Running_Dog.lottie"
+        src="/lottie/Running_Dog.lottie"
         autoplay
         loop
         className="h-[60%]"
