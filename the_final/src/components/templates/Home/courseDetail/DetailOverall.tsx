@@ -11,7 +11,7 @@ export const DetailOverall: React.FC<DetailOverallProps> = ({ CourseInfo }) => {
         {/* mentor  */}
         <div className="flex">
           <img
-            src="/public/image/avatar.svg"
+            src="/image/avatar.svg"
             alt="avatar_professor"
             className="w-[40px]"
           />
@@ -23,7 +23,7 @@ export const DetailOverall: React.FC<DetailOverallProps> = ({ CourseInfo }) => {
         {/* major  */}
         <div className="flex">
           <img
-            src="/public/image/CourseDetail/icons8-graduate-90.png"
+            src="/image/CourseDetail/icons8-graduate-90.png"
             alt="gradutate"
             className="w-[40px]"
           />
@@ -38,27 +38,27 @@ export const DetailOverall: React.FC<DetailOverallProps> = ({ CourseInfo }) => {
             <div className="flex gap-2">
               <div className="flex">
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-half-empty-96.png"
+                  src="/image/CourseDetail/icons8-star-half-empty-96.png"
                   alt="halfStar"
                   className="w-[20px]"
                 />
@@ -77,27 +77,27 @@ export const DetailOverall: React.FC<DetailOverallProps> = ({ CourseInfo }) => {
             <div className="flex gap-2">
               <div className="flex">
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-filled-96.png"
+                  src="/image/CourseDetail/icons8-star-filled-96.png"
                   alt="fullStar"
                   className="w-[20px]"
                 />
                 <img
-                  src="/public/image/CourseDetail/icons8-star-half-empty-96.png"
+                  src="/image/CourseDetail/icons8-star-half-empty-96.png"
                   alt="halfStar"
                   className="w-[20px]"
                 />
@@ -111,7 +111,7 @@ export const DetailOverall: React.FC<DetailOverallProps> = ({ CourseInfo }) => {
           {/* mentor  */}
           <div className="flex gap-3">
             <img
-              src="/public/image/avatar.svg"
+              src="/image/avatar.svg"
               alt="avatar_professor"
               className="w-[40px] flex items-center m-auto"
             />
@@ -123,7 +123,7 @@ export const DetailOverall: React.FC<DetailOverallProps> = ({ CourseInfo }) => {
           {/* major  */}
           <div className="flex gap-3">
             <img
-              src="/public/image/CourseDetail/icons8-graduate-90.png"
+              src="/image/CourseDetail/icons8-graduate-90.png"
               alt="gradutate"
               className="w-[40px] h-[40px] flex items-center m-auto"
             />

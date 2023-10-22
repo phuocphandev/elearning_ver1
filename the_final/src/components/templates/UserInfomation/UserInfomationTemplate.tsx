@@ -94,7 +94,7 @@ export const UserInfomationTemplate = () => {
           <div className="flex flex-col items-center mt-16">
             <img
               className="w-[50px] md:w-[100px]"
-              src="/public/image/avatar.svg"
+              src="/image/avatar.svg"
               alt=""
             />
             <h2 className="mt-4 text-xl">{user?.hoTen}</h2>
@@ -399,7 +399,7 @@ export const UserInfomationTemplate = () => {
                                     <div className="w-[40px]">
                                       <img
                                         className="w-[40px]"
-                                        src="/public/image/avatar.svg"
+                                        src="/image/avatar.svg"
                                         alt="avatar"
                                       />
                                     </div>

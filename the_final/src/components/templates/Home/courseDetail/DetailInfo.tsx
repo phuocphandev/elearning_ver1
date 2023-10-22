@@ -49,7 +49,7 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
           <div className="text-[var(--primary)] text-2xl font-extrabold">
             400.000<span className="text-[9px]">vnđ</span>
             <img
-              src="/public/image/CourseList/sale.png"
+              src="/image/CourseList/sale.png"
               alt="sale"
               className="absolute w-[30px] top-0 right-0 rotate-[20deg]"
             />
@@ -67,7 +67,7 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         <div className="border-b border-gray-100 flex justify-between pt-5 pb-5">
           <p>E-Huber: {CourseInfo?.soLuongHocVien}</p>
           <img
-            src="/public/image/CourseDetail/icons8-student-100.png"
+            src="/image/CourseDetail/icons8-student-100.png"
             alt="student"
             className="w-[40px]"
           />
@@ -75,7 +75,7 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         <div className="border-b border-gray-100 flex justify-between pt-5 pb-5">
           <p>Average total time: 23 hours</p>
           <img
-            src="/public/image/CourseDetail/icons8-timer-96.png"
+            src="/image/CourseDetail/icons8-timer-96.png"
             alt="timer"
             className="w-[40px]"
           />
@@ -83,7 +83,7 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         <div className="border-b border-gray-100 flex justify-between pt-5 pb-5">
           <p>Total Video: 163</p>
           <img
-            src="/public/image/CourseDetail/icons8-video-100.png"
+            src="/image/CourseDetail/icons8-video-100.png"
             alt="video"
             className="w-[40px]"
           />
@@ -91,7 +91,7 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         <div className="border-b border-gray-100 flex justify-between pt-5 pb-5">
           <p>Course: 12 sections</p>
           <img
-            src="/public/image/CourseDetail/icons8-course-100.png"
+            src="/image/CourseDetail/icons8-course-100.png"
             alt="course"
             className="w-[40px]"
           />
@@ -99,7 +99,7 @@ export const DetailInfo: React.FC<DetailInfoProps> = ({ CourseInfo }) => {
         <div className="border-b border-gray-100 flex justify-between pt-5 pb-5">
           <p>Level: Beginner</p>
           <img
-            src="/public/image/CourseDetail/icons8-level-60.png"
+            src="/image/CourseDetail/icons8-level-60.png"
             alt="level"
             className="w-[40px]"
           />

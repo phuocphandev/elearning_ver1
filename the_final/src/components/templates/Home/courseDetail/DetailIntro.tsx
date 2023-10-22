@@ -83,7 +83,7 @@ export const DetailIntro = () => {
                 <p className="courselist w-full">What is React Components</p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -96,7 +96,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -109,7 +109,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -122,7 +122,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className="flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -152,7 +152,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -163,7 +163,7 @@ export const DetailIntro = () => {
                 <p className="courselist w-full">Course Guide + GitHub Link</p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -176,7 +176,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -187,7 +187,7 @@ export const DetailIntro = () => {
                 <p className="courselist w-full">CSS and SCSS Files</p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -200,7 +200,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -230,7 +230,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -241,7 +241,7 @@ export const DetailIntro = () => {
                 <p className="w-full courselist">Folder State in Redux</p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />
@@ -254,7 +254,7 @@ export const DetailIntro = () => {
                 </p>
                 <div className=" flex justify-between items-center mt-[7px] mb-[7px]">
                   <img
-                    src="/public/image/CourseDetail/icons8-timer-96.png"
+                    src="/image/CourseDetail/icons8-timer-96.png"
                     alt=""
                     className="w-[30px] h-[30px] "
                   />

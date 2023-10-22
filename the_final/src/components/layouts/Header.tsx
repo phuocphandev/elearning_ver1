@@ -120,7 +120,7 @@ const Header = () => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
           <a href="/" className="flex items-center">
             <img
-              src="/public/image/logo.gif"
+              src="/image/logo.gif"
               className="h-[80px] mr-3 w-[80px] scale-110"
               alt="Logo"
             />
@@ -136,7 +136,7 @@ const Header = () => {
                 <Space className="w-[40px] h-[40px] rounded-full flex items-center justify-center border-none hover:scale-110 ">
                   <Avatar
                     size={40}
-                    icon={<img src="/public/image/avatar.svg" alt="avatar" />}
+                    icon={<img src="/image/avatar.svg" alt="avatar" />}
                   />
                 </Space>{" "}
               </button>
@@ -320,7 +320,7 @@ const Header = () => {
                                     size={60}
                                     icon={
                                       <img
-                                        src="/public/image/avatar.svg"
+                                        src="/image/avatar.svg"
                                         alt="avatar"
                                       />
                                     }
@@ -343,12 +343,12 @@ const Header = () => {
                           >
                             <img
                               className="h-full cardstatic border-r-2 border-white"
-                              src="/public/image/login/card_static.png"
+                              src="/image/login/card_static.png"
                               alt="info"
                             />{" "}
                             <img
                               className="h-full cardanimate border-r-2 border-white"
-                              src="/public/image/login/card_animate.gif"
+                              src="/image/login/card_animate.gif"
                               alt="info"
                             />
                             <button className="ml-8 text-white font-bold">
@@ -366,12 +366,12 @@ const Header = () => {
                             >
                               <img
                                 className="h-full adminstatic border-r-2 border-white"
-                                src="/public/image/login/managestatic.png"
+                                src="/image/login/managestatic.png"
                                 alt="info"
                               />{" "}
                               <img
                                 className="h-full adminanimate border-r-2 border-white"
-                                src="/public/image/login/managegif.gif"
+                                src="/image/login/managegif.gif"
                                 alt="info"
                               />
                               <button className="ml-8 text-white font-bold">
@@ -392,12 +392,12 @@ const Header = () => {
                           >
                             <img
                               className="h-full exitstatic border-r-2 border-white"
-                              src="/public/image/login/launch_static.png"
+                              src="/image/login/launch_static.png"
                               alt="logout"
                             />
                             <img
                               className="h-full exitanimate border-r-2 border-white"
-                              src="/public/image/login/launch_animate.gif"
+                              src="/image/login/launch_animate.gif"
                               alt="logout"
                             />
                             <button className="ml-8 text-white font-bold">

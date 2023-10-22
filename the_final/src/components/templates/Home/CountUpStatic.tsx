@@ -27,7 +27,7 @@ export const CountUpStatic = () => {
         <div className="col-span-4 md:col-span-1 flex flex-col items-center">
           <img
             className="w-[60px] h-[60px]"
-            src="/public/image/Countup/student.png"
+            src="/image/Countup/student.png"
             alt="student"
           />
           <p className="font-bold text-2xl text-[var(--primary)]">
@@ -40,7 +40,7 @@ export const CountUpStatic = () => {
         <div className="col-span-4 md:col-span-1 flex flex-col items-center">
           <img
             className="w-[60px] h-[60px]"
-            src="/public/image/Countup/calendar.png"
+            src="/image/Countup/calendar.png"
             alt="calendar"
           />
           <p className="font-bold text-2xl text-[var(--primary)]">
@@ -53,7 +53,7 @@ export const CountUpStatic = () => {
         <div className="col-span-4 md:col-span-1 flex flex-col items-center">
           <img
             className="w-[60px] h-[60px]"
-            src="/public/image/Countup/time.png"
+            src="/image/Countup/time.png"
             alt="time"
           />
           <p className="font-bold text-2xl text-[var(--primary)]">
@@ -66,7 +66,7 @@ export const CountUpStatic = () => {
         <div className="col-span-4 md:col-span-1 flex flex-col items-center">
           <img
             className="w-[60px] h-[60px]"
-            src="/public/image/Countup/mentor.png"
+            src="/image/Countup/mentor.png"
             alt="mentor"
           />
           <p className="font-bold text-2xl text-[var(--primary)]">

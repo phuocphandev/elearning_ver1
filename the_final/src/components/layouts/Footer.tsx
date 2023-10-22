@@ -6,7 +6,7 @@ export const Footer = () => {
             <div className="mb-6 md:mb-0 flex justify-center">
               <a href="/" className="flex items-center">
                 <img
-                  src="/public/image/logo.gif"
+                  src="/image/logo.gif"
                   className="w-[250px] mr-3"
                   alt="Logo"
                 />
