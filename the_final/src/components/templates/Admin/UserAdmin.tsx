@@ -496,7 +496,7 @@ export const UserAdmin = () => {
           <div className="">
             <p className="text-xl font-bold text-white">Unauthorized Course</p>
           </div>
-          <table className=" text-sm text-gray-500 dark:text-gray-400 ">
+          <table className="w-full text-sm text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
               <tr>
                 <th
