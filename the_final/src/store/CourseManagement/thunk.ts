@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { manageCourse } from "services";
 import { getUserInfoThunk } from "store/manageUser/thunk";
 import { payloadFilter } from "types";
-import { EnrollCourseType, getCourseUploadImage } from "types/Course";
+import { EnrollCourseType } from "types/Course";
 
 export const manageCourseThunk = createAsyncThunk(
   "CourseManagement/manageCourseThunk",
