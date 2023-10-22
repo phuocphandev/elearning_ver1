@@ -23,7 +23,7 @@ export const AllCourseTemplate = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
   }, []);
   return (
     <div className="mt-[80px] AllCourseTemplate">

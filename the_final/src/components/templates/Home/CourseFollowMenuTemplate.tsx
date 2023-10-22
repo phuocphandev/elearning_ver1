@@ -21,7 +21,7 @@ export const CourseFollowMenuTemplate = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
   }, []);
   return (
     <div className="mt-[80px]">
