@@ -69,7 +69,7 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
               <div className="">
                 <p>
                   is an exclusive digital platform provide a Self-studying
-                  system with various experince intructors
+                  system with various experience intructors
                   <Cursor />
                 </p>
               </div>
@@ -89,8 +89,8 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
       >
         <div className={cn("flex w-1/2 relative", styles.pad)}>
           <span className={cn("w-full px-4")}>
-            <div className="flex flex-col w-full">
-              <p className="lg:text-[3em] text-[2em] text-yellow-500 font-bold">ACHIEVEMENT:</p>
+            <div className="flex flex-col w-full py-5">
+              <p className="lg:text-[3em] text-[2em] text-yellow-500 font-bold my-10">ACHIEVEMENT:</p>
               <div className="flex lg:text-[2.5em] text-[2em]">
                 <p className="">- <span className="text-yellow-500">20000+</span> member graduated in 2022</p>
                 <div className="">
@@ -130,9 +130,9 @@ const Page = ({ offset, gradient, onClick, text }: PageProps) => (
         <div className="w-full flex justify-center  h-[60%] ">
           <Lottie animationData={Welcome3} className="w-[80%]" />
         </div>
-        <div className={cn(styles.padMB, "w-full relative h-[60%]")}>
+        <div className={cn(styles.padMB, "w-full relative h-[60%] ")}>
           <span className={cn(styles.text, "w-[70%]")}>
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full ">
               <p className="lg:text-[4em] md:text-[3rem] text-[2em] text-yellow-500 font-bold">ACHIEVEMENT:</p>
               <div className="flex ">
                 <p className="lg:text-[4em] md:text-[3rem] text-[2em]">

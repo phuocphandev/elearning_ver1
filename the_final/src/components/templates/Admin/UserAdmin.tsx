@@ -28,6 +28,7 @@ import {
   getCourseNotEnrollThunk,
   getCourseUnAuthorThunk,
   getCourseAuthorThunk,
+  updateUserThunk,
 } from "store/manageUser/thunk";
 
 export const UserAdmin = () => {
@@ -42,6 +43,7 @@ export const UserAdmin = () => {
   const [currentPage1, setCurrentPage1] = useState(1);
   const [currentPage2, setCurrentPage2] = useState(1);
   const [currentPage3, setCurrentPage3] = useState(1);
+  const [update, setUpDate] = useState({ state: false, type: "" });
   const [account, setAccount] = useState("");
   const [option, setOption] = useState({ tenKH: "...", maKH: "" });
   const dispatch = useAppDispatch();
@@ -76,7 +78,6 @@ export const UserAdmin = () => {
   if (indexArr.length !== 0) {
     newCourseNotAuthor.push(indexArr);
   }
-  console.log("newCourseNotAuthor: ", CourseNotAuthor);
 
   // Phan trang - xac thuc
   const newCourseAuthor = [];
@@ -91,7 +92,14 @@ export const UserAdmin = () => {
   if (indexArr2.length !== 0) {
     newCourseAuthor.push(indexArr2);
   }
-  console.log("newCourseAuthor: ", newCourseAuthor);
+  const emptyForm = {
+    taiKhoan: "",
+    hoTen: "",
+    email: "",
+    matKhau: "",
+    soDT: "",
+    maNhom: "",
+  };
   //===================================
   const {
     handleSubmit,
@@ -103,13 +111,28 @@ export const UserAdmin = () => {
     resolver: zodResolver(RegisterSchema),
   });
   const onSubmit: SubmitHandler<RegisterSchemaType> = async (value) => {
-    try {
-      await manageUser.register(value);
-      NotiSuccess("Create account successfully!");
-      reset();
-      setIsModal1Open(false);
-    } catch (error) {
-      NotiError(error?.response?.data);
+    if (update.state) {
+      dispatch(updateUserThunk({ ...value, maLoaiNguoiDung: update.type }))
+        .unwrap()
+        .then(() => {
+          reset(emptyForm);
+          NotiSuccess("Updated!");
+          dispatch(getAccountThunk(currentPage1));
+          setIsModal1Open(false);
+          setUpDate({ state: false, type: "" });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      try {
+        await manageUser.register(value);
+        NotiSuccess("Create account successfully!");
+        reset(emptyForm);
+        setIsModal1Open(false);
+      } catch (error) {
+        NotiError(error?.response?.data);
+      }
     }
   };
 
@@ -146,16 +169,16 @@ export const UserAdmin = () => {
 
   const category = "Category";
   const truncatedCategory =
-  windowWidth < 768 ? category.substring(0, 4)+".." : category;
-  const username =" UserName";
-  const truncatedUserName=
-  windowWidth < 768 ? username.substring(0, 4)+".." : username;
-  const FullName =" FullName";
-  const truncatedFullName=
-  windowWidth < 768 ? FullName.substring(5, 8)+".." : FullName;
-  const PhoneNumber =" Phone Number";
-  const truncatedPhoneNumber=
-  windowWidth < 768 ? PhoneNumber.substring(0, 5)+".." : PhoneNumber;
+    windowWidth < 768 ? category.substring(0, 4) + ".." : category;
+  const username = " UserName";
+  const truncatedUserName =
+    windowWidth < 768 ? username.substring(0, 4) + ".." : username;
+  const FullName = " FullName";
+  const truncatedFullName =
+    windowWidth < 768 ? FullName.substring(5, 8) + ".." : FullName;
+  const PhoneNumber = " Phone Number";
+  const truncatedPhoneNumber =
+    windowWidth < 768 ? PhoneNumber.substring(0, 5) + ".." : PhoneNumber;
 
   return (
     <div>
@@ -189,7 +212,13 @@ export const UserAdmin = () => {
           </div>
         </form>
         <div>
-          <Button type="primary" onClick={showModal1}>
+          <Button
+            type="primary"
+            onClick={() => {
+              showModal1();
+              reset(emptyForm);
+            }}
+          >
             <div>
               <span>Add User</span> <PlusOutlined />
             </div>
@@ -295,6 +324,11 @@ export const UserAdmin = () => {
                     <div className="hover:scale-125 transition ease-in-out delay-75 duration-500 cursor-pointer">
                       <ToolFilled
                         style={{ color: "orange", fontSize: "25px" }}
+                        onClick={() => {
+                          setIsModal1Open(true);
+                          setUpDate({ state: true, type: e?.maLoaiNguoiDung });
+                          reset(e);
+                        }}
                       />
                     </div>
                     <div
@@ -308,7 +342,14 @@ export const UserAdmin = () => {
                           if (AllAccount?.items.length == 1) {
                             setCurrentPage1(currentPage1 - 1);
                           }
-                          dispatch(deleteAccountThunk(e.taiKhoan));
+                          dispatch(deleteAccountThunk(e?.taiKhoan))
+                            .unwrap()
+                            .then(() => {
+                              NotiSuccess("Deleted!");
+                            })
+                            .catch((err) => {
+                              NotiError(err?.response?.data);
+                            });
                         }}
                       />
                     </div>
@@ -339,6 +380,7 @@ export const UserAdmin = () => {
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
+            disabled={update.state}
             name="taiKhoan"
             type="text"
             placeholder="Username"
@@ -381,10 +423,18 @@ export const UserAdmin = () => {
             error={errors?.maNhom?.message}
           />
           <div className="flex justify-center gap-4 items-center mt-4">
-            <Button htmlType={"submit"} type="primary" className="w-25%">
-              {" "}
-              ADD USER
-            </Button>
+            {update?.state ? (
+              <Button htmlType={"submit"} type="primary" className="w-25%">
+                {" "}
+                UPDATE
+              </Button>
+            ) : (
+              <Button htmlType={"submit"} type="primary" className="w-25%">
+                {" "}
+                ADD USER
+              </Button>
+            )}
+
             <Button
               htmlType={"button"}
               type="primary"
@@ -410,7 +460,9 @@ export const UserAdmin = () => {
       >
         <div>
           <div className="flex justify-evenly">
-            <label className="text-white font-bold text-xl">Select Course:</label>
+            <label className="text-white font-bold text-xl">
+              Select Course:
+            </label>
             {/* Dropdown */}
             <div className="flex flex-col relative w-[40%]">
               <button

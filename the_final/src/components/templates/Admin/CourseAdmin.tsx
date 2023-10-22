@@ -36,7 +36,7 @@ export const CourseAdmin = () => {
   const [search, setSearch] = useState(null);
   const { CourseListPagi, isDelete } = useCourse();
   const { UserNotEnroll, UserNotAuthor, UserAuthor, user } = useAuth();
-  const [currentPage1, setCurrentPage1] = useState(1);
+  const [currentPage1,setCurrentPage1] = useState(1);
   const [currentPage2, setCurrentPage2] = useState(1);
   const [currentPage3, setCurrentPage3] = useState(1);
   const [menu, setMenu] = useState([]);
@@ -371,10 +371,17 @@ export const CourseAdmin = () => {
                         style={{ color: "red" }}
                         className="md:text-[25px] text-[15px]"
                         onClick={() => {
+                          setCurrentPage1(currentPage1-1);
                           if (CourseListPagi?.items.length == 1) {
                             setCurrentPage1(currentPage1 - 1);
                           }
-                          dispatch(deleteCourseThunk(e?.maKhoaHoc));
+                          dispatch(deleteCourseThunk(e?.maKhoaHoc)).unwrap().then(()=>{
+
+                            NotiSuccess("Delete Success!");
+                          })
+                          .catch((err)=>{
+                            NotiError(err?.response?.data);
+                          });
                         }}
                       />
                     </div>
@@ -847,9 +854,11 @@ export const CourseAdmin = () => {
                                 dispatch(
                                   getUserUnAuthorThunk({ maKhoaHoc: ID })
                                 );
+                                NotiSuccess("Delete Success!");
                               })
                               .catch((err) => {
                                 console.log(err);
+                                NotiError("Delete Failed!")
                               });
                           }}
                           style={{ color: "red", fontSize: "25px" }}

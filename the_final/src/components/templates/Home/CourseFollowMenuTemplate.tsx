@@ -10,7 +10,6 @@ import { getCourseFollowMenu } from "store/CourseManagement/thunk";
 export const CourseFollowMenuTemplate = () => {
   const { CourseList } = useCourse();
   const { courseId } = useParams();
-  console.log({ courseId });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
