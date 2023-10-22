@@ -410,7 +410,7 @@ export const UserAdmin = () => {
       >
         <div>
           <div className="flex justify-evenly">
-            <label>Select Course:</label>
+            <label className="text-white font-bold text-xl">Select Course:</label>
             {/* Dropdown */}
             <div className="flex flex-col relative w-[40%]">
               <button
