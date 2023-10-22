@@ -1,24 +1,35 @@
 import { useCourse } from "hooks/useCourse";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "store";
 import { getCourseInfoThunk } from "store/CourseManagement/thunk";
 import { DetailInfo, DetailIntro, DetailOverall, DetailRelatedCourse } from ".";
+import { Loading } from "pages";
 
 export const CourseDetail = () => {
   const { CourseInfo } = useCourse();
-  console.log("CourseInfo: ", CourseInfo);
-
+  const [loading, setLoading] = useState(true);
+  
   const param = useParams<{ courseID: string }>();
-
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(getCourseInfoThunk(param.courseID));
   }, [param.courseID, dispatch]);
-
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   return (
     <div className="mt-[10vh] md:mt-[7vh] xl:mt-[12vh] 2xl:mt-[5vh] coursedetail">
+      <div
+        className={`absolute top-0 left-0 h-screen w-screen z-[9999] ${
+          loading ? "" : "hidden"
+        }`}
+      >
+        <Loading />
+      </div>
       <div className="bg-[var(--tertiary)] w-[100vw] h-[25vh] flex items-center text-3xl text-white font-bold pl-[10%] pt-10">
         <p>Course Detail:</p>
       </div>

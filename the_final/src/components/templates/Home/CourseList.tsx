@@ -104,7 +104,7 @@ export const CourseList = () => {
                       className="text-[var(--tertiary)] font-bold h-[50px]  flex items-center "
                       style={{ whiteSpace: "normal" }}
                     >
-                      {course.tenKhoaHoc}
+                      {course?.tenKhoaHoc.length>30?course?.tenKhoaHoc.substring(0,30)+' ...':course?.tenKhoaHoc}
                     </p>
                   }
                   description={

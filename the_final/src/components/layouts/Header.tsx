@@ -103,7 +103,7 @@ const Header = () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
- 
+
   useEffect(() => {
     (async () => {
       try {
@@ -184,30 +184,38 @@ const Header = () => {
           >
             <ul className="md:flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-[var(--quaternary)] bg-[var(--tertiary)]">
               <li className="text-center relative dropdown">
-                <a
-                  className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0"
-                >
+                <a className=" cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0">
                   <MenuOutlined />
                   <span> MENU</span>
                 </a>
                 <ul className="dropdown_menu dropdown_menu-1">
-                  {menu?.map((e, index) =>{
-                    const path = generatePath(PATH.course,{courseId: e.maDanhMuc});
-                     return (
-                    <li onClick={()=>{navigate(path)}}
-                      key={e.maDanhMuc}
-                      className={`dropdown_item-${index + 1} ${
-                        index == 0 ? "rounded-t-[10px]" : "" 
-                      } cursor-pointer`}
-                    >
-                      {e.tenDanhMuc}
-                    </li>
-                  )})}
+                  {menu?.map((e, index) => {
+                    const path = generatePath(PATH.course, {
+                      courseId: e.maDanhMuc,
+                    });
+                    return (
+                      <li
+                        onClick={() => {
+                          navigate(path);
+                          setPopup(false);
+                        }}
+                        key={e.maDanhMuc}
+                        className={`dropdown_item-${index + 1} ${
+                          index == 0 ? "rounded-t-[10px]" : ""
+                        } cursor-pointer`}
+                      >
+                        {e.tenDanhMuc}
+                      </li>
+                    );
+                  })}
                 </ul>
               </li>
-              <li className="text-center" onClick={()=>{
-                navigate(PATH.allcourse)
-              }}>
+              <li
+                className="text-center"
+                onClick={() => {
+                  navigate(PATH.allcourse);
+                }}
+              >
                 <a
                   href="#"
                   className="block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
@@ -216,23 +224,32 @@ const Header = () => {
                 </a>
               </li>
               <li className="text-center">
-                <a onClick={()=>{navigate('*')}}
+                <a
+                  onClick={() => {
+                    navigate("*");
+                  }}
                   className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0"
                 >
                   BLOG
                 </a>
               </li>
               <li className="text-center">
-                <a onClick={()=>{navigate('*')}}
+                <a
+                  onClick={() => {
+                    navigate("*");
+                  }}
                   className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
                 >
                   EVENT
                 </a>
               </li>
-              <li onClick={()=>{navigate('*')}} className="text-center">
-                <a
-                  className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 "
-                >
+              <li
+                onClick={() => {
+                  navigate("*");
+                }}
+                className="text-center"
+              >
+                <a className="cursor-pointer block py-2 pl-3 pr-4 md:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6ddcde] md:p-0 ">
                   ABOUT US
                 </a>
               </li>
@@ -313,34 +330,56 @@ const Header = () => {
                           </Dialog.Title>
                         </div>
                         <div className="relative mt-6 flex-1 px-4 w-full">
-                          <div className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info cursor-pointer" onClick={()=>{navigate(PATH.user);setOpen(false);}}>
+                          <div
+                            className="flex hover:bg-[#042f40cc] w-full h-[60px] relative info cursor-pointer border-2 border--white"
+                            onClick={() => {
+                              navigate(PATH.user);
+                              setOpen(false);
+                            }}
+                          >
                             <img
-                              className="h-full cardstatic"
+                              className="h-full cardstatic border-r-2 border-white"
                               src="/public/image/login/card_static.png"
                               alt="info"
-                            /> <img
-                            className="h-full cardanimate"
-                            src="/public/image/login/card_animate.gif"
-                            alt="info"
-                          />
-                            <button className="ml-8 text-white font-bold">Infomation</button>
+                            />{" "}
+                            <img
+                              className="h-full cardanimate border-r-2 border-white"
+                              src="/public/image/login/card_animate.gif"
+                              alt="info"
+                            />
+                            <button className="ml-8 text-white font-bold">
+                              Information
+                            </button>
                           </div>
                           {/*  */}
-                          {user?.maLoaiNguoiDung=="GV"?<div className="flex mt-5 hover:bg-[#042f40cc] w-full h-[60px] relative admin cursor-pointer" onClick={()=>{navigate(PATH.admin);setOpen(false);}}>
-                            <img
-                              className="h-full adminstatic"
-                              src="/public/image/login/managestatic.png"
-                              alt="info"
-                            /> <img
-                            className="h-full adminanimate"
-                            src="/public/image/login/managegif.gif"
-                            alt="info"
-                          />
-                            <button className="ml-8 text-white font-bold">Admin Page</button>
-                          </div>:""}
+                          {user?.maLoaiNguoiDung == "GV" ? (
+                            <div
+                              className="flex mt-5 hover:bg-[#042f40cc] w-full h-[60px] relative admin cursor-pointer border-2 border--white"
+                              onClick={() => {
+                                navigate(PATH.admin);
+                                setOpen(false);
+                              }}
+                            >
+                              <img
+                                className="h-full adminstatic border-r-2 border-white"
+                                src="/public/image/login/managestatic.png"
+                                alt="info"
+                              />{" "}
+                              <img
+                                className="h-full adminanimate border-r-2 border-white"
+                                src="/public/image/login/managegif.gif"
+                                alt="info"
+                              />
+                              <button className="ml-8 text-white font-bold">
+                                Admin Page
+                              </button>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                           {/*  */}
                           <div
-                            className="flex mt-5 hover:bg-[#042f40cc] h-[60px] relative exit cursor-pointer"
+                            className="flex mt-5 hover:bg-[#042f40cc] h-[60px] relative exit cursor-pointer border-2 border-white"
                             onClick={() => {
                               dispatchOrigin(manageUserActions.logOut());
                               NotiSuccess("Logged Out");
@@ -348,16 +387,18 @@ const Header = () => {
                             }}
                           >
                             <img
-                              className="h-full exitstatic"
+                              className="h-full exitstatic border-r-2 border-white"
                               src="/public/image/login/launch_static.png"
                               alt="logout"
                             />
                             <img
-                              className="h-full exitanimate"
+                              className="h-full exitanimate border-r-2 border-white"
                               src="/public/image/login/launch_animate.gif"
                               alt="logout"
                             />
-                            <button className="ml-8 text-white font-bold">Log out</button>
+                            <button className="ml-8 text-white font-bold">
+                              Log out
+                            </button>
                           </div>
                         </div>
                       </div>

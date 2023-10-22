@@ -11,3 +11,18 @@
   --background: #D9E2EB;
   --abc:#bebcbc;
 }
+
+body {
+  overflow: auto;
+  overflow-x:hidden ;
+}
+
+/* Tùy chỉnh scrollbar cho trình duyệt Webkit (Chrome, Safari, Opera) */
+body::-webkit-scrollbar {
+  width: 1px; /* Chiều rộng của scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0); /* Màu của phần thumb (thanh cuộn) */
+  border-radius: 4px; /* Bo góc của thumb */
+}

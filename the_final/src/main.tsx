@@ -8,17 +8,21 @@ import { Provider } from "react-redux";
 import { ScrollToTop } from "components";
 import {NextUIProvider} from "@nextui-org/react"
 import BackToTop from "components/BackToTop.tsx";
+import LoadingonTop from "components/LoadingonTop.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-  <Provider store = {store}>
-   <StyleProvider hashPriority="high">
-    <ScrollToTop/>
-    <NextUIProvider>
-      <BackToTop/>
-     <App />
-    </NextUIProvider>
-   </StyleProvider>
-   </Provider>
-  </BrowserRouter>
+  <div>
+    <LoadingonTop/>
+    <BrowserRouter>
+    <Provider store = {store}>
+     <StyleProvider hashPriority="high">
+      <ScrollToTop/>
+      <NextUIProvider>
+        <BackToTop/>
+       <App />
+      </NextUIProvider>
+     </StyleProvider>
+     </Provider>
+    </BrowserRouter>
+  </div>
 );

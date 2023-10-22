@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { generatePath, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "store";
 import { getCoursePagiThunk } from "store/CourseManagement/thunk";
-import '../../../sass/main.scss'
+import "../../../sass/main.scss";
+import { Loading } from "pages";
 
 export const AllCourseTemplate = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +16,24 @@ export const AllCourseTemplate = () => {
   const { CourseListPagi } = useCourse();
   const CourseList = CourseListPagi?.items;
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     dispatch(getCoursePagiThunk(currentPage));
   }, [currentPage]);
-
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   return (
     <div className="mt-[80px] AllCourseTemplate">
+      <div
+        className={`absolute top-0 left-0 h-full w-full z-[9999] ${
+          loading ? "" : "hidden"
+        }`}
+      >
+        <Loading />
+      </div>
       <div className="h-[20vh] bg-[var(--tertiary)] flex items-center pl-[7%]  font-bold">
         <p className="text-white text-2xl ml-4">All Course Available</p>
       </div>
@@ -54,7 +67,7 @@ export const AllCourseTemplate = () => {
                           className="text-[var(--tertiary)] font-bold h-[50px]  flex items-center "
                           style={{ whiteSpace: "normal" }}
                         >
-                          {course?.tenKhoaHoc}
+                          {course?.tenKhoaHoc.length>30?course?.tenKhoaHoc.substring(0,30)+' ...':course?.tenKhoaHoc}
                         </p>
                       }
                       description={
@@ -191,7 +204,7 @@ export const AllCourseTemplate = () => {
         </div>
       </div>
       <div className="md:flex md:justify-center md:text-center mb-4 Pagi ">
-        <div className="md:w-[400px]"> 
+        <div className="md:w-[400px]">
           {CourseListPagi && (
             <Pagination
               currentPage={currentPage}

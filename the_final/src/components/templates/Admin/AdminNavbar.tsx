@@ -41,18 +41,18 @@ export const AdminNavbar = () => {
         )}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 cursor-pointer">
           <a
             className="flex items-center pl-2.5 mb-5"
-            
+            // onClick={() => {
+            //   navigate("/");
+            // }}
+            href="/"
           >
             <img
               src="/image/home.png"
               className="h-6 mr-3 xl:h-7 cursor-pointer"
               alt="Logo"
-              onClick={() => {
-                navigate("/");
-              }}
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
               E-Hubs

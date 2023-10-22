@@ -26,6 +26,7 @@ type manageUser = {
   UserNotEnroll?: UserNotEnroll[];
   UserNotAuthor?: UserNotEnroll[];
   UserAuthor?: UserNotEnroll[];
+  isPending?: boolean;
 };
 const initialState: manageUser = {
   user: undefined,

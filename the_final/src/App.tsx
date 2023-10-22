@@ -1,28 +1,12 @@
 import "./App.css";
-import {useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import { router } from "./router";
-import { useEffect, useState } from "react";
-import { Loading } from "pages";
 
 function App() {
-  const withDelay = (Component:React.ComponentType<any>, delay:number)=>{
-    return function DelayedComponent(props:any) {
-      const [isLoading, setIsLoading] = useState(true);
-  
-      useEffect(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, delay);
-      }, []);
-  
-      return isLoading ? <Loading/> : <Component {...props} />;
-    };
-  }
-  
   return (
-  <div>
-          { useRoutes(router)}
-  </div>)
-  // <div>{useRoutes(router)}</div>;
+    <div>
+      <div>{useRoutes(router)}</div>
+    </div>
+  );
 }
 export default App;

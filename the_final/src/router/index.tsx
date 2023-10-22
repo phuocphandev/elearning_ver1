@@ -1,15 +1,16 @@
 import HomeLayout from "components/layouts/HomeLayout";
 import { CourseAdmin, UserAdmin } from "components/templates/Admin";
 import { PATH } from "constant";
-import { AllCourse, CourseDetailPage, CourseFollowMenu, HomePage, NotFound } from "pages";
+import {AllCourse, CourseDetailPage, CourseFollowMenu, HomePage, NotFound } from "pages";
 import AdminPage from "pages/AdminPage";
 import UserInfomation from "pages/UserInformation/UserInfomation";
 import { RouteObject } from "react-router-dom";
 
 
+
 export const router: RouteObject[] = [
   {
-    element: <HomeLayout />,
+    element: <HomeLayout/>,
     path: "/",
     children: [
       {
